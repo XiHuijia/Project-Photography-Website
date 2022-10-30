@@ -33,6 +33,8 @@ import { collection, addDoc, doc, setDoc, Timestamp } from "firebase/firestore";
 import { db, storage } from "../../firebase/index";
 import { ref } from "firebase/storage";
 export default {
+  name: "UploadPic",
+  
   components: {
     // EditorContent,
   },

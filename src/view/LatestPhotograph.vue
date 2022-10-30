@@ -26,7 +26,7 @@ import MyFooter from '@/components/MyFooter.vue';
           id: 1,
           child: [
               {
-                  photoName: 'Sea Shore',
+                  photoName: 'Grass Land',
                   id: 1-1,
                   img: require('../assets/image16.jpeg')
               },
@@ -36,22 +36,22 @@ import MyFooter from '@/components/MyFooter.vue';
                   img: require('../assets/image14.jpeg'),       
               },
               {
-                  photoName: 'The Lake',
+                  photoName: 'Greece',
                   id: 1-3,
                   img: require('../assets/image15.jpeg')
               },
               {
-                  photoName: 'The Myth',
+                  photoName: 'The Lake',
                   id: 1-4,
                   img: require('../assets/image3.png')
               },
               {
-                  photoName: 'The Myth',
+                  photoName: 'Free Day',
                   id: 1-5,
-                  img: require('../assets/image13.jpeg')
+                  img: require('../assets/image10.jpeg')
               },
               {
-                  photoName: 'The Myth',
+                  photoName: 'The City',
                   id: 1-6,
                   img: require('../assets/image13.jpeg')
               },
@@ -85,17 +85,20 @@ import MyFooter from '@/components/MyFooter.vue';
                     //   padding-bottom: 10px;
                       padding-top: 178px;
                       padding-left: 30px;
-                      color: #fff;
+                      color: rgb(247, 244, 244);
+                      font-size: 40px;
+                      text-align: center;
                       flex-shrink: 0;
                       &:nth-child(3n) {
                           margin-right: 0;
                       }
                       .photo-Name {
-                          font-size: 30px;
+                          font-size: 50px;
                           font-weight: bold;
                           margin-bottom: 5px;
                       }
                       .read-more {
+                          font-size: 20px;
                           width: 105px;
                           height: 33px;
                           border: 1px solid #fff;
@@ -105,6 +108,7 @@ import MyFooter from '@/components/MyFooter.vue';
                           &:hover {
                               background: #fff;
                               color: #000;
+                              font-weight: bold;
                           }
                       }
                   }
