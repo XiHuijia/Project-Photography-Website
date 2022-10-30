@@ -90,6 +90,7 @@ export default {
   align-items: center;
 }
 .pagetitle {
+    margin-left: -30px;
     font-family: Helvetica;
     width: 80%;
     font-weight: bold;
@@ -105,6 +106,7 @@ export default {
 
 .menu{
   height: 50px;
+  /* margin-left:20px; */
   background-color: #f9beaf
 }
 .nav{
