@@ -1,7 +1,7 @@
 <template>
     <HeadLine/>
     <main class="container">
-    <img id="pic1">{{pic.file}}</img>
+    <img id="pic1">{{pic.file}}
     <div class = "text">
         <div id="author1">{{pic.author}}</div>
         <div id="title1">{{pic.title}}</div>
@@ -16,7 +16,7 @@
 <script>
 import HeadLine from '@/components/HeadLine.vue'
 //import PurchasePic from '@/components/PurchasePic.vue'
-import { db, storage } from "../../firebase/index";
+import { db } from "../../firebase/index";
 import { ref } from "firebase/storage";
 import {saveAs} from 'file-saver';
 import axios from 'Axios';
@@ -32,7 +32,7 @@ export default{
     props: ["id"],
     setup(props) {
         const pic = ref("");
-        const imgurl = ref("")
+        //const imgurl = ref("")
         const load = async () => {
         try {
             const res = await getDoc(doc(db, "files", props.id));
