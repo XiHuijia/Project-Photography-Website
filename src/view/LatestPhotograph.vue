@@ -42,12 +42,12 @@ import HeadLine from '@/components/HeadLine.vue'
               {
                   photoName: 'The Myth',
                   id: 1-4,
-                  img: require('../assets/image12.jpeg')
+                  img: require('../assets/image3.png')
               },
               {
                   photoName: 'The Myth',
                   id: 1-5,
-                  img: require('../assets/image3.png')
+                  img: require('../assets/image13.jpeg')
               },
               {
                   photoName: 'The Myth',
