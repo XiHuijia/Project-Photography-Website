@@ -28,7 +28,8 @@ export default {
             const auth = getAuth();
             const user = auth.currentUser;
             signOut(auth, user);
-            this.$router.push({name:'SignIn'});
+            this.$router.push({name:'HomePage'});
+            location.reload();
         }
     }
 }
