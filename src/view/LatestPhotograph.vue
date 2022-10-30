@@ -75,9 +75,7 @@
                 .photo-list-main {
                     display: flex;
                     flex-wrap: wrap;
-                    .photo-list-item.child.1.image{
-                      background: url(../assets/image4.png);
-                    }
+                    
                     .photo-list-item {
                         height: 120px;
                         width: 380px;
