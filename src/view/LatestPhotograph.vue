@@ -1,12 +1,12 @@
 <template>
   <HeadLine/>
-  <div class="blog-list">
-    <div class="blog-list-grouping" v-for="item in list" :key="item.id">
+  <div class="photo-list">
+    <div class="photo-list-grouping" v-for="item in list" :key="item.id">
       <div class="grouping-name">
         {{ item.groupingName }}
       </div>
-      <div class="blog-list-main">
-        <div class="blog-list-item" v-for="info in item.child" :key="info.id"
+      <div class="photo-list-main">
+        <div class="photo-list-item" v-for="info in item.child" :key="info.id"
                :style="{background: 'url(' + info.img + ')'}">
         <div class="photo-name">{{ info.photoName }}</div>
         <div class="read-more">Read More</div>
@@ -14,11 +14,13 @@
       </div>
     </div>
   </div>
+  <MyFooter/>
 
 </template>
 
 <script setup>
-import HeadLine from '@/components/HeadLine.vue'
+import HeadLine from '@/components/HeadLine.vue';
+import MyFooter from '@/components/MyFooter.vue';
   const list = [
       {
           groupingName: 'Latest Photographs',
@@ -61,27 +63,25 @@ import HeadLine from '@/components/HeadLine.vue'
   </script>
   
 <style lang="less" scoped>
-.blog-list {
+.photo-list {
           text-align: center;
           width: 1300px;
           padding-bottom: 90px;
-          .blog-list-grouping {
+          .photo-list-grouping {
               .grouping-name {
                   margin: 57px 0 32px 32px;
                   font-size: 36px;
                   letter-spacing: 0 !important;
               }
-              .blog-list-main {
+              .photo-list-main {
                   display: flex;
                   flex-wrap: wrap;
-                  .blog-list-item.child.1.image{
-                    background: url(../assets/image4.png);
-                  }
-                  .blog-list-item {
+                  
+                  .photo-list-item {
                       height: 120px;
                       width: 380px;
                       margin: 10px;
-                    //   padding-bottom: 10px;
+                      
                       padding-top: 178px;
                       padding-left: 30px;
                       color: #fff;

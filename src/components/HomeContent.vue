@@ -13,15 +13,16 @@
 
         <div class="photo-list">
             <div class="photo-list-grouping" v-for="item in list" :key="item.id">
-               <div class="grouping-name">
-                  {{ item.groupingName }}
-               </div>
-               <div class="photo-list-main">
-                   <div class="photo-list-item" v-for="info in item.child" :key="info.id">
-                       <div class="photo-Name">{{ info.photoName }}</div>
-                       <div class="read-more">Read More</div>
-                   </div>
-               </div>
+                <div class="grouping-name">
+                    {{ item.groupingName }}
+                </div>
+                <div class="photo-list-main">
+                    <div class="photo-list-item" v-for="info in item.child" :key="info.id"
+                        :style="{background: 'url(' + info.img + ')'}">
+                    <div class="photo-name">{{ info.photoName }}</div>
+                    <div class="read-more">Read More</div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -49,19 +50,33 @@ const list = [
         child: [
             {
                 photoName: 'Waves',
-                id: 1
+                id: 1,
+                img: require('../assets/image11.jpg')
             },
             {
                 photoName: 'The Sea',
-                id: 2
+                id: 2,
+                img: require('../assets/image15.jpeg')
             },
             {
                 photoName: 'The Myth',
-                id: 3
+                id: 3,
+                img: require('../assets/image14.jpeg')
             },
             {
                 photoName: 'The Bar',
-                id: 4
+                id: 4,
+                img: require('../assets/image13.jpeg')
+            },
+            {
+                photoName: 'The View',
+                id: 1,
+                img: require('../assets/view.jpg')
+            },
+            {
+                photoName: 'The Mountain',
+                id: 1,
+                img: require('../assets/image9.png')
             }
         ]
     },
@@ -73,7 +88,9 @@ const list = [
 <style lang="less" scoped>
 .index {
     .top-search{
-        height: 500px;
+        text-align: center;
+        padding-top: 90px;
+        height: 450px;
         width: 100%;
         background: url(../assets/background0.jpg);
         background-size: cover;
@@ -113,52 +130,52 @@ const list = [
         }
     }
     .photo-list {
-        width: 980px;
-        margin: 0 auto;
-        padding-bottom: 90px;
-        .photo-list-grouping {
-            .grouping-name {
-                margin: 57px 0 32px 32px;
-                font-size: 36px;
-                letter-spacing: 0 !important;
-            }
-            .photo-list-main {
-                display: flex;
-                flex-wrap: wrap;
-                .photo-list-item {
-                    height: 300px;
-                    width: 300px;
-                    margin-right: 10px;
-                    background: url(../assets/image1.png);
-                    // padding-bottom: 10px;
-                    padding-top: 178px;
-                    padding-left: 30px;
-                    color: #fff;
-                    flex-shrink: 0;
-                    &:nth-child(3n) {
-                        margin-right: 0;
-                    }
-                    .photo-Name {
-                        font-size: 30px;
-                        font-weight: bold;
-                        margin-bottom: 5px;
-                    }
-                    .read-more {
-                        width: 105px;
-                        height: 33px;
-                        border: 1px solid #fff;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        &:hover {
-                            background: #fff;
-                            color: #000;
-                        }
-                    }
-                }
-            }
-        }
-    }
+          text-align: center;
+          width: 1300px;
+          padding-bottom: 90px;
+          .photo-list-grouping {
+              .grouping-name {
+                  margin: 57px 0 32px 32px;
+                  font-size: 36px;
+                  letter-spacing: 0 !important;
+              }
+              .photo-list-main {
+                  display: flex;
+                  flex-wrap: wrap;
+                  
+                  .photo-list-item {
+                      height: 120px;
+                      width: 380px;
+                      margin: 10px;
+                      
+                      padding-top: 178px;
+                      padding-left: 30px;
+                      color: #fff;
+                      flex-shrink: 0;
+                      &:nth-child(3n) {
+                          margin-right: 0;
+                      }
+                      .photo-Name {
+                          font-size: 30px;
+                          font-weight: bold;
+                          margin-bottom: 5px;
+                      }
+                      .read-more {
+                          width: 105px;
+                          height: 33px;
+                          border: 1px solid #fff;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          &:hover {
+                              background: #fff;
+                              color: #000;
+                          }
+                      }
+                  }
+              }
+          }
+      }
     .bot-list {
         height: 130px;
         background: #f2f2f2;
