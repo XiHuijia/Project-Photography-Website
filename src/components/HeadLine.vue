@@ -11,7 +11,7 @@
             <ul>
               <li><a href="/profile">My Profile</a></li>
               <li><a href="#">Portfolio</a></li>
-              <li><a href="#">New Post</a></li>
+              <li><a href="/upload">New Post</a></li>
               <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
               <li><SignOut/></li>
             </ul>
