@@ -14,11 +14,12 @@
       </div>
     </div>
   </div>
-
+ <MyFooter/>
 </template>
 
 <script setup>
 import HeadLine from '@/components/HeadLine.vue'
+import MyFooter from '@/components/MyFooter.vue';
   const list = [
       {
           groupingName: 'Latest Photographs',
