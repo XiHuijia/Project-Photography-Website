@@ -71,6 +71,7 @@ export default {
           storage,
           "files/" + this.$store.state.user.uid + "/" + this.fileName
         );
+        
         const res = await addDoc(collection(db, "files"), {
           author: this.$store.state.username,
           authorId: this.$store.state.user.uid,
@@ -105,7 +106,7 @@ h1{
     color: black;
 }
 .page{
-    background-image: url("../asset/background1.png");
+    background-image: url("../assets/background1.png");
     font-size: 20px;
     background-size: 100%;   
 }
