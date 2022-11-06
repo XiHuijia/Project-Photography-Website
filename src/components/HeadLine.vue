@@ -1,221 +1,226 @@
 <template>
-  <div class="headline">
-    <div id = "firstline">
-        <div class="pagetitle">
-            <h2 class="title"> Photographic Society of South East Asia </h2>
-        </div>
-<<<<<<< HEAD
-        <div v-if="user">
-          <div class = "action">
-              <img id = "touxiang" src = "@/assets/picture.png" v-on:click="menuToggle();">
-          <div id = "touxiang_menu">
-            <ul>
-              <li><a href="/profile">My Profile</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="/upload">New Post</a></li>
-              <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
-              <li><SignOut/></li>
-            </ul>
-          </div>
-          </div>
-          </div>
-=======
-        
->>>>>>> 07d0f9b491a0f3ed3f9740c2c9af1614f4b68186
-    </div>
+  <div class="index">
+      <div class="top-search">
+          <div>
+              <div class="top-text"></div>
 
-    <div class = menu>
-      <div class = "nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About Us</router-link> |
-        <router-link to="/latest">Latest Photograph</router-link> 
+              <div class="input-block">
+                  <input type="text" placeholder="Search for photographs" >
+              </div>
+
+          </div>
       </div>
 
-      <div v-if="user">
-          <div class = "action">
-              <img id = "touxiang" src = "../assets/profilephoto.png" v-on:click="menuToggle();">
-            <div id = "touxiang_menu">
-              <ul>
-                <li><a href="/profile">My Profile</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">New Post</a></li>
-                <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
-                <li><SignOut/></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      <div class="profile">
-            <div v-if="user">
-          </div>
-
-          <div v-else>
-            <router-link to="/signin">Sign in/Register</router-link>
+      <div class="photo-list">
+          <div class="photo-list-grouping" v-for="item in list" :key="item.id">
+              <div class="grouping-name">
+                  {{ item.groupingName }}
+              </div>
+              <div class="photo-list-main">
+                  <div class="photo-list-item" v-for="info in item.child" :key="info.id"
+                      :style="{background: 'url(' + info.img + ')'}">
+                  <div class="photo-name">{{ info.photoName }}</div>
+                  <div class="read-more">Read More</div>
+                  </div>
+              </div>
           </div>
       </div>
-    </div>
-    
+      
+      <div class="bot-list">
+          <div class="featured">
+          Since its inception in 1969, 
+          <br>
+          Photographic Society of South East Asia has held 
+          <br>
+          an annual photography competition for the benefit of the local photographic community. 
+          <br>
+          Initially known as the International Photographic Salon, 
+          <br>
+          it transitioned to its current form, Montage in 1999. 
+          <br>
+          Since then, Montage has gone from strength to strength,
+          <br>
+          inspiring more aspiring and passionate photographers every year.
+          </div>
+      </div>
   </div>
 
-
+  
 </template>
 
-<script>
 
-import SignOut from '@/components/SignOut.vue';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-export default {
-    name: 'HeadLine',
-
-    components: {
-      SignOut,
-    },
-
-    data() {
-        return {
-            user:false,
-        }
-    },
-
-    mounted(){
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if(user) {
-          this.user = user;
-        }
-    })
+<script setup>
+ 
+const list = [
+  {
+      groupingName: 'Trending Photography',
+      id: 1,
+      child: [
+          {
+              photoName: 'Waves',
+              id: 1,
+              img: require('../assets/image11.jpg')
+          },
+          {
+              photoName: 'The Sea',
+              id: 2,
+              img: require('../assets/image15.jpeg')
+          },
+          {
+              photoName: 'The Myth',
+              id: 3,
+              img: require('../assets/image14.jpeg')
+          },
+          {
+              photoName: 'The Bar',
+              id: 4,
+              img: require('../assets/image13.jpeg')
+          },
+          {
+              photoName: 'The View',
+              id: 1,
+              img: require('../assets/view.jpg')
+          },
+          {
+              photoName: 'The Hill',
+              id: 1,
+              img: require('../assets/image9.png')
+          }
+      ]
   },
+  
 
-  methods: {
-    menuToggle() {
-        const toggleMenu = document.querySelector("#touxiang_menu");
-        toggleMenu.classList.toggle("active");
-      }
-  }
-
-}
-
+]
 </script>
 
-<style scoped>
-.headline{
-  height: 100px;
-  background: url(../assets/background2.png);
-  background-size:cover;
-  width: 100%;
+<style lang="less" scoped>
+.index {
+  .top-search{
+      text-align: center;
+      padding-top: 170px;
+      height: 450px;
+      width: 100%;
+      background: url(../assets/image18.jpg);
+      background-size: cover;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      .top-text {
+          font-size: 30px;
+          color: #fff;
+          text-align: center;
+          font-weight: 400;
+          padding-bottom: 20px;
+      }
+      .input-block {
+          width: 400px;
+          height: 60px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 5px;
+          border: 1px solid rgb(61, 155, 233);
+          display: flex;
+          align-items: center;
+          padding-right: 50px;
+          padding-left: 10px;
+      }
+      input {
+          font-family: Merienda;
+          box-shadow:none;
+          outline: none;
+          resize: none;
+          border: none;
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
+          background: none;
+          font-size: 20px;
+          display: block;
+          flex: 1
+      }
   }
-#firstline {
-  height: 100px;
-  align-items: center;
-}
-.pagetitle {
-    height: 100px;
-    margin-left: 150px;
-    font-family: 'Kolker Brush', cursive;
-    font-size: 65px;
-    display: flex;
-    align-items: center;
-    float: left;
+  .photo-list {
+        text-align: center;
+        width: 1300px;
+        padding-bottom: 30px;
+        font-family: Merienda;
+        .photo-list-grouping {
+            .grouping-name {
+                margin: 57px 0 32px 32px;
+                font-size: 36px;
+                letter-spacing: 0 !important;
+                
+            }
+            .photo-list-main {
+                display: flex;
+                flex-wrap: wrap;
+                
+                .photo-list-item {
+                    height: 120px;
+                    width: 380px;
+                    margin: 10px;                      
+                    padding-top: 178px;
+                    padding-left: 30px;
+                    background: #fff;
+                    
+                    color: #ff5d94;
+                    flex-shrink: 0;
+                    &:nth-child(3n) {
+                        margin-right: 0;
+                    }
+                    .photo-name {
+                        width: 105px;
+                        height: 33px;
+                        border: 1px solid #fff;
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        background: #fbf8f9a9;
+                        color: #e55a89;
+                        line-height: 32px;
+                    }
+                    .read-more {
+                        width: 105px;
+                        height: 33px;
+                        border: 1px solid #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: #fbf8f9;
+                        color: #000;
+                        &:hover {
+                            background: #ff5d94;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
     }
-
-.menu{
-  height: 80px;
-  background: url(../assets/background2.png);
-  background-size:cover;
-  align-items: center;
-}
-.nav{
-  font-family: Merienda;
-  margin-left: 30px;
-  height: 50px;
-  line-height:64px;
-  font-size: 22px;
-  float: left;
-  color: #fff;
-  
-}
-.nav a:hover{        
-    border-bottom: 2px solid #ff5d94;
-    color: #ff5d94;
-}
-
-
-.profile{
-    font-family: Helvetica;
-    margin-left: 10px;
-    width: 300px;
-    height: 50px;
-    font-size: 20px;
-    float: right;
-    line-height:50px;
-}
-
-.profile a:hover{
-  border-bottom: 2px solid #fff;;
-  color: #fff;
-}
-
-.action{
-  float: right;
-  margin-right: 25px;
-  line-height:86px;
-}
-#touxiang{
-  height:40px;
-  width: 40px;
-  margin-right: 15px;
-}
-
-.action #touxiang_menu{
-  position: absolute;
-  padding-right: 40px;
-  margin-right: 20px;
-  right: -10px;
-  background: #F2F4F4;
-  border-radius: 15px;
-  transition: 0.5s;
-  visibility: hidden; 
-  opacity: 0;
-}
-
-.action #touxiang_menu.active{
-  visibility: visible;
-  opacity: 1;
-}
-
-.action #touxiang_menu::before{
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 10px;
-  height: 10px;
-  width: 20px;
-  background: #F2F4F4;
-  transform: rotate(45deg);
-}
-
-.action #touxiang_menu ul li{
-  list-style: none;
-  padding: 5px 0;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  direction: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.action #touxiang_menu ul li a{
-  display: inline-block;
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  transition: 0.5s;
-}
-
-.action #touxiang_menu ul li a:hover{
-  color: #ff5d94;
+  .bot-list {
+      height: 350px;
+      background: #f2f2f2;
+      display: center;
+      align-items: center;
+      padding-left: 200px;
+      > div {
+          display: flex;
+          width: 980px;
+          margin: 0 auto;
+          display: flex;
+          
+          >div {
+              padding: 0 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              
+          }
+      }
+  }
+  .featured {
+              font-family: 'Noto Nastaliq Urdu', serif;
+              
+              font-size: 18px;
+          }
 }
 
 </style>
-
