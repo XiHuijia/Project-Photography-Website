@@ -36,8 +36,9 @@ import {getFirestore} from "firebase/firestore";
 import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
-const auth = getAuth();
-this.fbuser = auth.currentUser.email;
+//const auth = getAuth();
+//this.fbuser = auth.currentUser.email;
+
 
 
 export default {
@@ -52,20 +53,22 @@ export default {
             var t = document.getElementById("tag1").value
             var name = this.user.displayName;
             var url = URL.createObjectURL(this.pic);
-            //alert("Uploading photo: " + pic)
+            const auth = getAuth();
+            this.fbuser = auth.currentUser.email;
+            alert("Uploading photo: " + pic)
             try{
                 console.log("entering try")
                 const docRef = await setDoc(doc(db, String(this.fbuser), this.pic), {
                     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Author: name, picURL: url
                 })
-                console.log(docRef)
+                alert(docRef)
                 document.getElementById('myform').reset();
                 this.$emit("added")
                 alert("Successful Upload!")
             }
             catch(error) {
                 console.error("Error uploading photo: ", error);
-                alert("fail!")
+                alert("fail!"+ error)
             }
         }
     },
@@ -75,6 +78,7 @@ export default {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 this.user = user;
+
             }
         })
     }

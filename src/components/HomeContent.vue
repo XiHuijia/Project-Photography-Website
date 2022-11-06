@@ -117,7 +117,7 @@ const list = [
         padding-top: 170px;
         height: 450px;
         width: 100%;
-        background: url(../assets/image18.jpg);
+        background: url(../assets/new_homecontent.jpg);
         background-size: cover;
         display: flex;
         flex-direction: row;

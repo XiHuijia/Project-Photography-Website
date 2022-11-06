@@ -1,4 +1,5 @@
 <template>
+
   <div class="headline">
     <div id = "firstline">
         <div class="pagetitle">
@@ -21,7 +22,7 @@
               <ul>
                 <li><a href="/profile">My Profile</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="#">New Post</a></li>
+                <li><a href="/upload">New Post</a></li>
                 <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
                 <li><SignOut/></li>
               </ul>
@@ -45,23 +46,18 @@
 </template>
 
 <script>
-
 import SignOut from '@/components/SignOut.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 export default {
     name: 'HeadLine',
-
     components: {
       SignOut,
     },
-
     data() {
         return {
             user:false,
         }
     },
-
     mounted(){
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
@@ -70,20 +66,18 @@ export default {
         }
     })
   },
-
   methods: {
     menuToggle() {
         const toggleMenu = document.querySelector("#touxiang_menu");
         toggleMenu.classList.toggle("active");
       }
   }
-
 }
-
 </script>
 
 <style scoped>
 .headline{
+  margin-top: -50px;
   height: 180px;
   background: url(../assets/background2.png);
   background-size:cover;
@@ -102,10 +96,9 @@ export default {
     align-items: center;
     float: left;
     }
-
 .menu{
   height: 80px;
-  background: url(../assets/background2.png);
+  
   background-size:cover;
   align-items: center;
 }
@@ -123,8 +116,6 @@ export default {
     border-bottom: 2px solid #ff5d94;
     color: #ff5d94;
 }
-
-
 .profile{
     font-family: Helvetica;
     margin-left: 10px;
@@ -134,12 +125,10 @@ export default {
     float: right;
     line-height:50px;
 }
-
 .profile a:hover{
   border-bottom: 2px solid #fff;;
   color: #fff;
 }
-
 .action{
   float: right;
   margin-right: 25px;
@@ -150,7 +139,6 @@ export default {
   width: 40px;
   margin-right: 15px;
 }
-
 .action #touxiang_menu{
   position: absolute;
   padding-right: 40px;
@@ -162,12 +150,10 @@ export default {
   visibility: hidden; 
   opacity: 0;
 }
-
 .action #touxiang_menu.active{
   visibility: visible;
   opacity: 1;
 }
-
 .action #touxiang_menu::before{
   content: '';
   position: absolute;
@@ -178,7 +164,6 @@ export default {
   background: #F2F4F4;
   transform: rotate(45deg);
 }
-
 .action #touxiang_menu ul li{
   list-style: none;
   padding: 5px 0;
@@ -187,7 +172,6 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 .action #touxiang_menu ul li a{
   display: inline-block;
   text-decoration: none;
@@ -195,9 +179,7 @@ export default {
   font-weight: 500;
   transition: 0.5s;
 }
-
 .action #touxiang_menu ul li a:hover{
   color: #ff5d94;
 }
-
 </style>
