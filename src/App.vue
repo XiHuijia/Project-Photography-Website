@@ -19,6 +19,8 @@ export default {
   margin-top: 60px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Kolker+Brush&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
 
 </style>
