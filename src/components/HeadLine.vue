@@ -10,10 +10,9 @@
           <div id = "touxiang_menu">
             <ul>
               <li><a href="/profile">My Profile</a></li>
-              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="#">Portfolio</a></li>
               <li><a href="#">New Post</a></li>
-              <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
-              <li><SignOut/></li>
+              <li><a href='@/components/SignOut.vue'>Sign Out</a></li>
             </ul>
           </div>
           </div>
@@ -42,13 +41,12 @@
 </template>
 
 <script>
-import SignOut from '@/components/SignOut.vue';
+
+
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
     name: 'HeadLine',
-    components: {
-      SignOut,
-    },
+
     data() {
         return {
             user:false,
@@ -80,8 +78,7 @@ export default {
   align-items: center;
 }
 .pagetitle {
-    margin-left: -30px;
-    font-family: Merienda;
+    font-family: Helvetica;
     width: 80%;
     font-weight: bold;
     font-size: 24px;
@@ -93,7 +90,6 @@ export default {
     }
 .menu{
   height: 50px;
-  /* margin-left:20px; */
   background-color: #f9beaf
 }
 .nav{

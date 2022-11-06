@@ -30,9 +30,11 @@
 
 <script>
 import { collection, addDoc, doc, setDoc, Timestamp } from "firebase/firestore";
-import { db, storage } from "../../firebase/index";
-import { ref } from "firebase/storage";
+import { db } from "../firebase.js";
+//import { ref } from "firebase/storage";
 export default {
+  name: "UploadPic",
+  
   components: {
     // EditorContent,
   },
@@ -65,10 +67,11 @@ export default {
         if (!this.file) {
           alert("Please upload a photo!");
         }
-        const imgRef = ref(
-          storage,
-          "files/" + this.$store.state.user.uid + "/" + this.fileName
-        );
+        // const imgRef = ref(
+        //   storage,
+        //   "files/" + this.$store.state.user.uid + "/" + this.fileName
+        // );
+        
         const res = await addDoc(collection(db, "files"), {
           author: this.$store.state.username,
           authorId: this.$store.state.user.uid,
@@ -103,7 +106,7 @@ h1{
     color: black;
 }
 .page{
-    background-image: url("../asset/background1.png");
+    background-image: url("../assets/background1.png");
     font-size: 20px;
     background-size: 100%;   
 }

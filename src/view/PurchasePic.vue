@@ -3,32 +3,38 @@
     <div id = "left">
     <h2 id = "select1"><strong>Select Payment Method </strong></h2>
     <h3 id = "select2">Select your payment method</h3>
-    <div id = 'payment1'> Paypal</div>
-    <div id = 'payment2'> Debit Or Credit Card </div>
+    <button id = 'payment1' onclick="selectFunction1()"> Paypal</button>
+    <button id = 'payment2' onclick="selectFunction2()"> Debit Or Credit Card </button>
     <br><br><br>
     <h3 id = "enter">Enter your card details</h3>
-    
-    <h4 id = "cardholder">Cardholder name</h4>
-    <div id = 'name'> name </div><br><br>
 
+    <label for="holderName" id = "hn">Cardholder name</label><br>
+    <input type="text" id="holderName"><br><br>
+      
     <div id = "card1">
-      <h4 id = "cardnumber">Card number</h4>
-      <div id = 'number'> number </div>
+      <label for="cardNumber" id="cn">Card number</label><br>
+      <input type="text" id="cardNumber"><br>
     </div>
-
+      
     <div id = "card2">
-      <h4 id = "expiration">Expiration date</h4>
-      <div id = 'date'> date </div>
-    </div><br><br><br>
+      <label for="expirationDate" id="ed">Expiration date</label><br>
+      <input type="text" id="expirationDate"><br>
+    </div><br><br><br><br>
 
-    <h4 id = "security">Security code</h4>
-    <div id = 'code'> code </div><br><br>
+    <div id = "card3">
+      <label for = "securityCode" id="sc">Security code</label><br>
+      <input type = "text" id = 'securityCode'><br><br>
+    </div><br><br><br><br>
 
-    <h4 id = "billing">Billing address</h4>
-    <div id = 'address'> address </div></div>
+    <div id = "card4">
+      <label for = "billingAddress" id="ba">Billing address</label><br>
+      <input type = "text" id = 'billingAddress'><br><br>
+    </div>
+    </div>
 
     <div id = "right">
       <h2 id = "summary"><strong>Summary </strong></h2>
+      <button id="checkout">Checkout</button>
     </div>
 
 </template>
@@ -42,6 +48,18 @@ export default{
         HeadLine,
     },
 }
+
+// document.getElementById("payment1").addEventListener('click', selectFunction1)
+
+// document.getElementById("payment2").addEventListener('click', selectFunction2)
+
+// function selectFunction1() {
+  // document.getElementById("payment1").innerHTML = "selected";
+// }
+
+// function selectFunction2() {
+  // document.getElementById("payment2").innerHTML = "selected";
+// }
 </script>
 
 <style>
@@ -55,105 +73,117 @@ export default{
   margin-left: 50px;
 }
 #select1{
+  font-family: elvetica;
   text-align: left;
   margin-bottom: 5px;
 }
 
 #select2{
+  font-family: elvetica;
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
 }
 
 #payment1{
+  background-color: white;
   border: 1px black solid;
+  color:black;
   font-size: 20px;
+  text-align: center;
+  width: 200px;
+  margin-right: 20px;
+  float: left;
+}
+#payment1:hover{
+  background-color: black;
+  border: 1px black solid;
+  color: white;
+  font-size: 20px;
+  text-align: center;
   width: 200px;
   margin-right: 20px;
   float: left;
 }
 #payment2{
+  background-color: white;
   border: 1px black solid;
   font-size: 20px;
+  text-align: center;
   width: 200px;
   float: left
 }
+#payment2:hover{
+  background-color: black;
+  border: 1px black solid;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 200px;
+  float: left;
+}
 #enter{
+  font-family: elvetica;
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
 }
-#cardholder{
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 5px
-}
-#name{
-  border: 1px black solid;
+
+#hn{
+  font-family: elvetica;
   font-size: 20px;
-  width: 420px;
-  float: left;
-  color:white
 }
-#cardnumber{
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 5px
-}
-#number{
-  border: 1px black solid;
-  font-size: 20px;
+
+#holderName{
   width: 200px;
-  float: left;
-  color:white
-}
-#expiration{
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 5px
-}
-#date{
-  border: 1px black solid;
   font-size: 20px;
-  width: 200px;
-  float: left;
-  color:white
 }
 #card1{
   float:left;
   margin-right: 20px;
 }
+#cn{
+  font-size: 20px;
+}
+#cardNumber{
+  width: 200px;
+  font-size: 20px;
+}
 
 #card2{
   float: left;
 }
-
-#security{
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 5px
-}
-
-#code{
-  border: 1px black solid;
+#ed{
   font-size: 20px;
+}
+#expirationDate{
   width: 200px;
-  float: left;
-  color:white
+  font-size: 20px;
 }
 
-#billing{
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 5px
-}
-#address{
-  border: 1px black solid;
-  font-size: 20px;
-  width: 420px;
+#card3{
   float: left;
-  color:white
 }
+#sc{
+  font-size: 20px;
+}
+#securityCode{
+  width: 200px;
+  font-size: 20px;
+}
+
+#card4{
+  float: left;
+}
+#ba{
+  font-size: 20px;
+}
+#billingAddress{
+  width: 430px;
+  font-size: 20px;
+
+}
+
 #left{
   float: left;
   margin-right: 300px;
@@ -161,5 +191,24 @@ export default{
 #right{
   float: left;
   text-align: left;
+}
+
+#checkout{
+  background-color: black;
+  color:white;
+  font-size: 20px;
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  float: left
+}
+#checkout:hover{
+  background-color: rgb(34, 33, 33);
+  color:white;
+  font-size: 20px;
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  float: left
 }
 </style>
