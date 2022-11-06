@@ -38,11 +38,11 @@ const routes = [
     name: 'EditProfile',
     component: EditProfile
   }
-  ,
+   ,
   {
-    path:'/upload',
-    name: 'UploadPicNew',
-    component: UploadPicNew
+     path:'/upload',
+     name: 'UploadPicNew',
+     component: UploadPicNew
   }
   ,
   {

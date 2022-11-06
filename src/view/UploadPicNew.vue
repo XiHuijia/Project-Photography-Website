@@ -36,6 +36,8 @@ import {getFirestore} from "firebase/firestore";
 import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
+//const auth = getAuth();
+//this.fbuser = auth.currentUser.email;
 
 
 
@@ -75,6 +77,7 @@ export default {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 this.user = user;
+
             }
         })
     }

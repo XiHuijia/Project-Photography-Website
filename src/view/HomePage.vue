@@ -13,12 +13,13 @@
   import HeadLine from '@/components/HeadLine.vue';
   import HomeContent from '@/components/HomeContent.vue';
   import MyFooter from '@/components/MyFooter.vue';
+
   export default {
     name: 'MyHome',
     components:{
       HeadLine,
       HomeContent,
-      MyFooter
+      MyFooter,
       
     }
 
