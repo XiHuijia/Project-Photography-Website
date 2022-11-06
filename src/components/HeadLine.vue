@@ -119,7 +119,7 @@ export default {
     color: #ff5d94;
 }
 .profile{
-    font-family: Helvetica;
+    font-family: Merienda;
     margin-left: 10px;
     width: 300px;
     height: 50px;
@@ -135,6 +135,7 @@ export default {
   float: right;
   margin-right: 25px;
   line-height:86px;
+  font-family: Merienda;
 }
 #touxiang{
   height:40px;
@@ -169,7 +170,7 @@ export default {
 }
 .action #touxiang_menu ul li{
   list-style: none;
-  padding: 5px 0;
+  padding: 1px 0;
   border-top: 1px solid rgba(0,0,0,0.05);
   direction: flex;
   align-items: center;
