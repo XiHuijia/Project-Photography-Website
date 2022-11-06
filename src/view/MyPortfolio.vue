@@ -2,7 +2,7 @@
   <HeadLine/>
   <div class="photo-list">
     <div class="grouping-name">
-        {{ user.displayName }}'s Works
+        {{ this.user.displayName }}'s Works
         </div>
         <div class="photo-list-main">
           <div class="photo-list-item" v-for="info in list" :key="info.id"
@@ -45,11 +45,12 @@ export default {
       onAuthStateChanged(auth, (user) => {
         if(user) {
           this.user = user;
+          display(user)
         }
     });
 
     async function display(user){
-    let z = await getDocs(collection(db,String(user)))    
+    let z = await getDocs(collection(db, String(user)))    
     let ind = 1
 
     z.forEach((docs) => {
@@ -68,7 +69,6 @@ export default {
     })        
   }
 
-  display()
   },
 }
 </script>
@@ -80,7 +80,7 @@ export default {
             padding-bottom: 90px;
 
                 .grouping-name {
-                    margin: 57px 0 32px 32px;
+                    margin: 100px 0 32px 32px;
                     font-size: 36px;
                     letter-spacing: 0 !important;
                 }

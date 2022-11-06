@@ -20,7 +20,7 @@
             <div id = "touxiang_menu">
               <ul>
                 <li><a href="/profile">My Profile</a></li>
-                <li><a href="#">Portfolio</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
                 <li><a href="#">New Post</a></li>
                 <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
                 <li><SignOut/></li>
@@ -84,7 +84,7 @@ export default {
 
 <style scoped>
 .headline{
-  height: 100px;
+  height: 180px;
   background: url(../assets/background2.png);
   background-size:cover;
   width: 100%;
