@@ -62,7 +62,8 @@ const list = [
     
 <style lang="less" scoped>
 .photo-list {
-    margin-left: 50px;
+    margin-left: 3%;
+    margin-right: 10%;
     text-align: center;
     width: 1300px;
     padding-bottom: 90px;

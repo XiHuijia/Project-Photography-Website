@@ -53,6 +53,7 @@ p{
     background: #f9beaf57;
     height: 1000epx;
     letter-spacing: 0.2em;
+    font-family: 'Noto Nastaliq Urdu', serif;
 }
 
 </style>

@@ -1,4 +1,5 @@
 <template>
+    <img src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png" id = "image" alt="">
     <h4 id = "comments">Comments</h4>
     <ul id = "nameTxt" v-for= "item in list"  :key= "item.name">
       <p> {{item.name}}: {{item.txt}}</p>
@@ -68,6 +69,14 @@ export default {
 
 
 <style scoped>
+#image {
+  height: 30px;
+  width: 30px;
+  float: left;
+  margin-left: 50px;
+  margin-top: 18px;
+  margin-right: 2px;
+}
 #comments {
   margin-left: 50px;
   text-align: left;
