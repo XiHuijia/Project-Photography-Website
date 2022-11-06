@@ -43,8 +43,9 @@ p{
     padding: 56px calc((100% - 980px) * 0.5);
     padding-bottom: 0;
     background: #f9beaf57;
-    height: 279px;
+    height: 500px;
     letter-spacing: 0.2em;
+    font-family: 'Noto Nastaliq Urdu', serif;
 }
 
 </style>
