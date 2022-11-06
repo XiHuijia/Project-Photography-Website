@@ -10,9 +10,9 @@
           <div id = "touxiang_menu">
             <ul>
               <li><a href="/profile">My Profile</a></li>
-              <li><a href="#">Portfolio</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
               <li><a href="#">New Post</a></li>
-              <li><a href='@/components/SignOut.vue'>Sign Out</a></li>
+              <li><SignOut/></li>
             </ul>
           </div>
           </div>
@@ -42,10 +42,13 @@
 
 <script>
 
-
+import SignOut from "@/components/SignOut.vue"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
     name: 'HeadLine',
+    components:{
+      SignOut,
+    },
 
     data() {
         return {

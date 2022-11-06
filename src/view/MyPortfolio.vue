@@ -35,13 +35,13 @@ export default {
     data() {
         return {
             user:false,
+            list: [],
 
         }
     },
 
     mounted(){
       const auth = getAuth();
-      const list = [];
       onAuthStateChanged(auth, (user) => {
         if(user) {
           this.user = user;
@@ -49,7 +49,6 @@ export default {
     });
 
     async function display(user){
-    
     let z = await getDocs(collection(db,String(user)))    
     let ind = 1
 
@@ -62,7 +61,7 @@ export default {
       var price = (yy.pri)
       var tag = (yy.t)
       
-      list.push({photoName: title, id: ind, img: photo, loc: location, price: price, tag: tag})
+      this.list.push({photoName: title, id: ind, img: photo, loc: location, price: price, tag: tag})
       ind++;
       
     
