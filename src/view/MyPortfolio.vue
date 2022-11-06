@@ -56,10 +56,13 @@ export default {
     z.forEach((docs) => {
       let yy = docs.data()
 
-      var photo = (yy.Coin)
-      var title = (yy.Buy_Price)
+      var photo = (yy.pic)
+      var title = (yy.tit)
+      var location = (yy.loc)
+      var price = (yy.pri)
+      var tag = (yy.t)
       
-      list.push({photoName: title, id: ind, img: photo})
+      list.push({photoName: title, id: ind, img: photo, loc: location, price: price, tag: tag})
       ind++;
       
     
