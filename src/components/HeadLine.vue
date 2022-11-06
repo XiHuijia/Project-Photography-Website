@@ -77,11 +77,13 @@ export default {
 
 <style scoped>
 .headline{
+  margin-left: auto;
+  margin-right: auto;
   margin-top: -50px;
   height: 180px;
   background: url(../assets/background2.png);
   background-size:cover;
-  width: 100%;
+  width: 1300px;
   }
 #firstline {
   height: 100px;

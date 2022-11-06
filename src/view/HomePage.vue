@@ -20,7 +20,6 @@
       HeadLine,
       HomeContent,
       MyFooter,
-      
     }
 
   }

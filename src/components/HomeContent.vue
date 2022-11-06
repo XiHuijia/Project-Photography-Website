@@ -107,8 +107,6 @@ const list = [
             }
         ]
     },
-    
-
 ]
 </script>
 
@@ -162,38 +160,30 @@ const list = [
           font-family: Merienda;
           .photo-list-grouping {
               .grouping-name {
-                  margin: 57px 0 32px 32px;
+                  margin: 30px 0 30px 0;
                   font-size: 36px;
                   letter-spacing: 0 !important;
-                  
               }
               .photo-list-main {
                   display: flex;
                   flex-wrap: wrap;
                   
                   .photo-list-item {
-                      height: 120px;
-                      width: 380px;
-                      margin: 10px;                      
-                      padding-top: 178px;
-                      padding-left: 30px;
-                      background: #fff;
-                      
-                      color: #ff5d94;
-                      flex-shrink: 0;
-                      &:nth-child(3n) {
-                          margin-right: 0;
-                      }
+                      height: 150px;
+                      width: 410px;
+                      margin: 10px 10px 10px 1px;                      
+                      padding-top: 150px;
+
                       .photo-name {
                           width: 105px;
-                          height: 33px;
+                          height: 35px;
                           border: 1px solid #fff;
                           font-size: 18px;
                           font-weight: bold;
                           margin-bottom: 5px;
                           background: #fbf8f9a9;
                           color: #e55a89;
-                          line-height: 32px;
+                          line-height: 35px;
                       }
                       .read-more {
                           width: 105px;
@@ -236,8 +226,7 @@ const list = [
         }
     }
     .featured {
-                font-family: 'Noto Nastaliq Urdu', serif;
-                
+                font-family: 'Noto Nastaliq Urdu', serif;               
                 font-size: 18px;
             }
 }
