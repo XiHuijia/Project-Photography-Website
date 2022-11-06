@@ -101,6 +101,7 @@ input:hover {
     background: #fff;
     border-radius: 5px;
     border: 1px solid rgb(249, 251, 253);
+    cursor: pointer;
 }
 .save:hover{        
     background: #ff5d93b3;

@@ -140,6 +140,7 @@ export default {
   height:40px;
   width: 40px;
   margin-right: 15px;
+  cursor: pointer;
 }
 .action #touxiang_menu{
   position: absolute;
@@ -183,5 +184,9 @@ export default {
 }
 .action #touxiang_menu ul li a:hover{
   color: #ff5d94;
+}
+
+.router-link-active {
+  color: rgb(253, 147, 147);
 }
 </style>

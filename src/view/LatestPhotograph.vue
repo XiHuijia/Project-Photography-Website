@@ -107,6 +107,7 @@ const list = [
                           justify-content: center;
                           background: #fbf8f9;
                           color: #000;
+                          cursor: pointer;
                           &:hover {
                               background: #ff5d94;
                               color: #fff;
