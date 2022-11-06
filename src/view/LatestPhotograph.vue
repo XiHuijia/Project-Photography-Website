@@ -84,7 +84,7 @@ const list = [
                   .photo-list-item {
                       height: 150px;
                       width: 410px;
-                      margin: 10px 10px 10px 1px;                      
+                      margin: 10px 10px 10px 0;                      
                       padding-top: 150px;
 
                       .photo-name {

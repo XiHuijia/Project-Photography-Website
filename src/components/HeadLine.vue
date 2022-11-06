@@ -83,7 +83,7 @@ export default {
   height: 180px;
   background: url(../assets/background2.png);
   background-size:cover;
-  width: 1300px;
+  width: 100%;
   }
 #firstline {
   height: 100px;
