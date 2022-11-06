@@ -10,9 +10,10 @@
           <div id = "touxiang_menu">
             <ul>
               <li><a href="/profile">My Profile</a></li>
-              <li><a href="#">Portfolio</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
               <li><a href="#">New Post</a></li>
-              <li><a href='@/components/SignOut.vue'>Sign Out</a></li>
+              <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
+              <li><SignOut/></li>
             </ul>
           </div>
           </div>
@@ -41,19 +42,18 @@
 </template>
 
 <script>
-
-
+import SignOut from '@/components/SignOut.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 export default {
     name: 'HeadLine',
-
+    components: {
+      SignOut,
+    },
     data() {
         return {
             user:false,
         }
     },
-
     mounted(){
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
@@ -62,19 +62,13 @@ export default {
         }
     })
   },
-
   methods: {
     menuToggle() {
         const toggleMenu = document.querySelector("#touxiang_menu");
         toggleMenu.classList.toggle("active");
       }
   }
-
 }
-
-
-
-
 </script>
 
 <style scoped>
@@ -86,7 +80,8 @@ export default {
   align-items: center;
 }
 .pagetitle {
-    font-family: Helvetica;
+    margin-left: -30px;
+    font-family: Merienda;
     width: 80%;
     font-weight: bold;
     font-size: 24px;
@@ -96,11 +91,9 @@ export default {
     padding-left: 30px;
     float: left;
     }
-
-
-
 .menu{
   height: 50px;
+  /* margin-left:20px; */
   background-color: #f9beaf
 }
 .nav{
@@ -116,8 +109,6 @@ export default {
     border-bottom: 2px solid seagreen;
     color: seagreen;
 }
-
-
 .profile{
     font-family: Helvetica;
     margin-left: 10px;
@@ -127,12 +118,10 @@ export default {
     float: right;
     line-height:50px;
 }
-
 .profile a:hover{
   border-bottom: 2px solid grey;
   color: grey;
 }
-
 .action{
   float: right;
   margin-right: 20px;
@@ -142,7 +131,6 @@ export default {
   width: 40px;
   margin-right: 5px;
 }
-
 .action #touxiang_menu{
   position: absolute;
   padding-right: 40px;
@@ -154,12 +142,10 @@ export default {
   visibility: hidden; 
   opacity: 0;
 }
-
 .action #touxiang_menu.active{
   visibility: visible;
   opacity: 1;
 }
-
 .action #touxiang_menu::before{
   content: '';
   position: absolute;
@@ -170,7 +156,6 @@ export default {
   background: #F2F4F4;
   transform: rotate(45deg);
 }
-
 .action #touxiang_menu ul li{
   list-style: none;
   padding: 10px 0;
@@ -179,7 +164,6 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 .action #touxiang_menu ul li a{
   display: inline-block;
   text-decoration: none;
@@ -187,10 +171,7 @@ export default {
   font-weight: 500;
   transition: 0.5s;
 }
-
 .action #touxiang_menu ul li a:hover{
   color: #ff5d94;
 }
-
 </style>
-
