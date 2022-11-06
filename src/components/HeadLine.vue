@@ -78,7 +78,6 @@ export default {
 <style scoped>
 .headline{
   margin-top: -50px;
-  margin-left: 3.5%;
   height: 180px;
   background: url(../assets/background2.png);
   background-size:cover;
