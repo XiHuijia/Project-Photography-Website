@@ -2,11 +2,17 @@
     <HeadLine/>
     <main class="Container">
         <div class="about_us">
+            
             <h1>About Us</h1>
             <p>This is the official website for Photographic Society of South East Asia. 
                 This website aims to showcase the works of all our members and provide a channel to buy and sell photographic works.
                 As a user, feel free to create your own profile to display your works and interests. You can also use this website as a channel to make profits from your works as well as purchasing any work you like.
             </p>
+
+            <div> 
+            <img src="@/assets/aboutus.jpg" /> 
+            </div>
+            
         </div>
     </main>
     <MyFooter/>
@@ -38,12 +44,12 @@ p{
 }
 
 .about_us {
-    position: relative;
+    
     z-index: 999999;
     padding: 56px calc((100% - 980px) * 0.5);
     padding-bottom: 0;
     background: #f9beaf57;
-    height: 500px;
+    height: 1000epx;
     letter-spacing: 0.2em;
     font-family: 'Noto Nastaliq Urdu', serif;
 }
