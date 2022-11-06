@@ -92,7 +92,7 @@ export default {
 }
 .pagetitle {
     margin-left: -30px;
-    font-family: Helvetica;
+    font-family: Merienda;
     width: 80%;
     font-weight: bold;
     font-size: 24px;

@@ -1,18 +1,22 @@
 <template>
-  <div class = "comment">
-    <p>Comments</p>
-    <ul v-for= "item in list"  :key= "item.name">
-      <p> <strong>{{item.name}}: </strong>{{item.txt}}</p> <br><br>
-    </ul>
+    <h4 id = "comments">Comments</h4>
+    <ul id = "nameTxt" v-for= "item in list"  :key= "item.name">
+      <p> {{item.name}}: {{item.txt}}</p>
+    </ul><br>
+  
+  <div id = "section1">
+  <label for="name" id = "enterDisplayName">Your Display Name:</label>
+  <input type = "text" id = "displayName" placeholder="username" v-model= "displayname"> <br>
   </div>
-  <div class ="container">
-    Your Display Name:
-    <input type = "text" placeholder="username" v-model= "displayname"> <br>
-    <p>Your Comment:</p>
-    <textarea v-model = "comm" type="text" id="comment" required="" placeholder="Enter your comment">
-    </textarea><br><br>
-    <button id = "savebutton" type = "button" v-on:click="saveofs()"> Comment </button>
+
+  <div id = "section2">
+  <label for="comment" id = "yourComment">Your Comment:</label>
+  <textarea v-model = "comm" type="text" id="comment" required="" placeholder="Enter your comment">
+  </textarea><br><br>
   </div>
+
+  <button id = "savebutton" type = "button" v-on:click="saveofs()"> Comment </button>
+  
 </template>
 
 
@@ -64,19 +68,45 @@ export default {
 
 
 <style scoped>
-.comment {
+#comments {
+  margin-left: 50px;
+  text-align: left;
+  margin-bottom: -10px;
+}
+
+#nameTxt {
+  text-align: left;
+  margin-left: 10px;
+}
+
+#section1 {
+  margin-bottom: 5px;
+}
+#enterDisplayName {
+  font: bold;
+  text-align: left;
+  float: left;
+  margin-left: 50px;
+
+}
+#displayName {
+  text-align: left;
+  float: left;
+  margin-left: 10px;
   align: left;
 }
-.container {
-  align: left;
+#yourComment {
+  float: left;
+  margin-left: 50px;
+  text-align: left;
 }
-p {
-  font: Helvetica;
-  text-align:left;
+#comment {
+  float: left;
+  margin-left: 38px;
 }
 textarea {
-  width: 60%;
-  height: 100px;
+  width: 40%;
+  height: 30px;
   text-align: left;
 }
 textarea:hover{
@@ -87,7 +117,27 @@ input:hover {
   box-shadow: 3px 3px grey;
   border-radius: 2px
 }
-.savebutton{
-text-align: center ;
+#savebutton{
+  float: left;
+  margin-left: 50px;
+  background-color: black;
+  color:white;
+  font-size: 15px;
+  text-align: center;
+  width: 80px;
+  height: 30px;
+  float: left
 }
+#savebutton:hover{
+  float: left;
+  margin-left: 50px;
+  background-color: rgb(34, 33, 33);
+  color:white;
+  font-size: 15px;
+  text-align: center;
+  width: 80px;
+  height: 30px;
+  float: left
+}
+
 </style>
