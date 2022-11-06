@@ -39,8 +39,11 @@ const db = getFirestore(firebaseApp);
 //const auth = getAuth();
 //this.fbuser = auth.currentUser.email;
 
+
+
 export default {
     name: "UploadPicNew",
+
     methods: {
         async upload(){
             var pic = document.getElementById("photo1").value
@@ -48,18 +51,22 @@ export default {
             var loc = document.getElementById("location1").value
             var pri = document.getElementById("price1").value
             var t = document.getElementById("tag1").value
-            alert("Uploading photo: " + pic)
-            console.log(this.user.email)
+            var name = this.user.displayName;
+            var url = URL.createObjectURL(this.pic);
+            //alert("Uploading photo: " + pic)
             try{
-                const docRef = await setDoc(doc(db, String(this.user), this.pic), {
-                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t
+                console.log("entering try")
+                const docRef = await setDoc(doc(db, String(this.fbuser), this.pic), {
+                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Author: name, picURL: url
                 })
                 console.log(docRef)
                 document.getElementById('myform').reset();
-                //this.$emit("added")
+                this.$emit("added")
+                alert("Successful Upload!")
             }
             catch(error) {
                 console.error("Error uploading photo: ", error);
+                alert("fail!")
             }
         }
     },
