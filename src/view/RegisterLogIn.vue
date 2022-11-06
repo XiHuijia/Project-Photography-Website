@@ -42,13 +42,15 @@ export default {
 <style scoped>
 
 .main{
+    margin-top: -50px;
+    height: 800px;
+    line-height: 10px;
     text-align: center;
-    background-image: url("../assets/background2.png");
+    background-image: url("../assets/edit_profile_bg2.jpg");
     background-size: 100% 100%;
 }
 
 #firebaseui-auth-container{
-    margin-top: 50px;
     margin-bottom: 50px;
 }
 
@@ -57,10 +59,18 @@ export default {
     font-size: larger;
     font-weight: bolder;
     text-align: center;
+    font-family: Merienda;
 }
 
 #mainHead{
+    margin-top: 50px;
     text-align: center;
+    height: 100px;
+    margin-left: 270px;
+    font-family: 'Kolker Brush', cursive;
+    font-size: 80px;
+    display: flex;
+    align-items: center;
 }
 
 h5{

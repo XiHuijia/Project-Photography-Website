@@ -80,7 +80,7 @@ export default {
             padding-bottom: 90px;
 
                 .grouping-name {
-                    margin: 100px 0 32px 32px;
+                    margin: 55px 0 32px 32px;
                     font-size: 36px;
                     letter-spacing: 0 !important;
                 }
