@@ -10,7 +10,9 @@
             </p>
 
             <div> 
+            <br><br>
             <img src="@/assets/aboutus.jpg" /> 
+            <br><br><br><br><br><br>
             </div>
             
         </div>
