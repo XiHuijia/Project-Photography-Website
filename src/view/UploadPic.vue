@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      user: this.$store.user,
+      user: this.user,
       title: null,
       location: null,
       isEditing: true,
@@ -60,13 +60,13 @@ export default {
     mounted(){},
     async upload() {
       try {
-        if (!this.title) {
-          alert("Please enter the title!");
-          return;
-        }
-        if (!this.file) {
-          alert("Please upload a photo!");
-        }
+        // if (!this.title) {
+        //   alert("Please enter the title!");
+        //   return;
+        // }
+        // if (!this.file) {
+        //   alert("Please upload a photo!");
+        // }
         // const imgRef = ref(
         //   storage,
         //   "files/" + this.$store.state.user.uid + "/" + this.fileName

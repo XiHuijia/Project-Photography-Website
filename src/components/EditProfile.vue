@@ -1,6 +1,7 @@
 <template>
     <HeadLine/>
     <div class = "Container">
+        <br><br>
         <h1> Greeting! You can edit your profile here. </h1>
         <div> 
             <img src="@/assets/1st_profile.png" style = "width:150px;height:150px;"/> 
@@ -97,7 +98,8 @@ input:hover {
 }
 
 .Container{
-    background-image: url(../assets/background2.png);
+    background-image: url(../assets/edit_profile_bg2.jpg);
+    background-size: cover;
 
 }
 
