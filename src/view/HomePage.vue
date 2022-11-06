@@ -3,7 +3,6 @@
     <HeadLine/>
     <HomeContent/>
     <MyFooter/>
-    <CommentPage/>
   </div>
   
   
@@ -14,7 +13,6 @@
   import HeadLine from '@/components/HeadLine.vue';
   import HomeContent from '@/components/HomeContent.vue';
   import MyFooter from '@/components/MyFooter.vue';
-  import CommentPage from '@/components/CommentPage.vue';
 
   export default {
     name: 'MyHome',
@@ -22,7 +20,6 @@
       HeadLine,
       HomeContent,
       MyFooter,
-      CommentPage,
       
     }
 
