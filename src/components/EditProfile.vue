@@ -49,9 +49,7 @@ import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore" 
 import { doc, setDoc } from "firebase/firestore"; 
 const db = getFirestore(firebaseApp);
-
 export default {
-
     components: {
         HeadLine,
         MyFooter
@@ -76,30 +74,25 @@ export default {
         }
     }
 }
-
 </script>
 
 <style scoped>
 .SaveInfo {
     display: inline-block;
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
     align-items: center;
     margin:auto;
 }
-
 input:hover {
     box-shadow: 5px 5px pink;
 }
-
 .Container{
     background-image: url(../assets/edit_profile_bg2.jpg);
     background-size: cover;
     font-family: Merienda;
     color: rgb(255, 238, 246);
-
 }
-
 .save{
     color: rgb(244, 147, 163);
     font-size: 30px;
@@ -109,14 +102,9 @@ input:hover {
     border-radius: 5px;
     border: 1px solid rgb(249, 251, 253);
 }
-
 .save:hover{        
     background: #ff5d93b3;
     color: #fff;
 }
-
-
 </style>
-
-
 
