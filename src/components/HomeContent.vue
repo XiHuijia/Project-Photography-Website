@@ -146,6 +146,7 @@ const list = [
                   margin: 57px 0 32px 32px;
                   font-size: 36px;
                   letter-spacing: 0 !important;
+                  
               }
               .photo-list-main {
                   display: flex;
@@ -158,6 +159,7 @@ const list = [
                       padding-top: 178px;
                       padding-left: 30px;
                       background: #fff;
+                      
                       color: #ff5d94;
                       flex-shrink: 0;
                       &:nth-child(3n) {

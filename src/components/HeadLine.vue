@@ -84,25 +84,29 @@ export default {
 
 <style scoped>
 .headline{
-            width: 100%;
-        }
+  height: 100px;
+  background: url(../assets/background2.png);
+  background-size:cover;
+  width: 100%;
+  }
 #firstline {
-  height: 33px;
+  height: 100px;
   align-items: center;
 }
 .pagetitle {
-    margin-left: 5px;
+    height: 100px;
+    margin-left: 150px;
     font-family: 'Kolker Brush', cursive;
     font-size: 65px;
-    height: 0.5px;
     display: flex;
     align-items: center;
     float: left;
     }
 
 .menu{
-  height: 70px;
-  background-color: #f9beaf;
+  height: 80px;
+  background: url(../assets/background2.png);
+  background-size:cover;
   align-items: center;
 }
 .nav{
@@ -116,8 +120,8 @@ export default {
   
 }
 .nav a:hover{        
-    border-bottom: 2px solid seagreen;
-    color: seagreen;
+    border-bottom: 2px solid #ff5d94;
+    color: #ff5d94;
 }
 
 
