@@ -11,36 +11,32 @@
         <form id="myProfile">
             <br><br>
             <label for="name">User Name </label> <br>
-            <input type="text" id="name" required=true placeholder="Enter a New User Name" style="width:200px;height:30px"> <br> 
+            <input type="text" id="name" required=true placeholder="Enter a New User Name" style="font-family: 'Noto Nastaliq Urdu', serif; width:200px;height:30px"> <br> 
             
+            <br>
+            <label for="gender">Your gender</label><br>
+            <select v-model="selected" style="width:200px;height:30px">
+            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Female</option>
+            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Fale </option>
+            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> I prefer not to say. </option>
+            </select>
+
             <br><br> 
             <label for="intro">Self-Introduction</label><br>
-            <input type="text" id="intro" required=true placeholder="Introduce Yourself to the Community!" style="width:600px;height:150px"> <br> 
+            <input type="text" id="intro" required=true placeholder="Introduce Yourself to the Community!" style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
             
             <br><br>
             <label for="prize">Prizes Won</label><br>
-            <input type="text" id="prize" required=true placeholder="Enter the Prizes You Won." style="width:600px;height:150px"> <br> 
+            <input type="text" id="prize" required=true placeholder="Enter the Prizes You Won." style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
             
             <br><br>
-            <label for="gender">Your gender</label><br>
-            <select v-model="selected">
-            <option> Female</option>
-            <option> male </option>
-            <option> I prefer not to say. </option>
-            </select>, <br>
-            
-
-            <br><br>
-            <div class="save">
-                <button id="savebutton" type="button" v-on:click="savetofs()">Save </button>
+            <div>
+                <button class="save" v-on:click="savetofs()"> Save </button>
             </div>
             <br><br>
         </form>
         </div>
     </div>
-
-
-    
 
     <MyFooter/>
 
@@ -87,7 +83,6 @@ export default {
 .SaveInfo {
     display: inline-block;
     font-size: 18px;
-    font-family: Helvetica;
     text-align: center;
     align-items: center;
     margin:auto;
@@ -100,14 +95,24 @@ input:hover {
 .Container{
     background-image: url(../assets/edit_profile_bg2.jpg);
     background-size: cover;
+    font-family: Merienda;
+    color: rgb(255, 238, 246);
 
 }
 
-.savebutton{
-    color: bisque;
-    height: 30px;
-    width: 50px;
-    background-image: url(../assets/image1.png);
+.save{
+    color: rgb(244, 147, 163);
+    font-size: 30px;
+    padding: 10px 24px;
+    font-family: Merienda;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgb(249, 251, 253);
+}
+
+.save:hover{        
+    background: #ff5d93b3;
+    color: #fff;
 }
 
 
