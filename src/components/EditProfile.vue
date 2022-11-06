@@ -82,7 +82,7 @@ export default {
 <style scoped>
 .SaveInfo {
     display: inline-block;
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
     align-items: center;
     margin:auto;
