@@ -1,13 +1,13 @@
 <template>
-        <div class="index">
+    <div class="index">
         <div class="top-search">
             <div>
-                <div class="top-text">                    
-                </div>
+                <div class="top-text"></div>
 
                 <div class="input-block">
-                    <input type="text" placeholder="Search for photographs">
+                    <input type="text" placeholder="Search for photographs" >
                 </div>
+
             </div>
         </div>
 
@@ -28,11 +28,19 @@
         
         <div class="bot-list">
             <div class="featured">
-            Since its inception in 1969, Photographic Society of South East Asia has held an annual photography competition for the benefit of the local photographic community. 
+            Since its inception in 1969, 
             <br>
-            Initially known as the International Photographic Salon, it transitioned to its current form, Montage in 1999. 
+            Photographic Society of South East Asia has held 
             <br>
-            Since then, Montage has gone from strength to strength, inspiring more aspiring and passionate photographers every year.
+            an annual photography competition for the benefit of the local photographic community. 
+            <br>
+            Initially known as the International Photographic Salon, 
+            <br>
+            it transitioned to its current form, Montage in 1999. 
+            <br>
+            Since then, Montage has gone from strength to strength,
+            <br>
+            inspiring more aspiring and passionate photographers every year.
             </div>
         </div>
     </div>
@@ -74,7 +82,7 @@ const list = [
                 img: require('../assets/view.jpg')
             },
             {
-                photoName: 'The Mountain',
+                photoName: 'The Hill',
                 id: 1,
                 img: require('../assets/image9.png')
             }
@@ -89,17 +97,15 @@ const list = [
 .index {
     .top-search{
         text-align: center;
-        padding-top: 90px;
+        padding-top: 170px;
         height: 450px;
         width: 100%;
-        background: url(../assets/background0.jpg);
+        background: url(../assets/image18.jpg);
         background-size: cover;
-        padding-top: 56px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         .top-text {
-            font-family: Helvetica;
             font-size: 30px;
             color: #fff;
             text-align: center;
@@ -118,6 +124,7 @@ const list = [
             padding-left: 10px;
         }
         input {
+            font-family: Merienda;
             box-shadow:none;
             outline: none;
             resize: none;
@@ -132,7 +139,8 @@ const list = [
     .photo-list {
           text-align: center;
           width: 1300px;
-          padding-bottom: 90px;
+          padding-bottom: 30px;
+          font-family: Merienda;
           .photo-list-grouping {
               .grouping-name {
                   margin: 57px 0 32px 32px;
@@ -146,19 +154,25 @@ const list = [
                   .photo-list-item {
                       height: 120px;
                       width: 380px;
-                      margin: 10px;
-                      
+                      margin: 10px;                      
                       padding-top: 178px;
                       padding-left: 30px;
-                      color: #fff;
+                      background: #fff;
+                      color: #ff5d94;
                       flex-shrink: 0;
                       &:nth-child(3n) {
                           margin-right: 0;
                       }
-                      .photo-Name {
-                          font-size: 30px;
+                      .photo-name {
+                          width: 105px;
+                          height: 33px;
+                          border: 1px solid #fff;
+                          font-size: 18px;
                           font-weight: bold;
                           margin-bottom: 5px;
+                          background: #fbf8f9a9;
+                          color: #e55a89;
+                          line-height: 32px;
                       }
                       .read-more {
                           width: 105px;
@@ -167,9 +181,11 @@ const list = [
                           display: flex;
                           align-items: center;
                           justify-content: center;
+                          background: #fbf8f9;
+                          color: #000;
                           &:hover {
-                              background: #fff;
-                              color: #000;
+                              background: #ff5d94;
+                              color: #fff;
                           }
                       }
                   }
@@ -177,31 +193,32 @@ const list = [
           }
       }
     .bot-list {
-        height: 130px;
+        height: 350px;
         background: #f2f2f2;
-        display: flex;
+        display: center;
         align-items: center;
+        padding-left: 200px;
         > div {
             display: flex;
             width: 980px;
             margin: 0 auto;
             display: flex;
-            .featured {
-                align-content: space-around;
-                font-family: Helvetica;
-                border-right: 1px solid #000;
-                padding-left: 0;
-            }
+            
             >div {
-                padding: 0 30px;
+                padding: 0 10px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                font-size: 18px;
+                
             }
         }
     }
+    .featured {
+                font-family: 'Noto Nastaliq Urdu', serif;
+                
+                font-size: 18px;
+            }
 }
 
 </style>

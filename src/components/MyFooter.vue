@@ -21,7 +21,7 @@
         </h2>
 
         <div>        
-        <div>
+        <div class="title">
             <h2>Photographic Society of South East Asia</h2>
         </div>
         <div class="logo-list">
@@ -43,55 +43,60 @@
 <style lang="less" scoped>
 
 footer {
-position: relative;
-z-index: 999999;
-padding: 56px calc((100% - 980px) * 0.5);
-padding-bottom: 0;
-background: #f9beaf;
-height: 279px;
-// font-weight: 700;
-letter-spacing: 0.2em;
-h2 {
-> div {
-  display: flex;
+  position: relative;
+  z-index: 999999;
+  padding: 40px calc((100% - 980px) * 0.5);
   padding-bottom: 5px;
-  &.second{
-    > div.item {
-      font-size: 15px !important;
-      color: #fff !important;
-    }
-  }
-  > div.item {
-    flex-shrink: 0;
-    margin-right: 100px;
-    width: 287px;
-    font-size: 20px;
-    color: #fff !important;
-    cursor: pointer;
-    &:hover {
-      color: #000 !important;
-    }
-  }
-}
-}
+  background: #f9beaf;
+  height: 600px;
+  font-family: 'Noto Nastaliq Urdu', serif;
 
-h2 {
-  font-size: 25px;
   letter-spacing: 0.2em;
-  color: #fff;
-}
-.logo-list {
-  margin-left: 40px;
-  img {
-    
-    height: 21px;
-    width: 21px;
-    margin-right: 3px;
-  };
-  &:hover {
-  color: #000 !important;
-  cursor: pointer;
+  h2 {
+  > div {
+    display: flex;
+    padding-bottom: 5px;
+    &.second{
+      > div.item {
+        font-size: 15px !important;
+        color: #fff !important;
+      }
+    }
+    > div.item {
+      flex-shrink: 0;
+      margin-right: 100px;
+      width: 287px;
+      font-size: 20px;
+      color: #fff !important;
+      cursor: pointer;
+      &:hover {
+        color: #000 !important;
+      }
+    }
   }
-}
+  }
+
+  .title {
+    font-family: 'Kolker Brush', cursive;
+  }
+
+  h2 {
+    font-size: 55px;
+    letter-spacing: 0.2em;
+    color: #fff;
+  }
+  .logo-list {
+    margin-left: 40px;
+    img {
+      
+      height: 30px;
+      width: 30px;
+      margin-right: 3px;
+    };
+    &:hover {
+    color: #000 !important;
+    cursor: pointer;
+    }
+  }
 }
 </style>
