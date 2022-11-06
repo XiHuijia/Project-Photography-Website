@@ -5,7 +5,7 @@ import AboutUs from '@/components/AboutUs.vue'
 import LatestPhotograph from '@/view/LatestPhotograph.vue'
 import EditProfile from '@/components/EditProfile.vue'
 import MyPortfolio from '@/view/MyPortfolio.vue'
-//import UploadPicNew from '@/view/UploadPicNew.vue'
+import UploadPicNew from '@/view/UploadPicNew.vue'
 
 
 
@@ -38,12 +38,12 @@ const routes = [
     name: 'EditProfile',
     component: EditProfile
   }
-  // ,
-  // {
-  //   path:'/upload',
-  //   name: 'UploadPicNew',
-  //   component: UploadPicNew
-  // }
+   ,
+  {
+     path:'/upload',
+     name: 'UploadPicNew',
+     component: UploadPicNew
+  }
   ,
   {
     path: '/portfolio',
