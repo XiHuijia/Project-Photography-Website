@@ -69,6 +69,7 @@ export default {
             }
         }
     },
+    
     mounted() {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
@@ -77,6 +78,7 @@ export default {
             }
         })
     }
+    
 
 }
 </script>

@@ -31,7 +31,7 @@ export default {
             signInSuccessUrl: '/',
             signInOptions: [
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                //firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
             ]
         };
         ui.start("#firebaseui-auth-container", uiConfig)
@@ -53,6 +53,7 @@ export default {
 #firebaseui-auth-container{
     margin-bottom: 50px;
 }
+
 
 #pagecontent{
     height: 100px;

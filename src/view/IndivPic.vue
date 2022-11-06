@@ -1,22 +1,22 @@
 <template>
     <HeadLine/>
     <main class="container">
-    <img id="pic1">{{pic.file}}
+    <img id="pic1">{{pic.Photo}}
     <div class = "text">
-        <div id="author1">{{pic.author}}</div>
-        <div id="title1">{{pic.title}}</div>
-        <div id="location1">{{pic.location}}</div>
+        <div id="author1">{{pic.Author}}</div>
+        <div id="title1">{{pic.Title}}</div>
+        <div id="location1">{{pic.Location}}</div>
         <p id="warn">The copyright and portrait rights have been authorized for personal use and corporate commercial use.</p>
         <button class="downloadPic" @click="download(pic.fileURL)">Download</button>
-        <button class="purchasePic" @click=this.$router.push(PurchasePic)>Purchase</button>
+        <button class="purchasePic" @click="this.$router.push(PurchasePic)">Purchase</button>
     </div>
     </main>
 </template>
 
 <script>
 import HeadLine from '@/components/HeadLine.vue'
-//import PurchasePic from '@/components/PurchasePic.vue'
-import { db } from "../../firebase/index";
+//import PurchasePic from '@/view/PurchasePic.vue'
+import { db } from "../firebase.js";
 import { ref } from "firebase/storage";
 import {saveAs} from 'file-saver';
 import axios from 'Axios';
