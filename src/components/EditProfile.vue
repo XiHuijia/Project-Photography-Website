@@ -3,7 +3,7 @@
     <div class = "Container">
         <h1> Greeting! You can edit your profile here. </h1>
         <div> 
-            <img src="@/assets/src/1st_profile.png" style = "width:150px;height:150px;"/> 
+            <img src="@/assets/1st_profile.png" style = "width:150px;height:150px;"/> 
         </div>
 
         <div class="SaveInfo">
