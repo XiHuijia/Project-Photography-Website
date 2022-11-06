@@ -4,7 +4,7 @@ import HomePage from '@/view/HomePage.vue'
 import AboutUs from '@/components/AboutUs.vue'
 import LatestPhotograph from '@/view/LatestPhotograph.vue'
 import EditProfile from '@/components/EditProfile.vue'
-//import UploadPic from '@/view/UploadPic.vue'
+//import UploadPicNew from '@/view/UploadPicNew.vue'
 
 
 
@@ -40,8 +40,8 @@ const routes = [
   // ,
   // {
   //   path:'/upload',
-  //   name: 'UploadPic',
-  //   component: UploadPic
+  //   name: 'UploadPicNew',
+  //   component: UploadPicNew
   // }
 ]
 
