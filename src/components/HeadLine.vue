@@ -4,24 +4,7 @@
         <div class="pagetitle">
             <h2 class="title"> Photographic Society of South East Asia </h2>
         </div>
-<<<<<<< HEAD
-        <div v-if="user">
-          <div class = "action">
-              <img id = "touxiang" src = "@/assets/picture.png" v-on:click="menuToggle();">
-          <div id = "touxiang_menu">
-            <ul>
-              <li><a href="/profile">My Profile</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="/upload">New Post</a></li>
-              <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
-              <li><SignOut/></li>
-            </ul>
-          </div>
-          </div>
-          </div>
-=======
         
->>>>>>> 07d0f9b491a0f3ed3f9740c2c9af1614f4b68186
     </div>
 
     <div class = menu>
@@ -218,4 +201,3 @@ export default {
 }
 
 </style>
-
