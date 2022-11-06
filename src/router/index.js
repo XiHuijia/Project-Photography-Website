@@ -4,6 +4,7 @@ import HomePage from '@/view/HomePage.vue'
 import AboutUs from '@/components/AboutUs.vue'
 import LatestPhotograph from '@/view/LatestPhotograph.vue'
 import EditProfile from '@/components/EditProfile.vue'
+import MyPortfolio from '@/view/MyPortfolio.vue'
 //import UploadPic from '@/view/UploadPic.vue'
 
 
@@ -43,6 +44,12 @@ const routes = [
   //   name: 'UploadPic',
   //   component: UploadPic
   // }
+  ,
+  {
+    path: '/portfolio',
+    name: 'MyPortfolio',
+    component: MyPortfolio
+  }
 ]
 
 const router = createRouter({
