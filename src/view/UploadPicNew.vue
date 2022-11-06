@@ -36,8 +36,8 @@ import {getFirestore} from "firebase/firestore";
 import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
-const auth = getAuth();
-this.fbuser = auth.currentUser.email;
+//const auth = getAuth();
+//this.fbuser = auth.currentUser.email;
 
 export default {
     name: "UploadPicNew",
@@ -49,13 +49,14 @@ export default {
             var pri = document.getElementById("price1").value
             var t = document.getElementById("tag1").value
             alert("Uploading photo: " + pic)
+            console.log(this.user.email)
             try{
-                const docRef = await setDoc(doc(db, String(this.fbuser), this.a), {
+                const docRef = await setDoc(doc(db, String(this.user), this.pic), {
                     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t
                 })
                 console.log(docRef)
                 document.getElementById('myform').reset();
-                this.$emit("added")
+                //this.$emit("added")
             }
             catch(error) {
                 console.error("Error uploading photo: ", error);
@@ -67,6 +68,7 @@ export default {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 this.user = user;
+
             }
         })
     }
