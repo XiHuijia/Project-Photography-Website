@@ -6,7 +6,7 @@
             <div class="item">Explore</div>
         </div>
         <div class="second">
-          <div @click="jumpPage('AboutUs')" class="item">About Us</div>
+            <div @click="jumpPage('AboutUs')" class="item">About Us</div>
             <div class="item">Owners</div>
             <div class="item">Museums</div>
 
@@ -30,7 +30,6 @@
 <script>
 import { useRouter } from "vue-router";
 export default {
-
   setup() {
     const router = useRouter();
     const jumpPage = (name) => {
