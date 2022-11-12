@@ -1,23 +1,26 @@
 <template>
-    <div class = "main">
-        <h1 id="mainHead">Photographic Society of South East Asia</h1>
-        <div id="pagecontent">
-            Register or Sign In to Your Account
-        </div>
-        <div id="firebaseui-auth-container"></div>
-        <h5>copyright@Photographic Society of South East Asia, 2022</h5>
-    </div>
-</template>
-
-<script>
-import firebase from '@/uifire.js'
-import 'firebase/compat/auth';
-import * as firebaseui from 'firebaseui'
-//import 'firebaseui/dist/firebaseui.css'
-
-export default {
+    <main class="Container">
+      <div class="content">
+        <h1>Photographic Society of South East Asia</h1>
+        <h2>Register or Sign In to Your Account</h2>
+        <div id="firebaseui-auth-container"></div>      
+      </div>
+    </main>
+    <MyFooter/>
+  </template>
+  
+  <script>
+  import firebase from '@/uifire.js'
+  import 'firebase/compat/auth';
+  import * as firebaseui from 'firebaseui';
+  import 'firebaseui/dist/firebaseui.css';
+  import MyFooter from '../components/MyFooter.vue';
+  
+  export default {
     name:"SignIn",
-
+    components: {
+        MyFooter
+    },
     mounted() {
         //calling the ui instance
         var ui = firebaseui.auth.AuthUI.getInstance();
@@ -26,7 +29,6 @@ export default {
             //initialize the FirebaseUI Widget using Firebase.
             ui = new firebaseui.auth.AuthUI(firebase.auth());
         }
-
         var uiConfig = {
             signInSuccessUrl: '/',
             signInOptions: [
@@ -37,25 +39,21 @@ export default {
         ui.start("#firebaseui-auth-container", uiConfig)
     }
 }
-</script>
-
-<style scoped>
-
-.main{
-    margin-top: -50px;
-    height: 800px;
+  </script>
+  
+  <style scoped>
+  
+  .Container{
+    margin-top: -90px;
+    height: 700px;
     line-height: 10px;
     text-align: center;
     background-image: url("../assets/edit_profile_bg2.jpg");
     background-size: 100% 100%;
-}
-
-#firebaseui-auth-container{
-    margin-bottom: 50px;
-}
-
-
-#pagecontent{
+    color: #fff;
+  }
+  .content{
+    margin-top:100px;
     height: 100px;
     font-size: larger;
     font-weight: bolder;
@@ -63,19 +61,24 @@ export default {
     font-family: Merienda;
 }
 
-#mainHead{
-    margin-top: 50px;
+h1 {
     text-align: center;
     height: 100px;
-    margin-left: 270px;
+    margin-left: 180px;
     font-family: 'Kolker Brush', cursive;
-    font-size: 80px;
+    font-size: 100px;
     display: flex;
     align-items: center;
 }
 
-h5{
-    text-align: center;
+h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-</style>
+h5 {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+  </style>

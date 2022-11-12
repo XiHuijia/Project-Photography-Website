@@ -18,11 +18,13 @@
             <div class="item">Exhibitions</div>          
         </div>
         <div class="title">Photographic Society of South East Asia</div>
+        <div class="content">Copyright@Photographic Society of South East Asia, 2022</div>
         <div class="logo-list">
             <a href="https://twitter.com"><img src="../assets/image/01ab6619093f45388d66736ec22e5885.png" alt="Twitter" /></a>
             <a href="http://www.facebook.com"><img src="../assets/image/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="Facebook" /></a>
             <a href="https://www.instagram.com"><img src="../assets/image/81af6121f84c41a5b4391d7d37fce12a.png" alt="Instagram" /></a>
         </div>
+        
 
 
 
@@ -43,7 +45,7 @@ footer {
   padding: 40px calc((100% - 980px) * 0.5);
   padding-bottom: 5px;
   background: #f9beaf;
-  height: 600px;
+  height: 800px;
   font-family: 'Noto Nastaliq Urdu', serif;
 
   letter-spacing: 0.2em;
@@ -94,6 +96,12 @@ footer {
     color: #000 !important;
     cursor: pointer;
     }
+  }
+
+  .content{
+    font: 100 12px Merienda;
+    color: white;
+    margin: 40px 220px 40px;
   }
   .title {
     margin-top: 60px;
