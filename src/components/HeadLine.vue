@@ -23,7 +23,6 @@
                 <li><a href="/profile">My Profile</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
                 <li><a href="/upload">New Post</a></li>
-                <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
                 <li><SignOut/></li>
               </ul>
             </div>
@@ -185,9 +184,5 @@ export default {
 }
 .action #touxiang_menu ul li a:hover{
   color: #ff5d94;
-}
-
-.router-link-active {
-  color: rgb(253, 147, 147);
 }
 </style>
