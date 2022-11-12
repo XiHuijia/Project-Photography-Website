@@ -32,17 +32,25 @@
 
 <script>
 import firebaseApp from '../firebase.js';
+//import {db} from '../firebase.js';
 import {getFirestore} from "firebase/firestore";
 import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
 //const auth = getAuth();
-//this.fbuser = auth.currentUser.email;
+//this.fbuser: auth.currentUser.email,
+////define in the data()
 
 
 
 export default {
     name: "UploadPicNew",
+
+    data(){
+        return{
+            user:false, 
+        }
+    },
 
     methods: {
         async upload(){
@@ -51,24 +59,28 @@ export default {
             var loc = document.getElementById("location1").value
             var pri = document.getElementById("price1").value
             var t = document.getElementById("tag1").value
-            var name = this.user.displayName;
-            var url = URL.createObjectURL(this.pic);
-            const auth = getAuth();
-            this.fbuser = auth.currentUser.email;
+            //var name = this.user.displayName;
+            //var url = URL.createObjectURL(this.pic);
+            //const auth = getAuth();
+            //this.fbuser = auth.currentUser.email;
             alert("Uploading photo: " + pic)
             try{
                 console.log("entering try")
-                const docRef = await setDoc(doc(db, String(this.fbuser), this.pic), {
-                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Author: name, picURL: url
-                })
-                alert(docRef)
+                console.log(this.user)
+                console.log(db)
+                console.log(pic)
+                //const docRef = 
+                await setDoc(doc(db, String(this.user.uid), this.pic), {
+                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
+                })//check syntax
+                //alert(docRef)
                 document.getElementById('myform').reset();
                 this.$emit("added")
                 alert("Successful Upload!")
             }
             catch(error) {
                 console.error("Error uploading photo: ", error);
-                alert("fail!"+ error)
+                alert("fail!")
             }
         }
     },
