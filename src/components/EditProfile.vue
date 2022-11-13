@@ -17,7 +17,7 @@
             <label for="gender">Your gender</label><br>
             <select v-model="selected" style="width:200px;height:30px">
             <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Female</option>
-            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Fale </option>
+            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Male </option>
             <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> I prefer not to say. </option>
             </select>
 
