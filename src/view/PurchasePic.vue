@@ -33,6 +33,10 @@
     </div>
 
     <div id = "right">
+      <div id = "imagecontainer">
+          <h2>Photo Title: {{this.title}}</h2>
+          <img :src = "getImgUrl(path)" alt = "getImgUrl(path)"/>   
+      </div>
       <h2 id = "summary"><strong>Summary </strong></h2>
       <button id="checkout">Checkout</button>
     </div>
@@ -43,10 +47,30 @@
 import HeadLine from '@/components/HeadLine.vue'
 
 export default{
+  data(){
+    return{
+      id: false,
+      path: false,
+      title: false,
+    }
+  },
+
+  created() {
+        this.id = this.$route.params.id,
+        this.path = this.$route.params.photo,
+        this.title = this.$route.params.title
+    },
+
     name: "PurchasePic",
     components:{
         HeadLine,
     },
+
+    methods:{
+      getImgUrl: function(img) {
+            return require('@/assets/' + img);
+        },
+    }
 }
 
 // document.getElementById("payment1").addEventListener('click', selectFunction1)
@@ -62,7 +86,7 @@ export default{
 // }
 </script>
 
-<style>
+<style scoped>
 #PurchasePic {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -186,11 +210,22 @@ export default{
 
 #left{
   float: left;
-  margin-right: 300px;
+  margin-right: 200px;
 }
 #right{
+  width: 700px;
+
   float: left;
   text-align: left;
+}
+#imagecontainer{
+  float: right;
+  text-align: left;
+}
+img{
+  width: 400px;
+  height: 280px;
+  float: right;
 }
 
 #checkout{
@@ -200,7 +235,7 @@ export default{
   text-align: center;
   width: 200px;
   height: 60px;
-  float: left
+  float: left;
 }
 #checkout:hover{
   background-color: rgb(34, 33, 33);

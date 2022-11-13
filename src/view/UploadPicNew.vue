@@ -3,10 +3,10 @@
   <div class="page">
     <form id = "myform">
         <h1>Upload Your Work Here!</h1>
-        <div class="pic1">
+        <!-- <div class="pic1">
             <label>Your Photo</label>
             <input type="file" id="photo1" accept=".png, .jpg, .jpeg"> 
-        </div>
+        </div> -->
 
         <div class="picInfo">
             <div class="input">
@@ -45,7 +45,7 @@ import MyFooter from '@/components/MyFooter.vue'
 import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
 import {collection, addDoc} from "firebase/firestore";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
+//import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
 //db.settings({ experimentalForceLongPolling: true, merge:true });
 //const auth = getAuth();
@@ -64,7 +64,7 @@ export default {
 
     data(){
         return{
-            user:false, 
+            user:this.user, 
             // Photo: false, 
             // Title: false, 
             // Location: false,
@@ -73,15 +73,17 @@ export default {
         }
     },
 
-    mounted() {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                this.user = user;
+    // mounted() {
+    //     const auth = getAuth();
+    //     onAuthStateChanged(auth, (user) => {
+    //         if (user) {
+    //             this.user = user;
 
-            }
-        })
-    },
+    //         }
+    //     })
+    // },
+
+    mounted(){},
 
     methods: {
         async upload(){
@@ -103,7 +105,8 @@ export default {
                 // console.log(docRef);
                 // alert(docRef)
                 console.log(db)
-                const docRef = await addDoc(collection(db, String(this.user.uid), "test"),{
+                console.log(this.user.uid)
+                const docRef = await addDoc(collection(db, String(this.$store.state.user.uid), "test"),{
                     Photo: "pic",
                     Title: "tit",
                     Location: "loc",

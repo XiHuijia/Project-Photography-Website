@@ -3,7 +3,8 @@
     <h1>Photographic Society of South East Asia</h1>
     <div class="pic1">
         <label>Upload your photo</label>
-        <input type="file" id="photo1" accept=".png, .jpg, .jpeg" @change="addFile()">
+        <!-- <input type="file" id="photo1" accept=".png, .jpg, .jpeg" @change="addFile()"> -->
+        <input type="file" id="photo1" accept=".png, .jpg, .jpeg">
     </div>
 
     <div class="picInfo">
