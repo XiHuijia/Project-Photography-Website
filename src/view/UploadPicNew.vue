@@ -1,11 +1,12 @@
 <template>
+    <HeadLine />
   <div class="page">
     <form id = "myform">
-        <h1>Photographic Society of South East Asia</h1>
-        <!-- <div class="pic1">
-            <label>Upload your photo</label>
+        <h1>Upload Your Work Here!</h1>
+        <div class="pic1">
+            <label>Your Photo</label>
             <input type="file" id="photo1" accept=".png, .jpg, .jpeg"> 
-        </div> -->
+        </div>
 
         <div class="picInfo">
             <div class="input">
@@ -28,14 +29,18 @@
         <button class="btn" @click="upload()">Upload</button>
     </form>
   </div>
+  <MyFooter />
 </template>
 
 <script>
 import firebaseApp from '../firebase.js';
+import HeadLine from '@/components/HeadLine.vue'
+import MyFooter from '@/components/MyFooter.vue'
+//import firebase from '../uifire.js';
 //import {db} from '../firebase.js';
 import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
-//import {collection, addDoc} from "firebase/firestore";
+import {collection, addDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
 //db.settings({ experimentalForceLongPolling: true, merge:true });
@@ -48,6 +53,10 @@ const db = getFirestore(firebaseApp);
 
 export default {
     name: "UploadPicNew",
+    components:{
+        HeadLine,
+        MyFooter
+    },
 
     data(){
         return{
@@ -80,23 +89,24 @@ export default {
             //var name = this.user.displayName;
             //var url = URL.createObjectURL(this.pic);
             //alert("Uploading photo: " + pic)
+            //console.log(this.user.uid);
             try{
                 console.log("entering try");
-                //const docRef = 
+                // const docRef = 
                 // await setDoc(doc(db, String(this.user), this.pic), {
                 //     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
                 // });//check syntax
-                //console.log(docRef);
+                // console.log(docRef);
                 // alert(docRef)
-
-                // const docRef = await addDoc(collection(db, String(this.user.uid)),{
-                //     Photo: pic,
-                //     Title: tit,
-                //     Location: loc,
-                //     Price: pri,
-                //     Tag: t
-                // });
-                // console.log(docRef.id);
+                console.log(db)
+                const docRef = await addDoc(collection(db, String(this.user.uid), "test"),{
+                    Photo: "pic",
+                    Title: "tit",
+                    Location: "loc",
+                    Price: "pri",
+                    Tag: "t"
+                });
+                console.log(docRef.id);
 
                 // const docRef = {
                 //     Photo: pic, 
@@ -115,18 +125,18 @@ export default {
                 //     Tag: t
                 // });
 
-                await db.collection("test").doc("try").set({
-                    Photo: "pic", 
-                    Title: "tit", 
-                    Location: "loc",
-                    Price: "pri",
-                    Tag: "t"
-                })
+                // await db.collection("test").document("try").set({
+                //     Photo: "pic", 
+                //     Title: "tit", 
+                //     Location: "loc",
+                //     Price: "pri",
+                //     Tag: "t",
+                // })
 
-                // let ref = await db.collection(this.user.uid).doc(tit);
-                // ref.add({Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t});
-                document.getElementById('myform').reset();
-                this.$emit("added");
+                // const ref = await db.collection(String(this.user.uid)).doc("test");
+                // ref.set({Photo: "pic", Title: "tit", Location: "loc", Price: "pri", Tag: "t"});
+                //document.getElementById('myform').reset();
+                //this.$emit("added");
                 alert("Successful Upload!");
             }
             catch(error) {
@@ -143,17 +153,79 @@ export default {
 <style scoped>
 h1{
     text-align: center;
-    color: black;
+    color: #e55a89;
+    font-family: Merienda;
 }
 .page{
     background-image: url("../assets/background1.png");
     font-size: 20px;
-    background-size: 100%;   
+    background-size: 100%; 
+    height: 100%;
+    width: 100%;  
+}
+
+.pic1{
+    font-size: 40px;
+    display: inline-block;
+    /*text-align: center;
+    width: 100%;
+    height: 100%; */
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    display: center;
+    align-items: center;
+    align-content: center;
+    padding-right: 50px;
+    padding-left: 10px;
+    font-family: Merienda;
 }
 
 .input{
-    font-size: 20px;
+    font-size: 40px;
     display: inline-block;
-    text-align: justify;
+    /*text-align: center;
+    width: 100%;
+    height: 100%; */
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    display: center;
+    align-items: center;
+    align-content: center;
+    padding-right: 50px;
+    padding-left: 10px;
+    font-family: Merienda;
+    
 }
+
+/* .btn{
+    font-size: 40px;
+    text-align: center;
+    background-color: lightpink;
+} */
+
+.btn {
+  margin-top: 30px;
+  border-radius: 15px;
+  font-family: Merienda;
+  position: relative;
+  padding: 1rem 3rem;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #e55a89;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: lightpink;
+  border: 1px solid lightpink;
+  outline: transparent;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: 0.25s;
+}
+
 </style>
