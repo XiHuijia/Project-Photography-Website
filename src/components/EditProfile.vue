@@ -3,8 +3,8 @@
     <div class = "Container">
         <br><br>
         <h1> Greeting! You can edit your profile here. </h1>
-        <div> 
-            <img src="@/assets/1st_profile.png" style = "width:150px;height:150px;"/> 
+        <div class="profile_image"> 
+            <img src="@/assets/1st_profile.png"> 
         </div>
 
         <div class="SaveInfo">
@@ -82,7 +82,14 @@ export default {
     font-size: 22px;
     text-align: center;
     align-items: center;
-    margin:auto;
+    margin-top: -300px;
+}
+
+.profile_image {
+    width: 500px;
+    height: 500px;
+    margin-left: 500px;
+
 }
 input:hover {
     box-shadow: 5px 5px pink;
@@ -92,6 +99,7 @@ input:hover {
     background-size: cover;
     font-family: Merienda;
     color: rgb(255, 238, 246);
+    text-align: center;
 }
 .save{
     color: rgb(244, 147, 163);

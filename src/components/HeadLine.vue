@@ -11,7 +11,7 @@
               <img id = "touxiang" src = "../assets/profilephoto.png" v-on:click="menuToggle();">
             <div id = "touxiang_menu">
               <ul>
-                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/userprofile">My Profile</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
                 <li><a href="/upload">New Post</a></li>
                 <li><SignOut/></li>
@@ -148,9 +148,6 @@ nav ul li a:hover {
 
 .profile{
     font-family: Merienda;
-    // margin-right: -25px;
-    // margin-top:6px;
-    // margin-bottom: -10px;
     width: 300px;
     height: 50px;
     font-size: 20px;
