@@ -13,12 +13,14 @@
   import HeadLine from '@/components/HeadLine.vue';
   import HomeContent from '@/components/HomeContent.vue';
   import MyFooter from '@/components/MyFooter.vue';
+  //import SearchBar from '@/components/SearchBar.vue';
 
   export default {
     name: 'MyHome',
     components:{
       HeadLine,
       HomeContent,
+      //SearchBar,
       MyFooter,
     }
 
