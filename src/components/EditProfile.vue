@@ -84,10 +84,11 @@ export default {
     align-items: center;
 }
 .profile_image {
-    width: 250px;
-    height: 250px;
-    margin: 50px 0 0 490px;
+    margin: 50px 0 0 10px;
 }
+.profile_image img {
+        width: 15rem;
+    }
 input:hover {
     box-shadow: 5px 5px pink;
 }

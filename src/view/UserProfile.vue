@@ -34,7 +34,7 @@
 
                 <div class="profile-bio">
 
-                    <p>I am a full time photographer who has been in the business for many years now. Before ever shooting professionally I have always found light and people to be very interesting subjects that inspires me to no end. I am often fascinated with exploring the creative possibilities with my subjects and relish in the discovery of undiscovered possibility. 📷✈️🏕️</p>
+                    <p>I am a full time photographer who has been in the business for many years now. Before ever shooting professionally I have always found light and people to be very interesting subjects that inspires me to no end. I am often fascinated with exploring the creative possibilities with my subjects and relish in the discovery of undiscovered possibility.  📷✈️🏕️</p>
 
                 </div>
 
@@ -51,7 +51,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUIaa5EDeP4uV_4eRT6TrfeG6vvujBTqMA1w&usqp=CAU" alt="The Peak" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">The Peak</h5>
-                    <p class="card-text">The adventure starts here.</p>
+                    <p class="card-text">The adventure starts.</p>
                     <a href="#" class="cardbtn">More</a>
                 </div>
             </div>
@@ -157,8 +157,6 @@ export default {
 }
 .profile-image {
     float: left;
-    width: 250px;
-    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -215,6 +213,10 @@ export default {
     font-weight: 600;
 }
 
+    .profile-image img {
+        width: 15rem;
+    }
+
     .profile-user-name {
         font-size: 2.2rem;
     }
@@ -263,6 +265,13 @@ export default {
         grid-row: 1 / -1;
     }
 
+    .profile-image,
+    .profile-user-settings,
+    .profile-stats,
+    .profile-bio{
+        width: auto;
+        margin: 0;
+    }
         .profile {
             grid-template-columns: auto 1fr;
             grid-row-gap: 1.5rem;
