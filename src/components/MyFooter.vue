@@ -100,12 +100,12 @@ footer {
   .btn-share {
       margin: 50px 0 0 350px;
       --btn-inner-color: #fceff3;
-      --btn-overlay-color: #ea498c;
-      --icon-color: #d22c71;
+      --btn-overlay-color: #f05a98;
+      --icon-color: #d22c71a8;
       position: relative;
       display: flex;
       font-size: 100%;
-      font-family: Lato, sans-serif;
+      font-family: Merienda;
       color: white;
       letter-spacing: 2px;
       background: var(--btn-inner-color);
