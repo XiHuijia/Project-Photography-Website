@@ -12,7 +12,8 @@
         </div>
         <!-- <div id="location1">{{pic.Location}}</div> -->
         
-        <button class="downloadPic" @click="download()">Download</button>
+        <button class="downloadPic" @click="download()">Download</button> 
+        <br><br>
         <button class="purchasePic" @click="goPurchase(id, path, title)">Purchase</button> 
     </div>
     </div>
@@ -64,7 +65,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container{
     width: 100%;
     height: 700px;
@@ -91,5 +92,20 @@ img{
 #warn{
     font-size: 15px;
     color: grey;
+}
+
+button{
+    text-align:center;
+    margin: auto;
+    cursor: pointer;
+    font-family: Merienda;
+    padding: 8px 20px;
+    border-radius: 15px;
+}
+button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
 }
 </style>
