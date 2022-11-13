@@ -6,6 +6,7 @@ import LatestPhotograph from '@/view/LatestPhotograph.vue'
 import EditProfile from '@/components/EditProfile.vue'
 import MyPortfolio from '@/view/MyPortfolio.vue'
 import UploadPicNew from '@/view/UploadPicNew.vue'
+import IndivPic from '@/view/IndivPicNew.vue'
 
 
 
@@ -49,6 +50,12 @@ const routes = [
     path: '/portfolio',
     name: 'MyPortfolio',
     component: MyPortfolio
+  }
+  ,
+  {
+    path: '/indivpic/:id/:title/:photo',
+    name: 'IndivPic',
+    component: IndivPic
   }
 ]
 

@@ -8,7 +8,7 @@
 
                 <div class="photo-list-main">
 
-                    <div class="photo-list-item" v-for="info in item.child" :key="info.id"
+                    <div @click="goDetail(info.id, info.photoName, info.img)" class="photo-list-item" v-for="info in item.child" :key="info.id"
                         :style="{background: 'url(' + info.img + ')'}">
 
                         <div class="photo-name">{{ info.photoName }}</div>                     
@@ -62,7 +62,22 @@ const list = [
         ]
     },
 ]
+
+
 </script>
+
+<script scoped>
+
+export default {
+    methods: {
+        goDetail (id, name, image) {
+            console.log(id, name, image)
+            this.$router.push({name: 'IndivPic', params: { id:id , title: name, photo: image}})
+        }
+    },
+}
+</script>
+
     
 <style lang="less" scoped>
 

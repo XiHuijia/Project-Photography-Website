@@ -9,6 +9,10 @@
 
         <div class="picInfo">
             <div class="input">
+                <label>URL</label>
+                <input type="text" id="url" required = "" placeholder="Add url for this work">
+            </div>
+            <div class="input">
                 <label>TITLE</label>
                 <input type="text" id="title1" required = "" placeholder="Add title for this work">
             </div>
@@ -37,6 +41,7 @@ import {getFirestore} from "firebase/firestore";
 import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
+
 //const auth = getAuth();
 //this.fbuser: auth.currentUser.email,
 ////define in the data()
@@ -54,7 +59,8 @@ export default {
 
     methods: {
         async upload(){
-            var pic = document.getElementById("photo1").value
+            //var pic = document.getElementById("photo1").value
+            var pic = document.getElementById("url").value
             var tit = document.getElementById("title1").value
             var loc = document.getElementById("location1").value
             var pri = document.getElementById("price1").value
@@ -70,12 +76,12 @@ export default {
                 console.log(db)
                 console.log(pic)
                 //const docRef = 
-                await setDoc(doc(db, String(this.user.uid), this.pic), {
+                await setDoc(doc(db, String(this.user.uid), tit), {
                     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
                 })//check syntax
                 //alert(docRef)
                 document.getElementById('myform').reset();
-                this.$emit("added")
+                //this.$emit("added")
                 alert("Successful Upload!")
             }
             catch(error) {
