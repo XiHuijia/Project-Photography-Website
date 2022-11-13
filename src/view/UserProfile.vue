@@ -2,7 +2,6 @@
     <HeadLine/>
     <div class="container">
         <div id="username">{{this.user.displayName}}</div>
-        <div id="following">{{this.user.following}}</div>
         <button class="jumppage" @click="this.$router.push(MyPortfolio)">My Portfolio</button>
         <button class="jumppage" @click="this.$router.push(FollowingPage)">Following</button>
     </div>
