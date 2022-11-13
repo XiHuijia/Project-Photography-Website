@@ -53,8 +53,9 @@ const routes = [
   }
   ,
   {
-    path: '/indivpic/:id/:title/:photo',
+    path: '/indivpic/:id/:photo/:title',
     name: 'IndivPic',
+    props: true,
     component: IndivPic
   }
 ]

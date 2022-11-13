@@ -8,7 +8,7 @@
 
                 <div class="photo-list-main">
 
-                    <div @click="goDetail(info.id, info.photoName, info.img)" class="photo-list-item" v-for="info in item.child" :key="info.id"
+                    <div @click="goDetail(info.id, info.photoName, info.url)" class="photo-list-item" v-for="info in item.child" :key="info.id"
                         :style="{background: 'url(' + info.img + ')'}">
 
                         <div class="photo-name">{{ info.photoName }}</div>                     
@@ -32,32 +32,38 @@ const list = [
             {
                 photoName: 'Grass Land',
                 id: 1-1,
-                img: require('../assets/image16.jpeg')
+                img: require('../assets/image16.jpeg'),
+                url: 'image16.jpeg'
             },
             {
                 photoName: 'Morocco',
                 id: 1-2,
-                img: require('../assets/image14.jpeg'),       
+                img: require('../assets/image14.jpeg'),   
+                url: 'image14.jpeg'
             },
             {
                 photoName: 'Greece',
                 id: 1-3,
-                img: require('../assets/image15.jpeg')
+                img: require('../assets/image15.jpeg'),
+                url: 'image15.jpeg'
             },
             {
                 photoName: 'The Lake',
                 id: 1-4,
-                img: require('../assets/image3.png')
+                img: require('../assets/image3.png'),
+                url: 'image3.png'
             },
             {
                 photoName: 'Free Day',
                 id: 1-5,
-                img: require('../assets/image10.jpeg')
+                img: require('../assets/image10.jpeg'),
+                url: 'image10.jpeg'
             },
             {
                 photoName: 'The City',
                 id: 1-6,
-                img: require('../assets/image13.jpeg')
+                img: require('../assets/image13.jpeg'),
+                url: 'image13.jpeg'
             },
         ]
     },
@@ -71,8 +77,9 @@ const list = [
 export default {
     methods: {
         goDetail (id, name, image) {
+            console.log("go to detail page")
             console.log(id, name, image)
-            this.$router.push({name: 'IndivPic', params: { id:id , title: name, photo: image}})
+            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name }})
         }
     },
 }

@@ -1,45 +1,57 @@
 <template>
   <HeadLine/>
-    <main class="container">
-    <img id="pic1"> {{photoInfo.Photo}}>
+    <div class="container">
+        <div class="photocontainer">
+            <img :src = "getImgUrl(path)" alt = "getImgUrl(path)"/>
+            <p id="warn">The copyright and portrait rights have been authorized for personal use and corporate commercial use.</p>
+        </div>
     <div class = "text">
         <!-- <div id="author1">{{pic.Author}}</div> -->
-        <div id="title1">{{this.title}}</div>
+        <div id="title1">
+            <h2>{{this.title}}</h2>
+        </div>
         <!-- <div id="location1">{{pic.Location}}</div> -->
-        <p id="warn">The copyright and portrait rights have been authorized for personal use and corporate commercial use.</p>
+        
         <!-- <button class="downloadPic" @click="download(pic.fileURL)">Download</button>
         <button class="purchasePic" @click="this.$router.push(PurchasePic)">Purchase</button> -->
     </div>
-    </main>
+    </div>
 
     <MyFooter/>
 </template>
 
 <script>
 import HeadLine from '@/components/HeadLine.vue'
-import MyFooter from '@/components/MyFooter.vue';
+import MyFooter from '@/components/MyFooter.vue'
+// import axios from 'Axios';
+// import {saveAs} from 'file-saver';
+
+
 export default {
-    data() {
-        return{
+    data(){
+        return {
             id: false,
-            photo: false,
-            title: false,
+            path: false,
+            title: false
         }
     },
 
     created() {
         this.id = this.$route.params.id,
-        this.photo = this.$route.params.photo,
-        this.title = this.$route.params.title,
-        console.log(this.title)
-        console.log(this.id)
-        console.log(this.photo)
+        this.path = this.$route.params.photo,
+        this.title = this.$route.params.title
     },
 
     
     components: {
         HeadLine,
         MyFooter,
+    },
+
+    methods: {
+        getImgUrl: function(img) {
+            return require('@/assets/' + img);
+        }
     }
 }
 </script>
@@ -47,16 +59,29 @@ export default {
 <style>
 .container{
     width: 100%;
-    height: auto;
+    height: 500px;
+}
+.photocontainer{
+    margin-top: 40px;
+    margin-right: 20px;
+    width: 60%;
+    float: right;
 }
 
 img{
-    width: 45%;
+    width: 80%;
+    margin-right: -10px;
 }
 
 .text{
+    margin-top: 40px;
+    width: 40%;
     font-size: 20px;
     font-display: justify;
     color: black;
+}
+#warn{
+    font-size: 15px;
+    color: grey;
 }
 </style>
