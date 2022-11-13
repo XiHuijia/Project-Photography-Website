@@ -1,5 +1,6 @@
 <template>
     <HeadLine/>
+    <div id = "contianer">
     <div id = "left">
     <h2 id = "select1"><strong>Select Payment Method </strong></h2>
     <h3 id = "select2">Select your payment method</h3>
@@ -41,6 +42,8 @@
       <button id="checkout">Checkout</button>
     </div>
 
+    </div>
+
 </template>
 
 <script>
@@ -64,6 +67,7 @@ export default{
     name: "PurchasePic",
     components:{
         HeadLine,
+
     },
 
     methods:{
@@ -87,6 +91,9 @@ export default{
 </script>
 
 <style scoped>
+#container {
+  height: 1000px;
+}
 #PurchasePic {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -214,7 +221,6 @@ export default{
 }
 #right{
   width: 700px;
-
   float: left;
   text-align: left;
 }
