@@ -8,8 +8,6 @@ import MyPortfolio from '@/view/MyPortfolio.vue'
 import UploadPicNew from '@/view/UploadPicNew.vue'
 import IndivPic from '@/view/IndivPicNew.vue'
 
-
-
 const routes = [
   {
     path: "/",

@@ -27,7 +27,7 @@
         <div class="card-body">
             <h5 class="card-title">Waves</h5>
             <p class="card-text">The ocean is never still.</p>
-            <a href="#" class="cardbtn">More</a>
+            <a href="/indivpic_waves" class="cardbtn">More</a>
         </div>
     </div>
     <div class="card">
