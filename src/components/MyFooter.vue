@@ -1,13 +1,12 @@
 <template>
-    <footer>
-        
+    <footer>        
         <div>
             <div class="item">Grow with Us</div>
             <div class="item">Business with Us</div>
             <div class="item">Explore</div>
         </div>
         <div class="second">
-            <div @click="jumpPage('About')" class="item">About Us</div>
+            <div @click="jumpPage('AboutUs')" class="item">About Us</div>
             <div class="item">Owners</div>
             <div class="item">Museums</div>
 
@@ -24,16 +23,23 @@
             <a href="http://www.facebook.com"><img src="../assets/image/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="Facebook" /></a>
             <a href="https://www.instagram.com"><img src="../assets/image/81af6121f84c41a5b4391d7d37fce12a.png" alt="Instagram" /></a>
         </div>
-        
-
-
-
     </footer>
 </template>
 
 
-<script setup>
-
+<script>
+import { useRouter } from "vue-router";
+export default {
+  setup() {
+    const router = useRouter();
+    const jumpPage = (name) => {
+      router.push({
+        name,
+      });
+    };
+      return {router,jumpPage}
+    }
+}
 
 </script>
 

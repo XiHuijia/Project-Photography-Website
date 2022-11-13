@@ -73,7 +73,7 @@ h1 {
 
 h2 {
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
 }
 
 h5 {
