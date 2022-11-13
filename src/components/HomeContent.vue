@@ -5,14 +5,14 @@
                 <div class="top-text"></div>
 
                 <div class="input-block">
-                    <input type="text" placeholder="Search for photographs" />
-                    <!-- <input type="text" v-model="input" placeholder="Search for photographs" />
+                    <!-- <input type="text" placeholder="Search for photographs" /> -->
+                    <input type="text" v-model="input" placeholder="Search for photographs" />
                     <div class="tag_search" v-for="tag in filteredList()" :key="tag">
                         <p>{{tag}}</p>
                     </div>
                     <div class="item_error" v-if="input&&!filteredList().length">
                         <p>No results found!</p>
-                    </div> -->
+                    </div>
                 </div>
                 <div>
                     <button class="btn btn-primary btn-ghost btn-shine"> Search </button>
@@ -72,17 +72,18 @@
 
 
 <script setup>
-// import {ref} from "vue";
+import {ref} from "vue";
 // import {db} from '../firebase.js';
 // import {getDoc, doc} from 'firebase/firestore';
-// let input = ref("");
+let input = ref("");
 
 // const tags = await getDoc(doc(db, "Tag"));
+const tags = ["waves", "sea", "myth"];
 
-// function filteredList(){
-//     return tags.filter((tag) =>
-//     tag.toLowerCase().includes(input.value.toLowerCase()))
-// }
+function filteredList(){
+    return tags.filter((tag) =>
+    tag.toLowerCase().includes(input.value.toLowerCase()))
+}
 
 </script>
 

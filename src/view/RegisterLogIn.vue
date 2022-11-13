@@ -33,7 +33,6 @@
             signInSuccessUrl: '/',
             signInOptions: [
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.EmailAuthProvider.PROVIDER_ID,
             ]
         };
         ui.start("#firebaseui-auth-container", uiConfig)
