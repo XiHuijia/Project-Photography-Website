@@ -46,9 +46,9 @@
 
         </header>
 
-        <main>
+        <!-- <main> -->
 
-        <div class="container">
+        <div class="container2">
 
             <div class="gallery">
 
@@ -274,7 +274,7 @@
         </div>
         <!-- End of container -->
 
-        </main>
+        <!-- </main> -->
     <MyFooter/>
 </template>
 
@@ -367,7 +367,15 @@ img {
 .container{
     margin: 0 auto;
     padding: 0 10rem;
-    // height:1000px;
+    background-image: url(../assets/edit_profile_bg2.jpg);
+    background-size: cover;
+    font-family: Merienda;
+    color: rgb(255, 255, 255);
+}
+
+.container2{
+    margin-top: -200px ;
+    padding: 0 10rem;
     background-image: url(../assets/edit_profile_bg2.jpg);
     background-size: cover;
     font-family: Merienda;
