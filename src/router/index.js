@@ -7,7 +7,7 @@ import EditProfile from '@/components/EditProfile.vue'
 import MyPortfolio from '@/view/MyPortfolio.vue'
 import UploadPicNew from '@/view/UploadPicNew.vue'
 import IndivPic from '@/view/IndivPicNew.vue'
-
+import PurchasePic from '@/view/PurchasePic.vue'
 
 
 const routes = [
@@ -57,6 +57,12 @@ const routes = [
     name: 'IndivPic',
     props: true,
     component: IndivPic
+  }
+  ,
+  {
+    path:'/purchase/:id/:photo/:title',
+    name: 'PurchasePic',
+    component: PurchasePic
   }
 ]
 

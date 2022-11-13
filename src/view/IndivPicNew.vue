@@ -12,8 +12,8 @@
         </div>
         <!-- <div id="location1">{{pic.Location}}</div> -->
         
-        <!-- <button class="downloadPic" @click="download(pic.fileURL)">Download</button>
-        <button class="purchasePic" @click="this.$router.push(PurchasePic)">Purchase</button> -->
+        <button class="downloadPic" @click="download()">Download</button>
+        <button class="purchasePic" @click="goPurchase(id, path, title)">Purchase</button> 
     </div>
     </div>
 
@@ -32,7 +32,7 @@ export default {
         return {
             id: false,
             path: false,
-            title: false
+            title: false,
         }
     },
 
@@ -51,7 +51,15 @@ export default {
     methods: {
         getImgUrl: function(img) {
             return require('@/assets/' + img);
-        }
+        },
+        
+        download() {
+
+        },
+
+        goPurchase(id, image, name){
+            this.$router.push({name: 'PurchasePic', params: { id:id, photo: image, title:name }})
+        },
     }
 }
 </script>
@@ -59,7 +67,7 @@ export default {
 <style>
 .container{
     width: 100%;
-    height: 500px;
+    height: 700px;
 }
 .photocontainer{
     margin-top: 40px;
