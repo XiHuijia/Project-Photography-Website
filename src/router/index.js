@@ -4,6 +4,7 @@ import HomePage from '@/view/HomePage.vue'
 import AboutUs from '@/components/AboutUs.vue'
 import LatestPhotograph from '@/view/LatestPhotograph.vue'
 import EditProfile from '@/components/EditProfile.vue'
+import UserProfile from '@/view/UserProfile.vue'
 import MyPortfolio from '@/view/MyPortfolio.vue'
 import UploadPicNew from '@/view/UploadPicNew.vue'
 import IndivPic from '@/view/IndivPicNew.vue'
@@ -35,9 +36,15 @@ const routes = [
   }
   ,
   {
-    path:'/profile',
+    path:'/editprofile',
     name: 'EditProfile',
     component: EditProfile
+  }
+   ,
+  {
+    path:'/userprofile',
+    name: 'UserProfile',
+    component: UserProfile
   }
    ,
   {
