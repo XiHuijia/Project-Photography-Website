@@ -1,19 +1,10 @@
 <template>
 
   <div class="headline">
-    <div id = "firstline">
-        <div class="pagetitle">
-            <h2 class="title"> Photographic Society of South East Asia </h2>
-        </div>
-        
-    </div>
-
-    <div class = menu>
-      <div class = "nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About Us</router-link> |
-        <router-link to="/latest">Latest Photograph</router-link> 
+      <div class="pagetitle">
+        Photographic Society of South East Asia
       </div>
+
 
       <div v-if="user">
           <div class = "action">
@@ -30,9 +21,7 @@
         </div>
 
       <div class="profile">
-            <div v-if="user">
-          </div>
-
+          <div v-if="user"></div>
           <div v-else>
             <button @click="jumpPage('SignIn')" class="btn btn-primary btn-snake-border">
               <div class="btn-borders">
@@ -45,11 +34,21 @@
             </button>
           </div>
       </div>
-    </div>
-    
-  </div>
 
-
+      <nav>
+          <ul>
+            <li>
+              <a @click="jumpPage('HomePage')">Home</a>
+            </li>
+            <li>
+              <a @click="jumpPage('AboutUs')">About Us</a>
+            </li>
+            <li>
+              <a @click="jumpPage('LatestPhotograph')">Latest Photograph</a>
+            </li>
+          </ul>
+      </nav>
+  </div> 
 </template>
 
 <script>
@@ -96,53 +95,67 @@ export default {
 .headline{
   margin-left: auto;
   margin-right: auto;
-  margin-top: -50px;
+  margin-top: -70px;
   height: 180px;
   background: url(../assets/background2.png);
   background-size:cover;
   width: 100%;
   }
-#firstline {
-  height: 100px;
-  align-items: center;
-}
+
 .pagetitle {
     height: 100px;
-    margin-left: 150px;
+    margin-left: 130px;
+    margin-top:15px;
     font-family: 'Kolker Brush', cursive;
-    font-size: 65px;
+    font-size: 110px;
     display: flex;
     align-items: center;
     float: left;
     }
-.menu{
-  height: 80px;
-  
-  background-size:cover;
-  align-items: center;
-}
-.nav{
+
+nav {
   font-family: Merienda;
-  margin-left: 30px;
-  height: 50px;
-  line-height:64px;
-  font-size: 22px;
-  float: left;
-  color: #fff;
-  
+  max-width: 1000px;
+  margin-left:-150px;
+  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
 }
-.nav a:hover{        
-    border-bottom: 2px solid #ff5d94;
-    color: #ff5d94;
+
+nav ul {
+  text-align: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
 }
+
+nav ul li {
+  display: inline-block;
+  cursor: pointer;
+}
+
+nav ul li a {
+  padding: 18px;
+  text-transform:uppercase;
+  color: rgba(73, 66, 66, 0.87);
+  font-size: 18px;
+  text-decoration: none;
+  display: block;
+}
+
+nav ul li a:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(230, 67, 143, 0.7);
+}
+
 .profile{
     font-family: Merienda;
-    margin-left: 10px;
+    // margin-right: -25px;
+    // margin-top:6px;
+    // margin-bottom: -10px;
     width: 300px;
     height: 50px;
     font-size: 20px;
     float: right;
-    line-height:50px;
+    // line-height:50px;
 }
 .profile a:hover{
   border-bottom: 2px solid #fff;;
