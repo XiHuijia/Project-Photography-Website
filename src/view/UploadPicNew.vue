@@ -10,6 +10,10 @@
 
         <div class="picInfo">
             <div class="input">
+                <label>URL</label>
+                <input type="text" id="url" required = "" placeholder="Add url for this work">
+            </div>
+            <div class="input">
                 <label>TITLE</label>
                 <input type="text" id="title1" required = "" placeholder="Add title for this work">
             </div>
