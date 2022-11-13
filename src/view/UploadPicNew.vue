@@ -2,10 +2,10 @@
   <div class="page">
     <form id = "myform">
         <h1>Photographic Society of South East Asia</h1>
-        <div class="pic1">
+        <!-- <div class="pic1">
             <label>Upload your photo</label>
-            <input type="file" id="photo1" accept=".png, .jpg, .jpeg">
-        </div>
+            <input type="file" id="photo1" accept=".png, .jpg, .jpeg"> 
+        </div> -->
 
         <div class="picInfo">
             <div class="input">
@@ -37,14 +37,16 @@
 <script>
 import firebaseApp from '../firebase.js';
 //import {db} from '../firebase.js';
+import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
-import {doc, setDoc} from "firebase/firestore";
+//import {collection, addDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 const db = getFirestore(firebaseApp);
-
+//db.settings({ experimentalForceLongPolling: true, merge:true });
 //const auth = getAuth();
 //this.fbuser: auth.currentUser.email,
 ////define in the data()
+//var db = firebaseApp.firestore();
 
 
 
@@ -54,43 +56,14 @@ export default {
     data(){
         return{
             user:false, 
+            // Photo: false, 
+            // Title: false, 
+            // Location: false,
+            // Price: false,
+            // Tag: false
         }
     },
 
-    methods: {
-        async upload(){
-            //var pic = document.getElementById("photo1").value
-            var pic = document.getElementById("url").value
-            var tit = document.getElementById("title1").value
-            var loc = document.getElementById("location1").value
-            var pri = document.getElementById("price1").value
-            var t = document.getElementById("tag1").value
-            //var name = this.user.displayName;
-            //var url = URL.createObjectURL(this.pic);
-            //const auth = getAuth();
-            //this.fbuser = auth.currentUser.email;
-            alert("Uploading photo: " + pic)
-            try{
-                console.log("entering try")
-                console.log(this.user)
-                console.log(db)
-                console.log(pic)
-                //const docRef = 
-                await setDoc(doc(db, String(this.user.uid), tit), {
-                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
-                })//check syntax
-                //alert(docRef)
-                document.getElementById('myform').reset();
-                //this.$emit("added")
-                alert("Successful Upload!")
-            }
-            catch(error) {
-                console.error("Error uploading photo: ", error);
-                alert("fail!")
-            }
-        }
-    },
-    
     mounted() {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
@@ -99,6 +72,72 @@ export default {
 
             }
         })
+    },
+
+    methods: {
+        async upload(){
+            // var pic = document.getElementById("photo1").value
+            // var tit = document.getElementById("title1").value
+            // var loc = document.getElementById("location1").value
+            // var pri = document.getElementById("price1").value
+            // var t = document.getElementById("tag1").value
+            //var name = this.user.displayName;
+            //var url = URL.createObjectURL(this.pic);
+            //alert("Uploading photo: " + pic)
+            try{
+                console.log("entering try");
+                //const docRef = 
+                // await setDoc(doc(db, String(this.user), this.pic), {
+                //     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
+                // });//check syntax
+                //console.log(docRef);
+                // alert(docRef)
+
+                // const docRef = await addDoc(collection(db, String(this.user.uid)),{
+                //     Photo: pic,
+                //     Title: tit,
+                //     Location: loc,
+                //     Price: pri,
+                //     Tag: t
+                // });
+                // console.log(docRef.id);
+
+                // const docRef = {
+                //     Photo: pic, 
+                //     Title: tit, 
+                //     Location: loc,
+                //     Price: pri,
+                //     Tag: t
+                // }
+                // await setDoc(doc(collection(db, this.user.uid)), docRef);
+
+                // await db.collection(this.user.uid).doc(this.pic).add({
+                //     Photo: pic, 
+                //     Title: tit, 
+                //     Location: loc,
+                //     Price: pri,
+                //     Tag: t
+                // });
+
+                await db.collection("test").doc("try").set({
+                    Photo: "pic", 
+                    Title: "tit", 
+                    Location: "loc",
+                    Price: "pri",
+                    Tag: "t"
+                })
+
+                // let ref = await db.collection(this.user.uid).doc(tit);
+                // ref.add({Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t});
+                document.getElementById('myform').reset();
+                this.$emit("added");
+                alert("Successful Upload!");
+            }
+            catch(error) {
+                //console.error("Error uploading photo: ", error);
+                alert("fail!");
+            }
+        }
     }
     
 

@@ -23,7 +23,6 @@
                 <li><a href="/profile">My Profile</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
                 <li><a href="/upload">New Post</a></li>
-                <!-- <li><a href='@/components/SignOut.vue'>Sign Out</a></li> -->
                 <li><SignOut/></li>
               </ul>
             </div>
@@ -35,7 +34,15 @@
           </div>
 
           <div v-else>
-            <router-link to="/signin">Sign in/Register</router-link>
+            <button @click="jumpPage('SignIn')" class="btn btn-primary btn-snake-border">
+              <div class="btn-borders">
+                <div class="border-top"></div>
+                <div class="border-right"></div>
+                <div class="border-bottom"></div>
+                <div class="border-left"></div>
+              </div>
+              <span class="btn-text">SingIn/Register</span>
+            </button>
           </div>
       </div>
     </div>
@@ -48,6 +55,7 @@
 <script>
 import SignOut from '@/components/SignOut.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useRouter } from "vue-router";
 export default {
     name: 'HeadLine',
     components: {
@@ -71,11 +79,20 @@ export default {
         const toggleMenu = document.querySelector("#touxiang_menu");
         toggleMenu.classList.toggle("active");
       }
-  }
+  },
+  setup() {
+    const router = useRouter();
+    const jumpPage = (name) => {
+      router.push({
+        name,
+      });
+    };
+      return {router,jumpPage}
+    }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .headline{
   margin-left: auto;
   margin-right: auto;
@@ -187,7 +204,91 @@ export default {
   color: #ff5d94;
 }
 
-.router-link-active {
-  color: rgb(253, 147, 147);
+.btn {
+  position: relative;
+  padding: 1rem 2rem;
+  font-family: Merienda;
+  font-size: 1rem;
+  color: black;
+  text-decoration: none;
+  background-color: white;
+  border: transparent;
+  outline: transparent;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &-primary {
+    color: white;
+    background-color: #f56e9b;
+  }
+
+  &-snake-border {
+    .btn-borders {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      .border-top {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, transparent, white);
+        animation: moveHorizontally 2s linear infinite;
+      }
+
+      .border-right {
+        position: absolute;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, white);
+        animation: moveVertically 2s 1s linear infinite;
+      }
+
+      .border-bottom {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to left, transparent, white);
+        animation: moveHorizontally 2s linear reverse infinite;
+      }
+
+      .border-left {
+        position: absolute;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(to top, transparent, white);
+        animation: moveVertically 2s 1s linear reverse infinite;
+      }
+    }
+  }
 }
+
+@keyframes moveHorizontally {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes moveVertically {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
 </style>

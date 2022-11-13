@@ -14,6 +14,9 @@
                         <p>No results found!</p>
                     </div> -->
                 </div>
+                <div>
+                    <button class="btn btn-primary btn-ghost btn-shine"> Search </button>
+                </div>
 
             </div>
         </div>
@@ -134,7 +137,7 @@ const list = [
             height: 60px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 5px;
-            border: 1px solid rgb(61, 155, 233);
+            border: 1px solid #e55a89;
             display: flex;
             align-items: center;
             padding-right: 50px;
@@ -205,7 +208,7 @@ const list = [
           }
       }
     .bot-list {
-        height: 350px;
+        height: 380px;
         background: #f2f2f2;
         display: center;
         align-items: center;
@@ -217,12 +220,11 @@ const list = [
             display: flex;
             
             >div {
-                padding: 0 10px;
+                padding: 10px 10px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                
+                justify-content: center;               
             }
         }
     }
@@ -230,6 +232,75 @@ const list = [
                 font-family: 'Noto Nastaliq Urdu', serif;               
                 font-size: 18px;
             }
+}
+
+.btn {
+  margin-top: 30px;
+  border-radius: 15px;
+  font-family: Merienda;
+  position: relative;
+  padding: 1rem 3rem;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #e55a89;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: hsl(332, 100%, 60%);
+  border: 1px solid hsl(332, 100%, 60%);
+  outline: transparent;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: 0.25s;
+
+  &:hover {
+    background: hsl(332, 100%, 60%);
+  }
+
+  &-primary {
+    --hue: 187;
+  }
+
+  &-ghost {
+    color: hsl(332, 100%, 60%);
+    background-color: #f9e9eebe;
+    border-color: hsl(332, 100%, 60%);
+
+    &:hover {
+      color: #e55a89;
+    }
+  }
+
+  &-shine {
+    color: #e55a89;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        hsla(332, 100%, 41%, 0.5),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: 0.6s;
+    }
+
+    &:hover {
+      background: transparent;
+      box-shadow: 0 0 20px 10px hsla(332, 100%, 41%, 0.5);
+    }
+
+    &:hover::before {
+      transform: translateX(100%);
+    }
+  }
 }
 
 </style>
