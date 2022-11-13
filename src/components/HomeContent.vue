@@ -21,20 +21,32 @@
             </div>
         </div>
 
-        <div class="photo-list">
-            <div class="photo-list-grouping" v-for="item in list" :key="item.id">
-                <div class="grouping-name">
-                    {{ item.groupingName }}
-                </div>
-                <div class="photo-list-main">
-                    <div class="photo-list-item" v-for="info in item.child" :key="info.id"
-                        :style="{background: 'url(' + info.img + ')'}">
-                    <div class="photo-name">{{ info.photoName }}</div>
-                    <div class="read-more">Read More</div>
-                    </div>
-                </div>
+        <div class="container">
+    <div class="card">
+        <img src="../assets/image11.jpg" alt="Waves" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">Waves</h5>
+            <p class="card-text">The ocean is never still.</p>
+            <a href="#" class="cardbtn">More</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="../assets/image15.jpeg" alt="The Sea" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">The Town</h5>
+                <p class="card-text">The whole island is remarkable for its beautiful scenery and its fertility.</p>
+                <a href="#" class="cardbtn">More</a>
             </div>
         </div>
+        <div class="card">
+            <img src="../assets/image14.jpeg" alt="The Myth" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">The Myth</h5>
+                <p class="card-text">A lasting impact on our perceived memory of a place.</p>
+                <a href="#" class="cardbtn">More</a>
+            </div>
+        </div>
+    </div>
         
         <div class="bot-list">
             <div class="featured">
@@ -72,45 +84,6 @@
 //     tag.toLowerCase().includes(input.value.toLowerCase()))
 // }
 
-   
-const list = [
-    {
-        groupingName: 'Trending Photography',
-        id: 1,
-        child: [
-            {
-                photoName: 'Waves',
-                id: 1,
-                img: require('../assets/image11.jpg')
-            },
-            {
-                photoName: 'The Sea',
-                id: 2,
-                img: require('../assets/image15.jpeg')
-            },
-            {
-                photoName: 'The Myth',
-                id: 3,
-                img: require('../assets/image14.jpeg')
-            },
-            {
-                photoName: 'The Bar',
-                id: 4,
-                img: require('../assets/image13.jpeg')
-            },
-            {
-                photoName: 'The View',
-                id: 1,
-                img: require('../assets/view.jpg')
-            },
-            {
-                photoName: 'The Hill',
-                id: 1,
-                img: require('../assets/image9.png')
-            }
-        ]
-    },
-]
 </script>
 
 <style lang="less" scoped>
@@ -120,7 +93,7 @@ const list = [
         padding-top: 170px;
         height: 450px;
         width: 100%;
-        background: url(../assets/new_homecontent.jpg);
+        background: url(../assets/edit_profile_bg2.jpg);
         background-size: cover;
         display: flex;
         flex-direction: row;
@@ -156,57 +129,7 @@ const list = [
             flex: 1
         }
     }
-    .photo-list {
-          text-align: center;
-          width: 1300px;
-          padding-bottom: 30px;
-          font-family: Merienda;
-          .photo-list-grouping {
-              .grouping-name {
-                  margin: 30px 0 30px 0;
-                  font-size: 36px;
-                  letter-spacing: 0 !important;
-              }
-              .photo-list-main {
-                  display: flex;
-                  flex-wrap: wrap;
                   
-                  .photo-list-item {
-                      height: 150px;
-                      width: 410px;
-                      margin: 10px 10px 10px 0;                      
-                      padding-top: 150px;
-
-                      .photo-name {
-                          width: 105px;
-                          height: 35px;
-                          border: 1px solid #fff;
-                          font-size: 18px;
-                          font-weight: bold;
-                          margin-bottom: 5px;
-                          background: #fbf8f9a9;
-                          color: #e55a89;
-                          line-height: 35px;
-                      }
-                      .read-more {
-                          width: 105px;
-                          height: 33px;
-                          border: 1px solid #fff;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                          background: #fbf8f9;
-                          color: #000;
-                          cursor: pointer;
-                          &:hover {
-                              background: #ff5d94;
-                              color: #fff;
-                          }
-                      }
-                  }
-              }
-          }
-      }
     .bot-list {
         height: 380px;
         background: #f2f2f2;
@@ -302,5 +225,81 @@ const list = [
     }
   }
 }
+
+.container {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0 0 80px 150px;
+  
+  .card {
+    margin: 1em;
+
+    .card-img-top {
+      position: relative;
+      z-index: 2;
+      width: 310px;
+      height: 222px;
+      transform: translateY(52%);
+      transition: 0.5s;
+      border-radius: 5px;
+    }
+
+    .card-body {
+      z-index: 1;
+      box-sizing: border-box;
+      padding: 1.25em;
+      height: 220px;
+      background: white;
+      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.056),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.081), 0 12.5px 10px rgba(0, 0, 0, 0.1),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.119),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.144), 0 100px 80px rgba(0, 0, 0, 0.2);
+      transform: translateY(-50%);
+      transition: 0.5s;
+      border-radius: 5px;
+
+      .card-title {
+        margin: 0 0 0.3em 0;
+        font-size: 1.25em;
+        font-weight: bold;
+        line-height: 1.2;
+        font-family: Merienda;
+      }
+
+      .card-text {
+        margin: 0 0 1em 0;
+        font-family: 'Noto Nastaliq Urdu', serif;
+      }
+
+      .cardbtn {
+        padding: 0.375em 0.75em;
+        color: rgb(223, 63, 137);
+        text-decoration: none;
+        line-height: 1.5;
+        border: 1px solid rgb(223, 63, 137);
+        border-radius: 0.25em;
+        transition: 0.5s;
+
+        &:hover {
+          color: white;
+          background: rgb(223, 63, 137);
+        }
+      }
+    }
+
+    &:hover {
+      .card-img-top {
+        transform: translateY(2%);
+      }
+
+      .card-body {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
 
 </style>
