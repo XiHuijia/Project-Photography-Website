@@ -8,33 +8,33 @@
         </div>
 
         <div class="SaveInfo">
-        <form id="myProfile">
-            <br><br>
-            <label for="name">User Name </label> <br>
-            <input type="text" id="name" required=true placeholder="Enter a New User Name" style="font-family: 'Noto Nastaliq Urdu', serif; width:200px;height:30px"> <br> 
-            
-            <br>
-            <label for="gender">Your gender</label><br>
-            <select v-model="selected" style="width:200px;height:30px">
-            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Female</option>
-            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Male </option>
-            <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> I prefer not to say. </option>
-            </select>
+            <form id="myProfile">
+                <br><br>
+                <label for="name">User Name </label> <br>
+                <input type="text" id="name" required=true placeholder="Enter a New User Name" style="font-family: 'Noto Nastaliq Urdu', serif; width:200px;height:30px"> <br> 
+                
+                <br>
+                <label for="gender">Your gender</label><br>
+                <select v-model="selected" style="width:200px;height:30px">
+                <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Female</option>
+                <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Male </option>
+                <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> I prefer not to say. </option>
+                </select>
 
-            <br><br> 
-            <label for="intro">Self-Introduction</label><br>
-            <input type="text" id="intro" required=true placeholder="Introduce Yourself to the Community!" style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
-            
-            <br><br>
-            <label for="prize">Prizes Won</label><br>
-            <input type="text" id="prize" required=true placeholder="Enter the Prizes You Won." style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
-            
-            <br><br>
-            <div>
-                <button class="save" v-on:click="savetofs()"> Save </button>
-            </div>
-            <br><br>
-        </form>
+                <br><br> 
+                <label for="intro">Self-Introduction</label><br>
+                <input type="text" id="intro" required=true placeholder="Introduce Yourself to the Community!" style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
+                
+                <br><br>
+                <label for="prize">Prizes Won</label><br>
+                <input type="text" id="prize" required=true placeholder="Enter the Prizes You Won." style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
+                
+                <br><br>
+                <div>
+                    <button class="save" v-on:click="savetofs()"> Save </button>
+                </div>
+                <br><br>
+            </form>
         </div>
     </div>
 
@@ -82,14 +82,11 @@ export default {
     font-size: 22px;
     text-align: center;
     align-items: center;
-    margin-top: -300px;
 }
-
 .profile_image {
-    width: 500px;
-    height: 500px;
-    margin-left: 500px;
-
+    width: 250px;
+    height: 250px;
+    margin: 50px 0 0 490px;
 }
 input:hover {
     box-shadow: 5px 5px pink;
