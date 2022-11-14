@@ -34,7 +34,7 @@
 
                 <div class="profile-bio">
 
-                    <p><span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
+                    <p>I am a full time photographer who has been in the business for many years now. Before ever shooting professionally I have always found light and people to be very interesting subjects that inspires me to no end. I am often fascinated with exploring the creative possibilities with my subjects and relish in the discovery of undiscovered possibility.  📷✈️🏕️</p>
 
                 </div>
 
@@ -46,235 +46,32 @@
 
         </header>
 
-        <!-- <main> -->
-
         <div class="container2">
-
-            <div class="gallery">
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-
-                    </div>
-
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUIaa5EDeP4uV_4eRT6TrfeG6vvujBTqMA1w&usqp=CAU" alt="The Peak" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">The Peak</h5>
+                    <p class="card-text">The adventure starts.</p>
+                    <a href="#" class="cardbtn">More</a>
                 </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 89</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 5</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-type">
-
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                    </div>
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-type">
-
-                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
-
-                    </div>
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 38</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-type">
-
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                    </div>
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 94</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-type">
-
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                    </div>
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 52</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 4</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 66</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-type">
-
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                    </div>
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 45</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 34</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 41</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-type">
-
-                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
-
-                    </div>
-
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 30</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
             </div>
-            <!-- End of gallery -->
-
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYL6nIvJP72d-YQO2iUXcwZfh8875iKYUyTg&usqp=CAU" alt="The Mountain" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">The Mountain</h5>
+                        <p class="card-text">California Streaming</p>
+                        <a href="#" class="cardbtn">More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://img.freepik.com/premium-vector/aesthetic-mountain-wallpaper-background-image_584397-109.jpg?w=996" alt="Pink" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">The Pink Forest</h5>
+                        <p class="card-text">Aesthetic mountain wallpaper background image</p>
+                        <a href="#" class="cardbtn">More</a>
+                    </div>
+                </div>
         </div>
-        <!-- End of container -->
-
-        <!-- </main> -->
     <MyFooter/>
 </template>
 
@@ -341,74 +138,30 @@ export default {
 
 </script>
 
-<style lang="less">
-:root {
-    font-size: 10px;
-}
+<style lang="less" scoped>
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Merienda;
-    min-height: 100vh;
-    background-color: #fafafa;
-    color: #262626;
-    padding-bottom: 3rem;
-}
-
-img {
-    display: block;
-}
-
-.container{
+.container {
     margin: 0 auto;
-    padding: 0 10rem;
-    background-image: url(../assets/edit_profile_bg2.jpg);
+    max-width: 93.5rem;
+    background-image: url(https://img.freepik.com/free-vector/hand-drawn-minimal-background_23-2148999828.jpg?w=2000);
     background-size: cover;
     font-family: Merienda;
-    color: rgb(255, 255, 255);
+    color: rgb(20, 19, 20);
+    text-align: center;
 }
-
-.container2{
-    margin-top: -200px ;
-    padding: 0 10rem;
-    background-image: url(../assets/edit_profile_bg2.jpg);
-    background-size: cover;
-    font-family: Merienda;
-    color: rgb(255, 255, 255);
-}
-
-.visually-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-}
-
-/* Profile Section */
 
 .profile {
-    padding: 5rem 0;
+    padding: 5rem 0 0 5rem;
+    display: flex;
+    flex-wrap: wrap;
 }
-
-.profile::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 .profile-image {
     float: left;
-    width: calc(33.333% - 1rem);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 3rem;
+    margin-left:200px;
+    margin-right: 10px;
 }
 
 .profile-image img {
@@ -456,119 +209,16 @@ img {
 }
 
 .profile-real-name,
-.profile-stat-count,
-.profile-edit-btn {
+.profile-stat-count{
     font-weight: 600;
 }
-
-/* Gallery Section */
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -1rem -1rem;
-    padding-bottom: 3rem;
-}
-
-.gallery-item {
-    position: relative;
-    flex: 1 0 22rem;
-    margin: 1rem;
-    color: #fff;
-    cursor: pointer;
-}
-
-.gallery-item:hover .gallery-item-info,
-.gallery-item:focus .gallery-item-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.gallery-item-info {
-    display: none;
-}
-
-.gallery-item-info li {
-    display: inline-block;
-    font-size: 1.7rem;
-    font-weight: 600;
-}
-
-.gallery-item-likes {
-    margin-right: 2.2rem;
-}
-
-.gallery-item-type {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2.5rem;
-    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
-}
-
-.fa-clone,
-.fa-comment {
-    transform: rotateY(180deg);
-}
-
-.gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-/* Media Query */
-
-@media screen and (max-width: 40rem) {
-    .profile {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 4rem 0;
-    }
-
-    .profile::after {
-        display: none;
-    }
-
-    .profile-image,
-    .profile-user-settings,
-    .profile-bio,
-    .profile-stats {
-        float: none;
-        width: auto;
-    }
 
     .profile-image img {
-        width: 7.7rem;
-    }
-
-    .profile-user-settings {
-        flex-basis: calc(100% - 10.7rem);
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 1rem;
+        width: 15rem;
     }
 
     .profile-user-name {
         font-size: 2.2rem;
-    }
-
-    .profile-edit-btn {
-        order: 1;
-        padding: 0;
-        text-align: center;
-        margin-top: 1rem;
-    }
-
-    .profile-edit-btn {
-        margin-left: 0;
     }
 
     .profile-bio {
@@ -580,9 +230,8 @@ img {
     .profile-bio,
     .profile-stats {
         flex-basis: 100%;
-    }
-
-    .profile-stats {
+        float: none;
+        width: auto;
         order: 1;
         margin-top: 1.5rem;
     }
@@ -604,17 +253,6 @@ img {
     .profile-stat-count {
         display: block;
     }
-}
-
-/* Spinner Animation */
-
-@keyframes loader {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@supports (display: grid) {
     .profile {
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -627,23 +265,13 @@ img {
         grid-row: 1 / -1;
     }
 
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-        grid-gap: 2rem;
-    }
-
     .profile-image,
     .profile-user-settings,
     .profile-stats,
-    .profile-bio,
-    .gallery-item,
-    .gallery {
+    .profile-bio{
         width: auto;
         margin: 0;
     }
-
-    @media (max-width: 40rem) {
         .profile {
             grid-template-columns: auto 1fr;
             grid-row-gap: 1.5rem;
@@ -672,16 +300,6 @@ img {
         .profile-stats {
             margin: 0;
         }
-    }
-}
-
-.content{
-    display: inline-block;
-    font-size: 50px;
-    text-align: center;
-    align-items: center;
-    margin:60px 300px 100px 350px;
-}
 
 .btn {
   font-family: Merienda;
@@ -732,6 +350,81 @@ img {
 @keyframes glow {
   to {
     background-position: 300%;
+  }
+}
+
+.container2 {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0 0 80px 150px;
+  
+  .card {
+    margin: 1em;
+
+    .card-img-top {
+      position: relative;
+      z-index: 2;
+      width: 310px;
+      height: 222px;
+      transform: translateY(52%);
+      transition: 0.5s;
+      border-radius: 5px;
+    }
+
+    .card-body {
+      z-index: 1;
+      box-sizing: border-box;
+      padding: 1.25em;
+      height: 220px;
+      background: white;
+      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.056),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.081), 0 12.5px 10px rgba(0, 0, 0, 0.1),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.119),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.144), 0 100px 80px rgba(0, 0, 0, 0.2);
+      transform: translateY(-50%);
+      transition: 0.5s;
+      border-radius: 5px;
+
+      .card-title {
+        margin: 0 0 0.3em 0;
+        font-size: 1.25em;
+        font-weight: bold;
+        line-height: 1.2;
+        font-family: Merienda;
+      }
+
+      .card-text {
+        margin: 0 0 1em 0;
+        font-family: 'Noto Nastaliq Urdu', serif;
+      }
+
+      .cardbtn {
+        padding: 0.375em 0.75em;
+        color: rgb(223, 63, 137);
+        text-decoration: none;
+        line-height: 1.5;
+        border: 1px solid rgb(223, 63, 137);
+        border-radius: 0.25em;
+        transition: 0.5s;
+
+        &:hover {
+          color: white;
+          background: rgb(223, 63, 137);
+        }
+      }
+    }
+
+    &:hover {
+      .card-img-top {
+        transform: translateY(2%);
+      }
+
+      .card-body {
+        transform: translateY(0);
+      }
+    }
   }
 }
 

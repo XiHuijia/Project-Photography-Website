@@ -97,7 +97,7 @@ export default {
   margin-right: auto;
   margin-top: -70px;
   height: 180px;
-  background: url(../assets/background2.png);
+  background: url(https://t4.ftcdn.net/jpg/04/97/86/15/360_F_497861573_EX9cjKXjVLBhbHrawjVK8M3BthLDS5lE.jpg);
   background-size:cover;
   width: 100%;
   }
