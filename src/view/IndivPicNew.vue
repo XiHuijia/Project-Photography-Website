@@ -12,7 +12,7 @@
         </div>
         <!-- <div id="location1">{{pic.Location}}</div> -->
         
-        <button class="downloadPic" @click="download()">Download</button> 
+        <button class="downloadPic" @click="download(getImgUrl(path), title)">Download</button> 
         <br><br>
         <button class="purchasePic" @click="goPurchase(id, path, title)">Purchase</button> 
         <br><br>
@@ -43,6 +43,7 @@ export default {
         this.id = this.$route.params.id,
         this.path = this.$route.params.photo,
         this.title = this.$route.params.title
+        console.log(this.path)
     },
 
     
@@ -56,8 +57,11 @@ export default {
             return require('@/assets/' + img);
         },
         
-        download() {
-
+        download(link, filename) {
+            let a = document.createElement('a')
+            a.href = link
+            a.download = filename 
+            a.dispatchEvent(new MouseEvent('click'))
         },
 
         goPurchase(id, image, name){
