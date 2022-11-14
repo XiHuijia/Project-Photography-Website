@@ -19,13 +19,14 @@
         <button onclick="javascript:history.back(-1);">Go Back</button>
     </div>
     </div>
-
+    <CommentPage/>
     <MyFooter/>
 </template>
 
 <script>
 import HeadLine from '@/components/HeadLine.vue'
 import MyFooter from '@/components/MyFooter.vue'
+import CommentPage from '@/components/CommentPage.vue'
 // import axios from 'Axios';
 // import {saveAs} from 'file-saver';
 
@@ -50,6 +51,7 @@ export default {
     components: {
         HeadLine,
         MyFooter,
+        CommentPage,
     },
 
     methods: {
