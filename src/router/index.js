@@ -9,7 +9,8 @@ import MyPortfolio from '@/view/MyPortfolio.vue'
 import UploadPicNew from '@/view/UploadPicNew.vue'
 import IndivPic from '@/view/IndivPicNew.vue'
 import PurchasePic from '@/view/PurchasePic.vue'
-
+import FollowingPage from '@/view/FollowingPage.vue'
+import FollowerPage from '@/view/FollowerPage.vue'
 
 const routes = [
   {
@@ -70,6 +71,18 @@ const routes = [
     path:'/purchase/:id/:photo/:title',
     name: 'PurchasePic',
     component: PurchasePic
+  }
+  ,
+  {
+    path: "/following",
+    name: "FollowingPage",
+    component: FollowingPage,
+  }
+  ,
+  {
+    path: "/follower",
+    name: "FollowerPage",
+    component: FollowerPage,
   }
 ]
 
