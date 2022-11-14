@@ -15,6 +15,8 @@
         <button class="downloadPic" @click="download()">Download</button> 
         <br><br>
         <button class="purchasePic" @click="goPurchase(id, path, title)">Purchase</button> 
+        <br><br>
+        <button onclick="javascript:history.back(-1);">Go Back</button>
     </div>
     </div>
 
@@ -69,6 +71,7 @@ export default {
 .container{
     width: 100%;
     height: 700px;
+    font-family: Merienda;
 }
 .photocontainer{
     margin-top: 40px;
@@ -89,6 +92,7 @@ img{
     font-display: justify;
     color: black;
 }
+
 #warn{
     font-size: 15px;
     color: grey;
