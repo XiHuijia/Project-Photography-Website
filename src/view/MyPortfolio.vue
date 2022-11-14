@@ -12,6 +12,7 @@
           </div>
         </div>
     </div>
+    <button onclick="javascript:history.back(-1);">Go Back</button>
   <MyFooter/>
 </template>
 
@@ -125,4 +126,19 @@ export default {
                 
             }
         }
+
+button{
+    text-align:center;
+    margin: auto;
+    cursor: pointer;
+    font-family: Merienda;
+    padding: 8px 20px;
+    border-radius: 15px;
+}
+button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
+}
   </style>
