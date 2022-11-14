@@ -78,10 +78,10 @@ export default {
     methods: {
         async savetofs(){
             var a = document.getElementById("url").value
-            var b = document.getElementById("title1").value
-            var c = document.getElementById("location1").value
-            var d = document.getElementById("price1").value
-            var e = document.getElementById("tag1").value
+            // var b = document.getElementById("title1").value
+            // var c = document.getElementById("location1").value
+            // var d = document.getElementById("price1").value
+            // var e = document.getElementById("tag1").value
             alert("Saving coin: " + a)
             try{
                 console.log("entering try");
