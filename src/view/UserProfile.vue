@@ -11,6 +11,7 @@
                     <img src="@/assets/1st_profile.png" alt="">
 
                 </div>
+                
 
                 <div class="profile-user-settings">
 

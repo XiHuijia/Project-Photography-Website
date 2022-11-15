@@ -4,6 +4,7 @@
         <br><br>
         <h1> Greeting! You can edit your profile here. </h1>
 
+        <button onclick="javascript:history.back(-1);">Go Back</button>
 
         <div class="profile_image" v-if="this.showIcon">
             <img :src= "url" alt="Preview" id="IconImg"/>
@@ -12,13 +13,15 @@
             <img src="@/assets/profilephoto.png" id="IconImg">
         </div>
         <div class = "chooseicon">
+            <p>Upload New Profile Photo: </p>
             <input
             type="file"
             accept="image/*"
+            class = "save2"
             id="icon"
             @change="onIconChange"
             />
-            <label for="icon"><button class = "save" id="changeIconImg" @click="changeIcon()">Upload Image</button></label>
+            <!-- <label for="icon"><button class = "save" id="changeIconImg" @click="changeIcon()">Upload Image</button></label> -->
             <img
                 :src="previewicon"
                 alt="Preview"
@@ -26,8 +29,8 @@
                 class="uploading-image"
                 />
             <div id="changeIconBtnContainer">
-                <div v-if="this.iconStatus != 'static'"><button class = "save" id = "confirmChangeIcon" @click ="confirmChangeIcon()">Confirm Change</button></div> 
-                <div v-if="this.iconStatus != 'static'"><button  class = "save" id = "cancelChangeIcon" @click ="cancelChangeIcon()"> Cancel</button></div>
+                <div v-if="this.iconStatus != 'static'"><button class = "save2" id = "confirmChangeIcon" @click ="confirmChangeIcon()">Confirm Change</button></div> 
+                <div v-if="this.iconStatus != 'static'"><button  class = "save2" id = "cancelChangeIcon" @click ="cancelChangeIcon()"> Cancel</button></div>
             </div>
         </div>
 
@@ -96,7 +99,8 @@ export default {
             showIcon: false,
             url: ' ',
         }
-    },mounted(){
+    },
+    mounted(){
         const auth = getAuth()
         onAuthStateChanged(auth, (user) => {
             if(user){
@@ -151,6 +155,7 @@ export default {
                 console.log(docRef)
                 location.reload()
             }, 500)
+            console.alert("Profile image changed successfully!")
         },
         async uploadImage(userID) {
         if (this.icon) {
@@ -207,7 +212,8 @@ export default {
     margin: 50px 0 0 10px;
 }
 .profile_image img {
-        width: 15rem;
+        width: 20rem;
+        border-radius: 50%;
     }
 input:hover {
     box-shadow: 5px 5px pink;
@@ -232,6 +238,37 @@ input:hover {
 .save:hover{        
     background: #ff5d93b3;
     color: #fff;
+}
+
+.save2{
+    color: rgb(244, 147, 163);
+    font-size: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 10px 10px;
+    font-family: Merienda;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgb(249, 251, 253);
+    cursor: pointer;
+}
+.save2:hover{        
+    background: #ff5d93b3;
+    color: #fff;
+}
+
+button{
+    text-align:center;
+    margin: auto;
+    cursor: pointer;
+    font-family: Merienda;
+    padding: 8px 20px;
+    border-radius: 15px;
+}
+button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
 }
 </style>
 
