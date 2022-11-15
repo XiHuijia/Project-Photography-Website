@@ -1,9 +1,21 @@
 import { initializeApp } from "firebase/app";
-//import firebase from 'firebase';
+//import firebase from "./firebase";
+//import 'firebase/firestore';
 //import {initializeFirestore} from 'firebase/firestore';
 //import { getFirestore } from 'firebase/firestore';
 // import { getAuth } from 'firebase/auth';
 // import { getStorage } from "firebase/storage";
+// import firebase from 'firebase/compat/app';
+// import 'firebase/compat/firestore';
+// import 'firebase/compat/auth';
+
+// import firebase from 'firebase/compat/app';
+// import 'firebase/compat/firestore';
+// import 'firebase/compat/auth';
+
+//const firebase = require("firebase");
+// Required for side-effects
+//require("firebase/firestore");
 
 const firebaseConfig = {
   apiKey: "AIzaSyCUDVuRuqdeUOr7h2JpxynS_cxdII3yjiA",
@@ -17,9 +29,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 //firebase.initializeApp(firebaseConfig);
-//onst db = getFirestore(firebaseApp);
+//const db = getFirestore(firebaseApp);
 // const auth = getAuth();
 // const storage = getStorage(firebaseApp);
+//var db = firebase.firestore();
 
 export default firebaseApp;
 //export {db};
@@ -27,3 +40,12 @@ export default firebaseApp;
 //   experimentalForceLongPolling: true,
 //   useFetchStreams: false,
 // });
+//export {db};
+
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
+// const db = firebaseApp.firestore();
+// const auth = firebaseApp.auth();
+
+
+// export { auth };
+// export default db; 

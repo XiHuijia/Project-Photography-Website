@@ -30,7 +30,7 @@
                 <input type="text" id="tag1" required = "" placeholder="Add tag for this work">
             </div>
         </div>
-        <button class="btn" @click="upload()">Upload</button>
+        <button class="btn" type="button" @click="upload()">Upload</button>
     </form>
   </div>
   <MyFooter />
@@ -42,10 +42,10 @@ import firebaseApp from '../firebase.js';
 import HeadLine from '@/components/HeadLine.vue'
 import MyFooter from '@/components/MyFooter.vue'
 //import firebase from '../uifire.js';
-//import {db} from '../firebase.js';
+//import db from '../firebase.js';
 import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
-//import {addDoc} from "firebase/firestore";
+import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 //const auth = firebase.auth();
 //const db = firebase.firestore();
@@ -90,11 +90,11 @@ export default {
 
     methods: {
         async upload(){
-            // var pic = document.getElementById("photo1").value
-            // var tit = document.getElementById("title1").value
-            // var loc = document.getElementById("location1").value
-            // var pri = document.getElementById("price1").value
-            // var t = document.getElementById("tag1").value
+            var pic = document.getElementById("photo1").value
+            var tit = document.getElementById("title1").value
+            var loc = document.getElementById("location1").value
+            var pri = document.getElementById("price1").value
+            var t = document.getElementById("tag1").value
             //var name = this.user.displayName;
             //var url = URL.createObjectURL(this.pic);
             //alert("Uploading photo: " + pic)
@@ -102,9 +102,9 @@ export default {
             try{
                 console.log("entering try");
                 // const docRef = 
-                // await setDoc(doc(db, String(this.user), this.pic), {
-                //     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
-                // });//check syntax
+                await setDoc(doc(db, String(this.user.uid), pic), {
+                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
+                });//check syntax
                 // console.log(docRef);
                 // alert(docRef)
                 console.log(db)
