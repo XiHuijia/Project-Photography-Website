@@ -1,5 +1,5 @@
 <template>
-    <HeadLine />
+    <HeadLine/>
   <div class="page">
     <form id = "myform">
         <h1>Upload Your Work Here!</h1>
@@ -84,7 +84,7 @@ export default {
                 });
                 console.log(db)
                 console.log(this.user.uid)
-                alert("Successful Upload!");
+                alert("Successfully Uploaded!");
             }
             catch(error) {
                 console.error("Error uploading photo: ", error);

@@ -8,7 +8,7 @@
   
   <div id = "section1">
   <label for="name" id = "enterDisplayName">Your Display Name:</label>
-  <input type = "text" id = "displayName" placeholder="username" v-model= "displayname"> <br>
+  <input type = "text" id = "displayName" placeholder="Username" v-model= "displayname"> <br>
   </div>
 
   <div id = "section2">
@@ -72,6 +72,9 @@ export default {
 <style scoped>
 #container{
   height: 300px;
+  margin-left: 150px;
+  font-family: Merienda;
+
 }
 #image {
   height: 30px;
@@ -82,20 +85,23 @@ export default {
   margin-top: -5px;
 }
 #comments {
+  font-family: Merienda;
   margin-left: 50px;
   text-align: left;
   margin-bottom: -10px;
 }
 
 #nameTxt {
+  font-family: Merienda;
   text-align: left;
   margin-left: 10px;
 }
 
 #section1 {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 #enterDisplayName {
+  font-family: Merienda;
   font: bold;
   text-align: left;
   float: left;
@@ -103,34 +109,41 @@ export default {
 
 }
 #displayName {
+  font-family: Merienda;
   text-align: left;
   float: left;
   margin-left: 10px;
   align: left;
 }
 #yourComment {
+  font-family: Merienda;
   float: left;
   margin-left: 50px;
   text-align: left;
 }
 #comment {
+  font-family: Merienda;
   float: left;
-  margin-left: 38px;
+  margin-left: 46px;
 }
 textarea {
+  font-family: Merienda;
   width: 40%;
-  height: 30px;
+  height: 50px;
   text-align: left;
 }
 textarea:hover{
+  font-family: Merienda;
   box-shadow: 3px 3px grey;
   border-radius: 2px
 }
 input:hover {
+  font-family: Merienda;
   box-shadow: 3px 3px grey;
   border-radius: 2px
 }
 #savebutton{
+  font-family: Merienda;
   float: left;
   margin-left: 50px;
   background-color: black;
@@ -142,6 +155,7 @@ input:hover {
   float: left
 }
 #savebutton:hover{
+  font-family: Merienda;
   float: left;
   margin-left: 50px;
   background-color: rgb(34, 33, 33);
