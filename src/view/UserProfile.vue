@@ -1,6 +1,6 @@
-<template>
+<template >
     <HeadLine/>
-    <header>
+    <header v-if="user">
 
         <div class="container">
 
@@ -14,7 +14,7 @@
 
                 <div class="profile-user-settings">
 
-                    <h1 class="profile-user-name">{{user.displayName}}'s Profile</h1>
+                    <h1 class="profile-user-name">{{username}}'s Profile</h1>
 
                     <br>
 
@@ -80,11 +80,16 @@ import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from '@/components/MyFooter.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "vue-router";
-// import firebaseApp from '../firebase.js';
-// import { getFirestore } from "firebase/firestore"
-// import { collection, getDocs} from "firebase/firestore";
-// const db = getFirestore(firebaseApp);
-
+import firebaseApp from "../firebase.js";
+import {
+    getFirestore,
+    setDoc,
+    doc,
+    getDocs,
+    collection,
+    } from "firebase/firestore";
+    const db = getFirestore(firebaseApp);
+    const auth = getAuth();
 export default {
     components:{
         HeadLine,
@@ -114,14 +119,48 @@ export default {
         }
     },
 
-    mounted(){
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if(user) {
-          this.user = user;
-          //display(user)
-        }
+    mounted() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user.email;
+        console.log(user.email);
+        console.log(this.user);
+        createUser(this,user.displayName);
+      }
     });
+    async function createUser(self,username) {
+      try {
+        let data = {
+          username: username,
+          email: self.user,
+          bio: "This is description",
+          followers: [],
+          following: [],
+          requests: [],
+          chatrooms:[],
+        };
+        let userExits = false;
+        let userInfo = await getDocs(collection(db, "Users"));
+        userInfo.forEach((doc) => {
+          // console.log(doc.id, " => ", doc.data());
+          if (doc.id == self.user) {
+            userExits = true;
+          }
+        });
+        if (!userExits) {
+          // Create user only if this is a new user
+          console.log(self.user);
+          console.log(data);
+          const docNow = await setDoc(doc(db, "Users", self.user), data);
+          console.log(docNow);
+        //   alert("Please Login or register before proceeding.")
+        }
+      } catch (error) {
+        console.error("Error adding document:", error);
+      }
+    }
+  }
+}
 
 //     async function display(user){
 //     let z = await getDocs(collection(db, String(user)))    
@@ -141,8 +180,6 @@ export default {
 //     })        
 //   }
 
-  },
-}
 
 </script>
 
