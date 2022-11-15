@@ -6,6 +6,15 @@
 <script>
 export default {
   name: 'App',
+
+  // mounted() {
+  //   this.$router.afterEach((to, from, next) => {
+  //     to
+  //     from
+  //     next
+  //     window.scrollTo(0,0)
+  //   })
+  // }
 }
 
 // import { onBeforeMount } from "vue";
