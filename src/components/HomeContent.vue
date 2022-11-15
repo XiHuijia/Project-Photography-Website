@@ -228,7 +228,7 @@ function filteredList(){
 }
 
 .container {
-  width: 100px;
+  width: 1000px;
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -240,7 +240,7 @@ function filteredList(){
     .card-img-top {
       position: relative;
       z-index: 2;
-      width: 310px;
+      width: 320px;
       height: 222px;
       transform: translateY(52%);
       transition: 0.5s;
@@ -251,7 +251,8 @@ function filteredList(){
       z-index: 1;
       box-sizing: border-box;
       padding: 1.25em;
-      height: 220px;
+      height: 222px;
+      width: 310px;
       background: white;
       box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.056),
         0 6.7px 5.3px rgba(0, 0, 0, 0.081), 0 12.5px 10px rgba(0, 0, 0, 0.1),
@@ -262,7 +263,7 @@ function filteredList(){
       border-radius: 5px;
 
       .card-title {
-        margin: 0 0 0.3em 0;
+        margin: 0 0 0.75em 0;
         font-size: 1.25em;
         font-weight: bold;
         line-height: 1.2;

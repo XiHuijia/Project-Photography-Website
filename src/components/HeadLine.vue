@@ -11,7 +11,7 @@
               <img id = "touxiang" src = "../assets/profilephoto.png" v-on:click="menuToggle();">
             <div id = "touxiang_menu">
               <ul>
-                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/userprofile">My Profile</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
                 <li><a href="/upload">New Post</a></li>
                 <li><SignOut/></li>
@@ -97,7 +97,7 @@ export default {
   margin-right: auto;
   margin-top: -70px;
   height: 180px;
-  background: url(../assets/background2.png);
+  background: url(https://t4.ftcdn.net/jpg/04/97/86/15/360_F_497861573_EX9cjKXjVLBhbHrawjVK8M3BthLDS5lE.jpg);
   background-size:cover;
   width: 100%;
   }
@@ -148,9 +148,6 @@ nav ul li a:hover {
 
 .profile{
     font-family: Merienda;
-    // margin-right: -25px;
-    // margin-top:6px;
-    // margin-bottom: -10px;
     width: 300px;
     height: 50px;
     font-size: 20px;
