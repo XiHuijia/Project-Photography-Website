@@ -35,7 +35,10 @@
     </div>
     </div>
     
-    <h2 id = "summary">Summary</h2>
+    <h2 id = "summary">Summary
+      <br> Price: {{this.price}}
+    </h2>
+ 
     <h2 id = "quantity">Quantity: 1</h2><br><br><br><br><br><br>
     <div id = "imagecontainer">
       <h2>{{this.title}}</h2>
@@ -54,13 +57,15 @@ export default{
       id: false,
       path: false,
       title: false,
+      price: false
     }
   },
   
   created() {
         this.id = this.$route.params.id,
         this.path = this.$route.params.photo,
-        this.title = this.$route.params.title
+        this.title = this.$route.params.title,
+        this.price = this.$route.params.price
     },
 
     name: "PurchasePic",

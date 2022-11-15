@@ -6,15 +6,22 @@
             <p id="warn">The copyright and portrait rights have been authorized for personal use and corporate commercial use.</p>
         </div>
     <div class = "text">
-        <!-- <div id="author1">{{pic.Author}}</div> -->
         <div id="title1">
             <h2>{{this.title}}</h2>
         </div>
+        <div id="author">Author: {{this.author}}</div>
+        <div id="email"> Email: {{this.email}}</div>
+        <div id="photoinfo">
+            Tag: {{this.tag}} <br>
+            Location: {{this.location}} <br>
+            Price: {{this.price}} <br>
+        </div> 
+        
         <!-- <div id="location1">{{pic.Location}}</div> -->
         
         <button class="downloadPic" @click="download(getImgUrl(path), title)">Download</button> 
         <br><br>
-        <button class="purchasePic" @click="goPurchase(id, path, title)">Purchase</button> 
+        <button class="purchasePic" @click="goPurchase(id, path, title, price)">Purchase</button> 
         <br><br>
         <button onclick="javascript:history.back(-1);">Go Back</button>
     </div>
@@ -37,13 +44,23 @@ export default {
             id: false,
             path: false,
             title: false,
+            author: false,
+            email: false,
+            tag: false,
+            location: false,
+            price: false
         }
     },
 
     created() {
         this.id = this.$route.params.id,
         this.path = this.$route.params.photo,
-        this.title = this.$route.params.title
+        this.title = this.$route.params.title,
+        this.author = this.$route.params.author,
+        this.email = this.$route.params.email,
+        this.tag = this.$route.params.tag,
+        this.location = this.$route.params.location,
+        this.price = this.$route.params.price,
         console.log(this.path)
     },
 
@@ -66,8 +83,8 @@ export default {
             a.dispatchEvent(new MouseEvent('click'))
         },
 
-        goPurchase(id, image, name){
-            this.$router.push({name: 'PurchasePic', params: { id:id, photo: image, title:name }})
+        goPurchase(id, image, name, price){
+            this.$router.push({name: 'PurchasePic', params: { id:id, photo: image, title:name, price: price }})
         },
     }
 }
@@ -98,6 +115,24 @@ img{
     font-size: 20px;
     font-display: justify;
     color: black;
+}
+#author{
+    margin-left: 150px;
+    text-align: left;
+}
+
+#email{
+    margin-left: 150px;
+    text-align: left;
+}
+
+#photoinfo{
+    font-size: 18px;
+    color:grey;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 150px;
 }
 
 #warn{

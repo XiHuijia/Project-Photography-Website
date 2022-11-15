@@ -50,7 +50,7 @@
         <div class="container2">
             <div class="card">
                 <img src="../assets/image19.jpg" alt="The Peak" class="card-img-top">
-                <div class="card-body" @click="goDetail(1, 'The Peak', 'image19.jpg')">
+                <div class="card-body" @click="goDetail(1, 'The Peak', 'image19.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
                     <h5 class="card-title">The Peak</h5>
                     <p class="card-text">The adventure starts.</p>
                     <a href="#" class="cardbtn">More</a>
@@ -58,7 +58,7 @@
             </div>
             <div class="card">
                 <img src="../assets/image20.jpg" alt="The Mountain" class="card-img-top">
-                    <div class="card-body" @click="goDetail(2, 'The Mountain', 'image20.jpg')">
+                    <div class="card-body" @click="goDetail(2, 'The Mountain', 'image20.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
                         <h5 class="card-title">The Mountain</h5>
                         <p class="card-text">California Streaming</p>
                         <a href="#" class="cardbtn">More</a>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="card">
                     <img src="../assets/image21.jpg" alt="Pink" class="card-img-top">
-                    <div class="card-body" @click="goDetail(3, 'Pink', 'image21.jpg')">
+                    <div class="card-body" @click="goDetail(3, 'Pink', 'image21.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
                         <h5 class="card-title">The Pink Forest</h5>
                         <p class="card-text">Aesthetic mountain wallpaper background image</p>
                         <a href="#" class="cardbtn">More</a>
@@ -114,10 +114,11 @@ export default {
     },
 
     methods: {
-        goDetail (id, name, image) {
+        goDetail (id, name, image, author, email, tag, price, location) {
             console.log("go to detail page")
             console.log(id, name, image)
-            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name }})
+            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name,
+            author: author, email: email, tag: tag, location: location, price: price }})
         }
     },
 

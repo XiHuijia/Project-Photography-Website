@@ -51,18 +51,23 @@ export default {
     });
 
     async function display(user){
-    let z = await getDocs(collection(db, String(user)))    
+    let z = await getDocs(collection(db, user.uid))    
     let ind = 1
 
     z.forEach((docs) => {
       let yy = docs.data()
-
-      var photo = (yy.pic)
-      var title = (yy.tit)
-      var location = (yy.loc)
-      var price = (yy.pri)
-      var tag = (yy.t)
-      
+      console.log(yy)
+      var photo = (yy.Photo)
+      console.log(photo)
+      var title = (yy.Title)
+      console.log(title)
+      var location = (yy.Location)
+      console.log(location)
+      var price = (yy.Price)
+      console.log(price)
+      var tag = (yy.Tag)
+      console.log(tag)
+      console.log(this.list)
       this.list.push({photoName: title, id: ind, img: photo, loc: location, price: price, tag: tag})
       ind++;
       

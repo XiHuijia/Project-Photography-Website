@@ -80,7 +80,7 @@ export default {
             try{
                 console.log("entering try");
                 await setDoc(doc(db, String(this.user.uid), pic), {
-                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
+                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email,//Author: name, picURL: url, 
                 });
                 console.log(db)
                 console.log(this.user.uid)

@@ -61,14 +61,14 @@ const routes = [
   }
   ,
   {
-    path: '/indivpic/:id/:photo/:title',
+    path: '/indivpic/:id/:photo/:title/:author/:email/:tag/:price/:location',
     name: 'IndivPic',
     props: true,
     component: IndivPic
   }
   ,
   {
-    path:'/purchase/:id/:photo/:title',
+    path:'/purchase/:id/:photo/:title/:price',
     name: 'PurchasePic',
     component: PurchasePic
   }
