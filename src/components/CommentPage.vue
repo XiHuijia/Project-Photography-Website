@@ -1,4 +1,5 @@
 <template>
+<div id = "container">
     <img src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png" id = "image" alt="">
     <h4 id = "comments">Comments</h4>
     <ul id = "nameTxt" v-for= "item in list"  :key= "item.name">
@@ -17,7 +18,7 @@
   </div>
 
   <button id = "savebutton" type = "button" v-on:click="saveofs()"> Comment </button>
-  
+</div>
 </template>
 
 
@@ -69,6 +70,9 @@ export default {
 
 
 <style scoped>
+#container{
+  height: 300px;
+}
 #image {
   height: 30px;
   width: 30px;

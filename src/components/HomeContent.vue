@@ -5,11 +5,11 @@
                 <div class="top-text"></div>
 
                 <div class="input-block">
-                    <!-- <input type="text" placeholder="Search for photographs" /> -->
-                    <input type="text" v-model="input" placeholder="Search for photographs" />
+                    <input type="text" placeholder="Search for photographs" />
+                    <!-- <input type="text" v-model="input" placeholder="Search for photographs" />
                     <div class="tag_search" v-for="tag in filteredList()" :key="tag">
                         <p>{{tag}}</p>
-                    </div>
+                    </div> -->
                     <div class="item_error" v-if="input&&!filteredList().length">
                         <p>No results found!</p>
                     </div>
@@ -21,29 +21,29 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" >
             <div class="card">
                 <img src="../assets/image11.jpg" alt="Waves" class="card-img-top">
-                <div class="card-body">
+                <div class="card-body" @click="goDetail(1, 'Waves', 'image11.jpg')" >
                     <h5 class="card-title">Waves</h5>
                     <p class="card-text">The ocean is never still.</p>
-                    <a href="#" class="cardbtn">More</a>
+                    <a class="cardbtn">More</a>
                 </div>
             </div>
             <div class="card">
                 <img src="../assets/image15.jpeg" alt="The Sea" class="card-img-top">
-                    <div class="card-body">
+                    <div class="card-body" @click="goDetail(2, 'The Town', 'image15.jpeg')">
                         <h5 class="card-title">The Town</h5>
                         <p class="card-text">The whole island is remarkable for its beautiful scenery and its fertility.</p>
-                        <a href="#" class="cardbtn">More</a>
+                        <a class="cardbtn">More</a>
                     </div>
                 </div>
                 <div class="card">
                     <img src="../assets/image14.jpeg" alt="The Myth" class="card-img-top">
-                    <div class="card-body">
+                    <div class="card-body" @click="goDetail(3, 'The Myth', 'image14.jpeg')">
                         <h5 class="card-title">The Myth</h5>
                         <p class="card-text">A lasting impact on our perceived memory of a place.</p>
-                        <a href="#" class="cardbtn">More</a>
+                        <a class="cardbtn">More</a>
                     </div>
                 </div>
         </div>
@@ -71,18 +71,28 @@
 </template>
 
 
-<script setup>
-import {ref} from "vue";
-// import {db} from '../firebase.js';
-// import {getDoc, doc} from 'firebase/firestore';
-let input = ref("");
+<script scoped>
+// import {ref} from "vue";
+// // import {db} from '../firebase.js';
+// // import {getDoc, doc} from 'firebase/firestore';
+// let input = ref("");
 
-// const tags = await getDoc(doc(db, "Tag"));
-const tags = ["waves", "sea", "myth"];
+// // const tags = await getDoc(doc(db, "Tag"));
+// const tags = ["waves", "sea", "myth"];
 
-function filteredList(){
-    return tags.filter((tag) =>
-    tag.toLowerCase().includes(input.value.toLowerCase()))
+// function filteredList(){
+//     return tags.filter((tag) =>
+//     tag.toLowerCase().includes(input.value.toLowerCase()))
+// }
+
+export default {
+    methods: {
+        goDetail (id, name, image) {
+            console.log("go to detail page")
+            console.log(id, name, image)
+            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name }})
+        }
+    },
 }
 
 </script>
@@ -283,6 +293,7 @@ function filteredList(){
         border: 1px solid rgb(223, 63, 137);
         border-radius: 0.25em;
         transition: 0.5s;
+        cursor: pointer;
 
         &:hover {
           color: white;

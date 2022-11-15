@@ -3,10 +3,10 @@
   <div class="page">
     <form id = "myform">
         <h1>Upload Your Work Here!</h1>
-        <!-- <div class="pic1">
+        <div class="pic1">
             <label>Your Photo</label>
             <input type="file" id="photo1" accept=".png, .jpg, .jpeg"> 
-        </div> -->
+        </div>
 
         <div class="picInfo">
             <div class="input">
@@ -30,7 +30,7 @@
                 <input type="text" id="tag1" required = "" placeholder="Add tag for this work">
             </div>
         </div>
-        <button class="btn" @click="upload()">Upload</button>
+        <button class="btn" type="button" @click="upload()">Upload</button>
     </form>
   </div>
   <MyFooter />
@@ -40,9 +40,17 @@
 import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from '@/components/MyFooter.vue';
 import firebaseApp from '../firebase.js';
+//import firebase from "firebase";
+import HeadLine from '@/components/HeadLine.vue'
+import MyFooter from '@/components/MyFooter.vue'
+//import firebase from '../uifire.js';
+//import db from '../firebase.js';
+import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
-import {collection, addDoc} from "firebase/firestore";
-//import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {doc, setDoc} from "firebase/firestore";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+//const auth = firebase.auth();
+//const db = firebase.firestore();
 const db = getFirestore(firebaseApp);
 
 export default {
@@ -54,7 +62,7 @@ export default {
 
     data(){
         return{
-            user:this.user, 
+            user:false, 
             // Photo: false, 
             // Title: false, 
             // Location: false,
@@ -63,44 +71,61 @@ export default {
         }
     },
 
-    // mounted() {
-    //     const auth = getAuth();
-    //     onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             this.user = user;
+    mounted() {
+        const auth = getAuth();
+        
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user;
 
-    //         }
-    //     })
-    // },
+            }
+        })
+    },
 
-    mounted(){},
 
     methods: {
-        async savetofs(){
-            var a = document.getElementById("url").value
-            // var b = document.getElementById("title1").value
-            // var c = document.getElementById("location1").value
-            // var d = document.getElementById("price1").value
-            // var e = document.getElementById("tag1").value
-            alert("Saving coin: " + a)
+        async upload(){
+            var pic = document.getElementById("photo1").value
+            var tit = document.getElementById("title1").value
+            var loc = document.getElementById("location1").value
+            var pri = document.getElementById("price1").value
+            var t = document.getElementById("tag1").value
+            //var name = this.user.displayName;
+            //var url = URL.createObjectURL(this.pic);
+            //alert("Uploading photo: " + pic)
+            //console.log(this.user.uid);
             try{
                 console.log("entering try");
                 // const docRef = 
-                // await setDoc(doc(db, String(this.user), this.pic), {
-                //     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
-                // });//check syntax
+                await setDoc(doc(db, String(this.user.uid), pic), {
+                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
+                });//check syntax
                 // console.log(docRef);
                 // alert(docRef)
                 console.log(db)
                 console.log(this.user.uid)
-                const docRef = await addDoc(collection(db, String(this.$store.state.user.uid), "test"),{
-                    Photo: "pic",
-                    Title: "tit",
-                    Location: "loc",
-                    Price: "pri",
-                    Tag: "t"
-                });
-                console.log(docRef.id);
+
+                // let value = await db.collection("5mI9Tr9mlhPSept91fKGZraj8h43").get()
+                // value.forEach((d) => {
+                //         console.log(d.data())
+                //     })     
+
+                // const docRef = await addDoc(collection(db, this.user.uid, pic),{
+                //     Photo: pic,
+                //     Title: tit,
+                //     Location: loc,
+                //     Price: pri,
+                //     Tag: t
+                // });
+                // let path = db.collection(this.user.uid).document(pic);
+                // const docRef = await addDoc(path,{
+                //     Photo: pic,
+                //     Title: tit,
+                //     Location: loc,
+                //     Price: pri,
+                //     Tag: t
+                // });
+                // console.log(docRef.id);
 
                 // const docRef = {
                 //     Photo: pic, 
@@ -133,8 +158,9 @@ export default {
                 //this.$emit("added");
                 alert("Successful Upload!");
             }
-            catch(error){
-                console.error("Error adding document: ", error);
+            catch(error) {
+                console.error("Error uploading photo: ", error);
+                alert("fail!");
             }
         }
     }

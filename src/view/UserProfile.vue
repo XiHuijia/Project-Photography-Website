@@ -25,8 +25,8 @@
                 <div class="profile-stats">
 
                     <ul>
-                        <li><span class="profile-stat-count">164</span> posts</li>
-                        <li><span class="profile-stat-count">188</span> followers</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">164</span> posts</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">188</span> followers</li>
                         <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">206</span> following</li>
                     </ul>
 
@@ -48,24 +48,24 @@
 
         <div class="container2">
             <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUIaa5EDeP4uV_4eRT6TrfeG6vvujBTqMA1w&usqp=CAU" alt="The Peak" class="card-img-top">
-                <div class="card-body">
+                <img src="../assets/image19.jpg" alt="The Peak" class="card-img-top">
+                <div class="card-body" @click="goDetail(1, 'The Peak', 'image19.jpg')">
                     <h5 class="card-title">The Peak</h5>
                     <p class="card-text">The adventure starts.</p>
                     <a href="#" class="cardbtn">More</a>
                 </div>
             </div>
             <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYL6nIvJP72d-YQO2iUXcwZfh8875iKYUyTg&usqp=CAU" alt="The Mountain" class="card-img-top">
-                    <div class="card-body">
+                <img src="../assets/image20.jpg" alt="The Mountain" class="card-img-top">
+                    <div class="card-body" @click="goDetail(2, 'The Mountain', 'image20.jpg')">
                         <h5 class="card-title">The Mountain</h5>
                         <p class="card-text">California Streaming</p>
                         <a href="#" class="cardbtn">More</a>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="https://img.freepik.com/premium-vector/aesthetic-mountain-wallpaper-background-image_584397-109.jpg?w=996" alt="Pink" class="card-img-top">
-                    <div class="card-body">
+                    <img src="../assets/image21.jpg" alt="Pink" class="card-img-top">
+                    <div class="card-body" @click="goDetail(3, 'Pink', 'image21.jpg')">
                         <h5 class="card-title">The Pink Forest</h5>
                         <p class="card-text">Aesthetic mountain wallpaper background image</p>
                         <a href="#" class="cardbtn">More</a>
@@ -104,6 +104,14 @@ export default {
       });
     };
       return {router,jumpPage}
+    },
+
+    methods: {
+        goDetail (id, name, image) {
+            console.log("go to detail page")
+            console.log(id, name, image)
+            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name }})
+        }
     },
 
     mounted(){

@@ -12,18 +12,21 @@
         </div>
         <!-- <div id="location1">{{pic.Location}}</div> -->
         
-        <button class="downloadPic" @click="download()">Download</button> 
+        <button class="downloadPic" @click="download(getImgUrl(path), title)">Download</button> 
         <br><br>
         <button class="purchasePic" @click="goPurchase(id, path, title)">Purchase</button> 
+        <br><br>
+        <button onclick="javascript:history.back(-1);">Go Back</button>
     </div>
     </div>
-
+    <CommentPage/>
     <MyFooter/>
 </template>
 
 <script>
 import HeadLine from '@/components/HeadLine.vue'
 import MyFooter from '@/components/MyFooter.vue'
+import CommentPage from '@/components/CommentPage.vue'
 // import axios from 'Axios';
 // import {saveAs} from 'file-saver';
 
@@ -41,12 +44,14 @@ export default {
         this.id = this.$route.params.id,
         this.path = this.$route.params.photo,
         this.title = this.$route.params.title
+        console.log(this.path)
     },
 
     
     components: {
         HeadLine,
         MyFooter,
+        CommentPage,
     },
 
     methods: {
@@ -54,8 +59,11 @@ export default {
             return require('@/assets/' + img);
         },
         
-        download() {
-
+        download(link, filename) {
+            let a = document.createElement('a')
+            a.href = link
+            a.download = filename 
+            a.dispatchEvent(new MouseEvent('click'))
         },
 
         goPurchase(id, image, name){
@@ -69,6 +77,7 @@ export default {
 .container{
     width: 100%;
     height: 700px;
+    font-family: Merienda;
 }
 .photocontainer{
     margin-top: 40px;
@@ -89,6 +98,7 @@ img{
     font-display: justify;
     color: black;
 }
+
 #warn{
     font-size: 15px;
     color: grey;
