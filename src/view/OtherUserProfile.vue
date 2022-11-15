@@ -3,6 +3,7 @@
     <main class="container">
     <div class = "text">
         <div id="otherusername">{{username}}</div>
+        <div id="follower"> Followers: {{this.num_follower}} </div>
         <button class="follow" @click="follow(otheruser)">Follow</button>
     </div>
     </main>
@@ -31,6 +32,7 @@ export default{
         return{
             email: false,
             username: false,
+            num_follower: false,
         }
     },
 
@@ -43,6 +45,8 @@ export default{
             let value = res.data();
             console.log(value);
             this.username = value.username;
+            this.num_follower = value.followers.length;
+            console.log(this.num_follower)
         } catch (err) {
             alert(err.message);
         }
