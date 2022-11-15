@@ -15,7 +15,7 @@
   <label for="comment" id = "yourComment">Your Comment:</label>
   <textarea v-model = "comm" type="text" id="comment" required="" placeholder="Enter your comment">
   </textarea><br><br>
-  </div>
+  </div><br>
 
   <button id = "savebutton" type = "button" v-on:click="saveofs()"> Comment </button>
 </div>
@@ -78,8 +78,8 @@ export default {
   width: 30px;
   float: left;
   margin-left: 50px;
-  margin-top: 18px;
   margin-right: 2px;
+  margin-top: -5px;
 }
 #comments {
   margin-left: 50px;

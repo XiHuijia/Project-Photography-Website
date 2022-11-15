@@ -35,15 +35,13 @@
     </div>
     </div>
     
-    <h2 id = "summary"><strong>Summary </strong></h2><br><br><br>
+    <h2 id = "summary">Summary</h2>
+    <h2 id = "quantity">Quantity: 1</h2><br><br><br><br><br><br>
     <div id = "imagecontainer">
       <h2>{{this.title}}</h2>
       <img :src = "getImgUrl(path)" alt = "getImgUrl(path)"/>   
     </div>
-    <button id="checkout">Checkout</button>
-    <!-- </div> -->
-
-    <!-- </div> -->
+    <button id="checkout" type="button" @click="purchase()">Checkout</button>
 
 </template>
 
@@ -58,7 +56,7 @@ export default{
       title: false,
     }
   },
-
+  
   created() {
         this.id = this.$route.params.id,
         this.path = this.$route.params.photo,
@@ -74,25 +72,21 @@ export default{
     methods:{
       getImgUrl: function(img) {
             return require('@/assets/' + img);
-        },
+      },
+      async purchase() {
+      alert("Successdully purchased!");
+      },
     }
 }
 
 </script>
 
 <style scoped>
-/* #container {
-  height: 1000px;
-} */
 #left {
-  float: right;
-}
-#right {
   float: right;
 }
 
 #PurchasePic {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -101,13 +95,11 @@ export default{
   margin-left: 50px;
 }
 #select1{
-  /* font-family: elvetica; */
   text-align: left;
   margin-bottom: 5px;
 }
 
 #select2{
-  /* font-family: elvetica; */
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
@@ -151,7 +143,6 @@ export default{
   float: left;
 }
 #enter{
-  /* font-family: elvetica; */
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
@@ -224,11 +215,15 @@ export default{
 #summary {
   float: left;
 }
-#imagecontainer{
+#quantity {
   float: left;
+  margin-right: 400px;
+  margin-top: -10px;
+}
+#imagecontainer{
   text-align: left;
   margin-left: -100px;
-
+  margin-top: -30px;
 }
 img{
   width: 400px;

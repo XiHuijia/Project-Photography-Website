@@ -78,6 +78,7 @@ export default {
     width: 100%;
     height: 700px;
     font-family: Merienda;
+    margin-bottom: -220px;;
 }
 .photocontainer{
     margin-top: 40px;
