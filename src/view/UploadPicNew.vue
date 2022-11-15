@@ -40,17 +40,10 @@
 import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from '@/components/MyFooter.vue';
 import firebaseApp from '../firebase.js';
-//import firebase from "firebase";
-import HeadLine from '@/components/HeadLine.vue'
-import MyFooter from '@/components/MyFooter.vue'
-//import firebase from '../uifire.js';
-//import db from '../firebase.js';
 import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
 import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
-//const auth = firebase.auth();
-//const db = firebase.firestore();
 const db = getFirestore(firebaseApp);
 
 export default {
@@ -62,18 +55,12 @@ export default {
 
     data(){
         return{
-            user:false, 
-            // Photo: false, 
-            // Title: false, 
-            // Location: false,
-            // Price: false,
-            // Tag: false
+            user:false,
         }
     },
 
     mounted() {
         const auth = getAuth();
-        
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 this.user = user;
@@ -90,72 +77,13 @@ export default {
             var loc = document.getElementById("location1").value
             var pri = document.getElementById("price1").value
             var t = document.getElementById("tag1").value
-            //var name = this.user.displayName;
-            //var url = URL.createObjectURL(this.pic);
-            //alert("Uploading photo: " + pic)
-            //console.log(this.user.uid);
             try{
                 console.log("entering try");
-                // const docRef = 
                 await setDoc(doc(db, String(this.user.uid), pic), {
                     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, //Author: name, picURL: url, 
-                });//check syntax
-                // console.log(docRef);
-                // alert(docRef)
+                });
                 console.log(db)
                 console.log(this.user.uid)
-
-                // let value = await db.collection("5mI9Tr9mlhPSept91fKGZraj8h43").get()
-                // value.forEach((d) => {
-                //         console.log(d.data())
-                //     })     
-
-                // const docRef = await addDoc(collection(db, this.user.uid, pic),{
-                //     Photo: pic,
-                //     Title: tit,
-                //     Location: loc,
-                //     Price: pri,
-                //     Tag: t
-                // });
-                // let path = db.collection(this.user.uid).document(pic);
-                // const docRef = await addDoc(path,{
-                //     Photo: pic,
-                //     Title: tit,
-                //     Location: loc,
-                //     Price: pri,
-                //     Tag: t
-                // });
-                // console.log(docRef.id);
-
-                // const docRef = {
-                //     Photo: pic, 
-                //     Title: tit, 
-                //     Location: loc,
-                //     Price: pri,
-                //     Tag: t
-                // }
-                // await setDoc(doc(collection(db, this.user.uid)), docRef);
-
-                // await db.collection(this.user.uid).doc(this.pic).add({
-                //     Photo: pic, 
-                //     Title: tit, 
-                //     Location: loc,
-                //     Price: pri,
-                //     Tag: t
-                // });
-
-                // await db.collection("test").document("try").set({
-                //     Photo: "pic", 
-                //     Title: "tit", 
-                //     Location: "loc",
-                //     Price: "pri",
-                //     Tag: "t",
-                // })
-
-                // const ref = await db.collection(String(this.user.uid)).doc("test");
-                // ref.set({Photo: "pic", Title: "tit", Location: "loc", Price: "pri", Tag: "t"});
-                //document.getElementById('myform').reset();
-                //this.$emit("added");
                 alert("Successful Upload!");
             }
             catch(error) {
