@@ -84,6 +84,7 @@ import firebaseApp from "../firebase.js";
 import {
     getFirestore,
     setDoc,
+    getDoc,
     doc,
     getDocs,
     collection,
@@ -123,9 +124,10 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user.email;
-        console.log(user.email);
-        console.log(this.user);
+        this.userID = this.user.email;
+        display(this, this.userID)
         createUser(this,user.displayName);
+        display(user);
       }
     });
     async function createUser(self,username) {
@@ -159,6 +161,16 @@ export default {
         console.error("Error adding document:", error);
       }
     }
+    async function display(self){
+            let user = await getDoc(doc(db, "Users", self.userID))
+            self.username = user.data().username
+            self.bio = user.data().bio
+            self.following = user.data().following
+            self.follower = user.data().follwer
+            self.email=user.data().email
+            console.log(self.profileiconURL)
+        }
+        display(this)
   }
 }
 

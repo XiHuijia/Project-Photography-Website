@@ -3,8 +3,32 @@
     <div class = "Container">
         <br><br>
         <h1> Greeting! You can edit your profile here. </h1>
-        <div class="profile_image"> 
-            <img src="@/assets/1st_profile.png"> 
+
+
+        <div class="profile_image" v-if="this.showIcon">
+            <img :src= "url" alt="Preview" id="IconImg"/>
+        </div>
+        <div v-else class="profile_image">
+            <img src="@/assets/profilephoto.png" id="IconImg">
+        </div>
+        <div class = "chooseicon">
+            <input
+            type="file"
+            accept="image/*"
+            id="icon"
+            @change="onIconChange"
+            />
+            <label for="icon"><button class = "save" id="changeIconImg" @click="changeIcon()">Upload Image</button></label>
+            <img
+                :src="previewicon"
+                alt="Preview"
+                v-if="previewIcon"
+                class="uploading-image"
+                />
+            <div id="changeIconBtnContainer">
+                <div v-if="this.iconStatus != 'static'"><button class = "save" id = "confirmChangeIcon" @click ="confirmChangeIcon()">Confirm Change</button></div> 
+                <div v-if="this.iconStatus != 'static'"><button  class = "save" id = "cancelChangeIcon" @click ="cancelChangeIcon()"> Cancel</button></div>
+            </div>
         </div>
 
         <div class="SaveInfo">
@@ -46,33 +70,129 @@
 import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from './MyFooter.vue';
 import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore" 
-import { doc, setDoc } from "firebase/firestore"; 
+import {getAuth, onAuthStateChanged} from "firebase/auth"
+import { getDoc, doc, getFirestore,updateDoc} from '@firebase/firestore'
+import { ref, getStorage, uploadBytes, getDownloadURL} from "firebase/storage"
+
 const db = getFirestore(firebaseApp);
+const storage = getStorage();
+
 export default {
     components: {
         HeadLine,
         MyFooter
     },
+    data(){
+        return {
+            username:'Username',
+            bio:'Bio',
+            followers:[],
+            following:[],
+            email:'',
+            userID: '',
+            previewicon: null,
+            icon: null,
+            iconStatus : "static",
+            showIcon: false,
+            url: ' ',
+        }
+    },mounted(){
+        const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if(user){
+                this.user = user;
+                this.userID = this.user.email;
+                display(this, this.userID)
+                getURL(this)
+            }else{
+                display(this, "10086")
+            }
+        })
+        async function display(self){
+            let user = await getDoc(doc(db, "Users", self.userID))
+            self.username = user.data().username
+            self.bio = user.data().bio
+            self.following = user.data().following
+            self.followers = user.data().followers
+            self.email=user.data().email
+            console.log(self.profileiconURL)
+        }
+        display(this)
+        async function getURL(self){
+            setTimeout(() => {
+            console.log(self.email)
+            console.log("getURL triggered")
+            // Get URL for the image inside the storage
+            const storage = getStorage();
+            const starsRef = ref(storage, 'icons/'+ self.email);
+            getDownloadURL(starsRef)
+            .then((url) => {
+            self.url = url
+            self.showIcon=true
+            })
+            }, 500);
+        }
+    },
     methods: {
-        async savetofs(){
-        var a= document.gettlementById("name").value
-        var b =document.getElementById("intro").value
-        var c = document.getElementById("prize").value 
-        //var d = document.getElementById("quant1").value 
-        alert ("Saving User: "+ a)
-        try{
-            const docRef = await setDoc(doc(db,"Portfolio", a),{
-                name: a, intro : b, prize: c })
-                console. log (docRef)
-                document.getElementById('myform').reset();
-                this.$emit("added")
+        onIconChange(i) {
+        // const reader = new FileReader();
+        let file = i.target.files[0]; // get the supplied file
+        this.icon = file;
+        this.previewicon = URL.createObjectURL(file);
+        this.iconStatus = "changing";
+        },
+        confirmChangeIcon: async function() {
+            const path = await this.uploadImage(this.userID);
+            console.log("creating path", path)
+            const docRef = await updateDoc(doc(db, "Users", this.userID), {
+                profileiconURL: this.userID
+            })
+            setTimeout(() => {
+                console.log(docRef)
+                location.reload()
+            }, 500)
+        },
+        async uploadImage(userID) {
+        if (this.icon) {
+        // var myPostID = this.post.postID
+        // var myImgName = myPostID.replace(/./g, "-")
+            const path = "icons/"+ userID;
+            const fileRef = ref(storage, path)
+        console.log(fileRef)
+        await uploadBytes(fileRef, this.icon)
+        .then(() => {console.log("Icon uploaded successfully to Firebase. Path" + path)})
             }
-            catch(error){
-                console.error("Error adding document:error", error);
-            }
+        },
+        changeIcon(){
+            document.getElementById("icon").click();
+            document.getElementById("changeIconBtnContainer").style.display="flex"
+            document.getElementById("changeIconImg").style.display="none"
+        },
+        cancelChangeIcon(){
+            document.getElementById("changeIconImg").style.display="inline"
+            document.getElementById("changeIconBtnContainer").style.display="none"
         }
     }
+
+    // methods: {
+    //     async savetofs(){
+    //     var a= document.gettlementById("name").value
+    //     var b =document.getElementById("intro").value
+    //     var c = document.getElementById("prize").value 
+    //     //var d = document.getElementById("quant1").value 
+    //     alert ("Saving User: "+ a)
+    //     try{
+    //         const docRef = await setDoc(doc(db,"Portfolio", a),{
+    //             name: a, intro : b, prize: c })
+    //             console. log (docRef)
+    //             document.getElementById('myform').reset();
+    //             this.$emit("added")
+    //         }
+    //         catch(error){
+    //             console.error("Error adding document:error", error);
+    //         }
+    //     }
+    // }
 }
 </script>
 
