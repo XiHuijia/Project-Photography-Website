@@ -11,6 +11,7 @@ import IndivPic from '@/view/IndivPicNew.vue'
 import PurchasePic from '@/view/PurchasePic.vue'
 import FollowingPage from '@/view/FollowingPage.vue'
 import FollowerPage from '@/view/FollowerPage.vue'
+import OtherUserProfile from '@/view/OtherUserProfile'
 
 const routes = [
   {
@@ -84,6 +85,13 @@ const routes = [
     name: "FollowerPage",
     component: FollowerPage,
   }
+  ,
+  {
+    path: "/otheruser/:email",
+    name: "OtherUserProfile",
+    component: OtherUserProfile
+  }
+  ,
 ]
 
 const router = createRouter({

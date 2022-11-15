@@ -9,7 +9,7 @@
         <div id="title1">
             <h2>{{this.title}}</h2>
         </div>
-        <div id="author">Author: {{this.author}}</div>
+        <a id="author" @click="goAuthorProfile(this.email)">Author: {{this.author}}</a>
         <div id="email"> Email: {{this.email}}</div>
         <div id="photoinfo">
             Tag: {{this.tag}} <br>
@@ -86,6 +86,11 @@ export default {
         goPurchase(id, image, name, price){
             this.$router.push({name: 'PurchasePic', params: { id:id, photo: image, title:name, price: price }})
         },
+
+        goAuthorProfile(email){
+            console.log("go user profile")
+            this.$router.push({name: 'OtherUserProfile', params: { email: email }})
+        },
     }
 }
 </script>
@@ -116,10 +121,12 @@ img{
     font-display: justify;
     color: black;
 }
+
 #author{
-    margin-left: 150px;
+    margin-left: 0px;
     text-align: left;
 }
+
 
 #email{
     margin-left: 150px;
@@ -153,5 +160,10 @@ button:hover{
     background-color: rgb(251, 122, 171);
     box-shadow:  3px 3px grey;
     border-radius: 15px;
+}
+
+a:hover{
+  border-bottom: 2px solid #fff;;
+  color: rgb(251, 122, 171);
 }
 </style>
