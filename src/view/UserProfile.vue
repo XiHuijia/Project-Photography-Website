@@ -21,7 +21,8 @@
 
                 <div class="profile-user-settings">
 
-                    <h1 class="profile-user-name">{{user.displayName}}'s Profile</h1>
+                    <h1 class="profile-user-name">{{username}}'s Profile</h1>
+                    
 
                     <br>
 
@@ -108,6 +109,7 @@ export default {
     data() {
         return {
             user:false,
+            username: false,
             email: false,
             list: [],
             post: 0,
@@ -142,31 +144,25 @@ export default {
       if (user) {
         this.user = user;
         this.userID = this.user.email;
-        //display(this, this.userID)
         createUser(this,user.displayName);
+        display(this, this.userID)
+        getURL(this);
         //display(user);
       }
     });
     async function createUser(self,username) {
       try {
-        // let data = {
-        //   username: username,
-        //   email: self.user,
-        //   intro: "This is description",
-        //   followers: [],
-        //   following: [],
-        //   requests: [],
-        //   chatrooms:[],
-        // };
         let userExits = false;
         let userInfo = await getDocs(collection(db, "Users"));
         //console.log(userInfo);
         userInfo.forEach((doc) => {
           // console.log(doc.id, " => ", doc.data());
+          console.log(doc.id)
           if (doc.id == self.user.email) {
             userExits = true;
           }
         });
+        console.log(userExits)
         if (!userExits) {
           // Create user only if this is a new user
           console.log(self.user);
@@ -191,6 +187,7 @@ export default {
             self.follower = user.data().follwer.length
             self.email=user.data().email
             console.log(self.profileiconURL)
+
             const res = await getDoc(doc(db, "Users", this.email));
             let value = res.data();
             this.profileiconURL = value.profileiconURL;
@@ -207,16 +204,29 @@ export default {
         console.error("Error adding document:", error);
       }
     }
-    // async function display(self){
-    //         let user = await getDoc(doc(db, "Users", self.userID))
-    //         self.username = user.data().username
-    //         self.intro = user.data().intro
-    //         self.following = user.data().following.length
-    //         self.follower = user.data().follwer.length
-    //         self.email=user.data().email
-    //         console.log(self.profileiconURL)
-    //     }
-        //display(self)
+    async function getURL(self){
+            setTimeout(() => {
+            console.log(self.email)
+            console.log("getURL triggered")
+            // Get URL for the image inside the storage
+            const storage = getStorage();
+            const starsRef = ref(storage, 'icons/'+ self.email);
+            getDownloadURL(starsRef)
+            .then((url) => {
+            self.url = url
+            self.showIcon=true
+            })
+            }, 500);
+        }
+    async function display(self){
+        let user = await getDoc(doc(db, "Users", self.userID))
+        self.username = user.data().username
+        self.bio = user.data().bio
+        self.following = user.data().following
+        self.followers = user.data().followers
+        self.email=user.data().email
+        console.log(self.profileiconURL)
+    }
   }
 }
 </script>
