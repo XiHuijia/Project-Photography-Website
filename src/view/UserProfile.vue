@@ -1,6 +1,6 @@
-<template>
+<template >
     <HeadLine/>
-    <header>
+    <header v-if="user">
 
         <div class="container">
 
@@ -11,10 +11,11 @@
                     <img src="@/assets/1st_profile.png" alt="">
 
                 </div>
+                
 
                 <div class="profile-user-settings">
 
-                    <h1 class="profile-user-name">{{user.displayName}}'s Profile</h1>
+                    <h1 class="profile-user-name">{{username}}'s Profile</h1>
 
                     <br>
 
@@ -25,8 +26,8 @@
                 <div class="profile-stats">
 
                     <ul>
-                        <li><span class="profile-stat-count">164</span> posts</li>
-                        <li><span class="profile-stat-count">188</span> followers</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">164</span> posts</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">188</span> followers</li>
                         <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">206</span> following</li>
                     </ul>
 
@@ -48,24 +49,24 @@
 
         <div class="container2">
             <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUIaa5EDeP4uV_4eRT6TrfeG6vvujBTqMA1w&usqp=CAU" alt="The Peak" class="card-img-top">
-                <div class="card-body">
+                <img src="../assets/image19.jpg" alt="The Peak" class="card-img-top">
+                <div class="card-body" @click="goDetail(1, 'The Peak', 'image19.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
                     <h5 class="card-title">The Peak</h5>
                     <p class="card-text">The adventure starts.</p>
                     <a href="#" class="cardbtn">More</a>
                 </div>
             </div>
             <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYL6nIvJP72d-YQO2iUXcwZfh8875iKYUyTg&usqp=CAU" alt="The Mountain" class="card-img-top">
-                    <div class="card-body">
+                <img src="../assets/image20.jpg" alt="The Mountain" class="card-img-top">
+                    <div class="card-body" @click="goDetail(2, 'The Mountain', 'image20.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
                         <h5 class="card-title">The Mountain</h5>
                         <p class="card-text">California Streaming</p>
                         <a href="#" class="cardbtn">More</a>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="https://img.freepik.com/premium-vector/aesthetic-mountain-wallpaper-background-image_584397-109.jpg?w=996" alt="Pink" class="card-img-top">
-                    <div class="card-body">
+                    <img src="../assets/image21.jpg" alt="Pink" class="card-img-top">
+                    <div class="card-body" @click="goDetail(3, 'Pink', 'image21.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
                         <h5 class="card-title">The Pink Forest</h5>
                         <p class="card-text">Aesthetic mountain wallpaper background image</p>
                         <a href="#" class="cardbtn">More</a>
@@ -80,11 +81,17 @@ import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from '@/components/MyFooter.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "vue-router";
-// import firebaseApp from '../firebase.js';
-// import { getFirestore } from "firebase/firestore"
-// import { collection, getDocs} from "firebase/firestore";
-// const db = getFirestore(firebaseApp);
-
+import firebaseApp from "../firebase.js";
+import {
+    getFirestore,
+    setDoc,
+    getDoc,
+    doc,
+    getDocs,
+    collection,
+    } from "firebase/firestore";
+    const db = getFirestore(firebaseApp);
+    const auth = getAuth();
 export default {
     components:{
         HeadLine,
@@ -106,14 +113,68 @@ export default {
       return {router,jumpPage}
     },
 
-    mounted(){
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if(user) {
-          this.user = user;
-          //display(user)
+    methods: {
+        goDetail (id, name, image, author, email, tag, price, location) {
+            console.log("go to detail page")
+            console.log(id, name, image)
+            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name,
+            author: author, email: email, tag: tag, location: location, price: price }})
         }
+    },
+
+    mounted() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user.email;
+        this.userID = this.user.email;
+        display(this, this.userID)
+        createUser(this,user.displayName);
+        display(user);
+      }
     });
+    async function createUser(self,username) {
+      try {
+        let data = {
+          username: username,
+          email: self.user,
+          bio: "This is description",
+          followers: [],
+          following: [],
+          requests: [],
+          chatrooms:[],
+        };
+        let userExits = false;
+        let userInfo = await getDocs(collection(db, "Users"));
+        userInfo.forEach((doc) => {
+          // console.log(doc.id, " => ", doc.data());
+          if (doc.id == self.user) {
+            userExits = true;
+          }
+        });
+        if (!userExits) {
+          // Create user only if this is a new user
+          console.log(self.user);
+          console.log(data);
+          const docNow = await setDoc(doc(db, "Users", self.user), data);
+          console.log(docNow);
+        //   alert("Please Login or register before proceeding.")
+        }
+      } catch (error) {
+        console.error("Error adding document:", error);
+      }
+    }
+    async function display(self){
+            let user = await getDoc(doc(db, "Users", self.userID))
+            self.username = user.data().username
+            self.bio = user.data().bio
+            self.following = user.data().following
+            self.follower = user.data().follwer
+            self.email=user.data().email
+            console.log(self.profileiconURL)
+        }
+        display(this)
+  }
+}
 
 //     async function display(user){
 //     let z = await getDocs(collection(db, String(user)))    
@@ -133,8 +194,6 @@ export default {
 //     })        
 //   }
 
-  },
-}
 
 </script>
 

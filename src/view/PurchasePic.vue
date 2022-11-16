@@ -1,6 +1,6 @@
 <template>
     <HeadLine/>
-    <div id = "contianer">
+    <!-- <div id = "contianer"> -->
     <div id = "left">
     <h2 id = "select1"><strong>Select Payment Method </strong></h2>
     <h3 id = "select2">Select your payment method</h3>
@@ -9,8 +9,10 @@
     <br><br><br>
     <h3 id = "enter">Enter your card details</h3>
 
-    <label for="holderName" id = "hn">Cardholder name</label><br>
-    <input type="text" id="holderName"><br><br>
+    <div id = "holder">
+      <label for="holderName" id = "hn">Cardholder name</label><br>
+      <input type="text" id="holderName"><br>
+    </div><br>
       
     <div id = "card1">
       <label for="cardNumber" id="cn">Card number</label><br>
@@ -24,25 +26,25 @@
 
     <div id = "card3">
       <label for = "securityCode" id="sc">Security code</label><br>
-      <input type = "text" id = 'securityCode'><br><br>
-    </div><br><br><br><br>
+      <input type = "text" id = 'securityCode'><br>
+    </div><br><br>
 
     <div id = "card4">
       <label for = "billingAddress" id="ba">Billing address</label><br>
       <input type = "text" id = 'billingAddress'><br><br>
     </div>
     </div>
-
-    <div id = "right">
-      <div id = "imagecontainer">
-          <h2>Photo Title: {{this.title}}</h2>
-          <img :src = "getImgUrl(path)" alt = "getImgUrl(path)"/>   
-      </div>
-      <h2 id = "summary"><strong>Summary </strong></h2>
-      <button id="checkout">Checkout</button>
+    
+    <h2 id = "summary">Summary
+      <br> Price: {{this.price}}
+    </h2>
+ 
+    <h2 id = "quantity">Quantity: 1</h2><br><br><br><br><br><br>
+    <div id = "imagecontainer">
+      <h2>{{this.title}}</h2>
+      <img :src = "getImgUrl(path)" alt = "getImgUrl(path)"/>   
     </div>
-
-    </div>
+    <button id="checkout" type="button" @click="purchase()">Checkout</button>
 
 </template>
 
@@ -55,13 +57,15 @@ export default{
       id: false,
       path: false,
       title: false,
+      price: false
     }
   },
-
+  
   created() {
         this.id = this.$route.params.id,
         this.path = this.$route.params.photo,
-        this.title = this.$route.params.title
+        this.title = this.$route.params.title,
+        this.price = this.$route.params.price
     },
 
     name: "PurchasePic",
@@ -73,29 +77,21 @@ export default{
     methods:{
       getImgUrl: function(img) {
             return require('@/assets/' + img);
-        },
+      },
+      async purchase() {
+      alert("Successdully purchased!");
+      },
     }
 }
 
-// document.getElementById("payment1").addEventListener('click', selectFunction1)
-
-// document.getElementById("payment2").addEventListener('click', selectFunction2)
-
-// function selectFunction1() {
-  // document.getElementById("payment1").innerHTML = "selected";
-// }
-
-// function selectFunction2() {
-  // document.getElementById("payment2").innerHTML = "selected";
-// }
 </script>
 
 <style scoped>
-#container {
-  height: 1000px;
+#left {
+  float: right;
 }
+
 #PurchasePic {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -104,13 +100,11 @@ export default{
   margin-left: 50px;
 }
 #select1{
-  font-family: elvetica;
   text-align: left;
   margin-bottom: 5px;
 }
 
 #select2{
-  font-family: elvetica;
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
@@ -154,14 +148,17 @@ export default{
   float: left;
 }
 #enter{
-  font-family: elvetica;
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
 }
 
+#holder {
+  float:left;
+  margin-right: 20px;
+}
+
 #hn{
-  font-family: elvetica;
   font-size: 20px;
 }
 
@@ -219,19 +216,24 @@ export default{
   float: left;
   margin-right: 200px;
 }
-#right{
-  width: 700px;
+
+#summary {
   float: left;
-  text-align: left;
+}
+#quantity {
+  float: left;
+  margin-right: 400px;
+  margin-top: -10px;
 }
 #imagecontainer{
-  float: right;
   text-align: left;
+  margin-left: -100px;
+  margin-top: -30px;
 }
 img{
   width: 400px;
   height: 280px;
-  float: right;
+  float: left;
 }
 
 #checkout{
@@ -241,6 +243,8 @@ img{
   text-align: center;
   width: 200px;
   height: 60px;
+  margin-top: 20px;
+  margin-right: 400px;
   float: left;
 }
 #checkout:hover{
@@ -250,6 +254,8 @@ img{
   text-align: center;
   width: 200px;
   height: 60px;
-  float: left
+  margin-top: 20px;
+  margin-right: 390px;
+  float: left;
 }
 </style>

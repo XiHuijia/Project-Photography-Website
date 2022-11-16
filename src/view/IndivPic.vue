@@ -1,7 +1,7 @@
 <template>
     <HeadLine/>
     <main class="container">
-    <img id="pic1">{{pic.Photo}}
+    <img src = "assets/image/image3.png">{{pic.Photo}}
     <div class = "text">
         <div id="author1">{{pic.Author}}</div>
         <div id="title1">{{pic.Title}}</div>
@@ -15,7 +15,7 @@
 
 <script>
 import HeadLine from '@/components/HeadLine.vue'
-//import PurchasePic from '@/view/PurchasePic.vue'
+// import PurchasePic from '@/view/PurchasePic.vue'
 import { db } from "../firebase.js";
 import { ref } from "firebase/storage";
 import {saveAs} from 'file-saver';
@@ -27,7 +27,7 @@ export default{
     name: "IndivPic",
     components:{
         HeadLine,
-        //PurchasePic
+        // PurchasePic
     },
     props: ["id"],
     setup(props) {

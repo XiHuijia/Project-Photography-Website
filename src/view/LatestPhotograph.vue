@@ -8,7 +8,7 @@
 
                 <div class="photo-list-main">
 
-                    <div @click="goDetail(info.id, info.photoName, info.url)" class="photo-list-item" v-for="info in item.child" :key="info.id"
+                    <div @click="goDetail(info.id, info.photoName, info.url, info.author, info.email, info.tag, info.price, info.location)" class="photo-list-item" v-for="info in item.child" :key="info.id"
                         :style="{background: 'url(' + info.img + ')'}">
 
                         <div class="photo-name">{{ info.photoName }}</div>                     
@@ -33,37 +33,67 @@ const list = [
                 photoName: 'Grass Land',
                 id: 1-1,
                 img: require('../assets/image16.jpeg'),
-                url: 'image16.jpeg'
+                url: 'image16.jpeg',
+                author: 'Xi Huijia',
+                email: 'hjwuxi@gmail.com',
+                tag: 'nature',
+                location: 'undefined',
+                price: '5'
             },
             {
                 photoName: 'Morocco',
                 id: 1-2,
                 img: require('../assets/image14.jpeg'),   
-                url: 'image14.jpeg'
+                url: 'image14.jpeg',
+                author: 'Xi Huijia',
+                email: 'hjwuxi@gmail.com',
+                tag: 'nature',
+                location: 'undefined',
+                price: '6'
             },
             {
                 photoName: 'Greece',
                 id: 1-3,
                 img: require('../assets/image15.jpeg'),
-                url: 'image15.jpeg'
+                url: 'image15.jpeg',
+                author: 'Xi Huijia',
+                email: 'hjwuxi@gmail.com',
+                tag: 'nature',
+                location: 'undefined',
+                price: '3'
             },
             {
                 photoName: 'The Lake',
                 id: 1-4,
                 img: require('../assets/image3.png'),
-                url: 'image3.png'
+                url: 'image3.png',
+                author: 'Xi Huijia',
+                email: 'hjwuxi@gmail.com',
+                tag: 'nature',
+                location: 'undefined',
+                price: '8'
             },
             {
                 photoName: 'Free Day',
                 id: 1-5,
                 img: require('../assets/image10.jpeg'),
-                url: 'image10.jpeg'
+                url: 'image10.jpeg',
+                author: 'Xi Huijia',
+                email: 'hjwuxi@gmail.com',
+                tag: 'nature',
+                location: 'undefined',
+                price: '8'
             },
             {
                 photoName: 'The City',
                 id: 1-6,
                 img: require('../assets/image13.jpeg'),
-                url: 'image13.jpeg'
+                url: 'image13.jpeg',
+                author: 'Xi Huijia',
+                email: 'hjwuxi@gmail.com',
+                tag: 'city',
+                location: 'undefined',
+                price: '5'
             },
         ]
     },
@@ -76,10 +106,11 @@ const list = [
 
 export default {
     methods: {
-        goDetail (id, name, image) {
+        goDetail (id, name, image, author, email, tag, price, location) {
             console.log("go to detail page")
             console.log(id, name, image)
-            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name }})
+            this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name,
+            author: author, email: email, tag: tag, location: location, price: price }})
         }
     },
 }

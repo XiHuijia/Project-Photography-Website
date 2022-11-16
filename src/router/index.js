@@ -9,7 +9,9 @@ import MyPortfolio from '@/view/MyPortfolio.vue'
 import UploadPicNew from '@/view/UploadPicNew.vue'
 import IndivPic from '@/view/IndivPicNew.vue'
 import PurchasePic from '@/view/PurchasePic.vue'
-
+import FollowingPage from '@/view/FollowingPage.vue'
+import FollowerPage from '@/view/FollowerPage.vue'
+import OtherUserProfile from '@/view/OtherUserProfile'
 
 const routes = [
   {
@@ -60,17 +62,36 @@ const routes = [
   }
   ,
   {
-    path: '/indivpic/:id/:photo/:title',
+    path: '/indivpic/:id/:photo/:title/:author/:email/:tag/:price/:location',
     name: 'IndivPic',
     props: true,
     component: IndivPic
   }
   ,
   {
-    path:'/purchase/:id/:photo/:title',
+    path:'/purchase/:id/:photo/:title/:price',
     name: 'PurchasePic',
     component: PurchasePic
   }
+  ,
+  {
+    path: "/following",
+    name: "FollowingPage",
+    component: FollowingPage,
+  }
+  ,
+  {
+    path: "/follower",
+    name: "FollowerPage",
+    component: FollowerPage,
+  }
+  ,
+  {
+    path: "/otheruser/:email",
+    name: "OtherUserProfile",
+    component: OtherUserProfile
+  }
+  ,
 ]
 
 const router = createRouter({

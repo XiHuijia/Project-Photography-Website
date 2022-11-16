@@ -1,7 +1,7 @@
 <template>
     <HeadLine/>
     <div class="container">
-        <div class="title">User Following</div>
+        <div class="title">My Followers</div>
         <button onclick="javascript:history.back(-1);">Go Back</button>
     </div>
     <!-- <div class="container">

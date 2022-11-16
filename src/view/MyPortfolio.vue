@@ -12,6 +12,7 @@
           </div>
         </div>
     </div>
+    <button onclick="javascript:history.back(-1);">Go Back</button>
   <MyFooter/>
 </template>
 
@@ -50,18 +51,23 @@ export default {
     });
 
     async function display(user){
-    let z = await getDocs(collection(db, String(user)))    
+    let z = await getDocs(collection(db, user.uid))    
     let ind = 1
 
     z.forEach((docs) => {
       let yy = docs.data()
-
-      var photo = (yy.pic)
-      var title = (yy.tit)
-      var location = (yy.loc)
-      var price = (yy.pri)
-      var tag = (yy.t)
-      
+      console.log(yy)
+      var photo = (yy.Photo)
+      console.log(photo)
+      var title = (yy.Title)
+      console.log(title)
+      var location = (yy.Location)
+      console.log(location)
+      var price = (yy.Price)
+      console.log(price)
+      var tag = (yy.Tag)
+      console.log(tag)
+      console.log(this.list)
       this.list.push({photoName: title, id: ind, img: photo, loc: location, price: price, tag: tag})
       ind++;
       
@@ -125,4 +131,19 @@ export default {
                 
             }
         }
+
+button{
+    text-align:center;
+    margin: auto;
+    cursor: pointer;
+    font-family: Merienda;
+    padding: 8px 20px;
+    border-radius: 15px;
+}
+button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
+}
   </style>
