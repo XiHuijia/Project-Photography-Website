@@ -361,4 +361,20 @@ button:hover{
     border-radius: 15px;
 }
 
+.follow{
+    text-align:center;
+    margin: 20px 0 10px 10px;
+    cursor: pointer;
+    font-family: Merienda;
+    font-size:15px;
+    padding:15px 30px;
+    border-radius: 15px;
+}
+follow:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
+}
+
 </style>
