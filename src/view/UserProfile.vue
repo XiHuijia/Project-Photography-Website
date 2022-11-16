@@ -1,16 +1,21 @@
 <template >
     <HeadLine/>
-    <button onclick="javascript:history.back(-1);">Go Back</button>
     <header v-if="user">
 
         <div class="container">
 
             <div class="profile">
 
-                <div class="profile-image">
+                <!-- <div class="profile-image">
 
                     <img src="@/assets/1st_profile.png" alt="">
 
+                </div> -->
+                <div class="profile-image" v-if="this.showIcon">
+                    <img :src= "url" alt="Preview" id="IconImg"/>
+                </div>
+                <div v-else class="profile-image">
+                    <img src="@/assets/1st_profile.png" id="IconImg"/>
                 </div>
                 
 
@@ -74,7 +79,6 @@
                     </div>
                 </div>
         </div>
-    <button onclick="javascript:history.back(-1);">Go Back</button>
     <MyFooter/>
 </template>
 
@@ -84,6 +88,7 @@ import MyFooter from '@/components/MyFooter.vue';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "vue-router";
 import firebaseApp from "../firebase.js";
+import { ref, getStorage, getDownloadURL} from "firebase/storage"
 import {
     getFirestore,
     setDoc,
@@ -103,11 +108,14 @@ export default {
     data() {
         return {
             user:false,
+            email: false,
             list: [],
             post: 0,
             follower: 0,
             following: 0,
-            bio: ''
+            bio: '',
+            url: false,
+            showIcon: false
         }
     },
     setup() {
@@ -134,74 +142,83 @@ export default {
       if (user) {
         this.user = user;
         this.userID = this.user.email;
-        display(this, this.userID)
+        //display(this, this.userID)
         createUser(this,user.displayName);
-        display(user);
+        //display(user);
       }
     });
     async function createUser(self,username) {
       try {
-        let data = {
-          username: username,
-          email: self.user,
-          bio: "This is description",
-          followers: [],
-          following: [],
-          requests: [],
-          chatrooms:[],
-        };
+        // let data = {
+        //   username: username,
+        //   email: self.user,
+        //   bio: "This is description",
+        //   followers: [],
+        //   following: [],
+        //   requests: [],
+        //   chatrooms:[],
+        // };
         let userExits = false;
         let userInfo = await getDocs(collection(db, "Users"));
+        //console.log(userInfo);
         userInfo.forEach((doc) => {
           // console.log(doc.id, " => ", doc.data());
-          if (doc.id == self.user) {
+          if (doc == self.user.email) {
             userExits = true;
           }
         });
         if (!userExits) {
           // Create user only if this is a new user
           console.log(self.user);
-          console.log(data);
-          const docNow = await setDoc(doc(db, "Users", self.user.email), data);
+          //console.log(data);
+          const docNow = await setDoc(doc(db, "Users", self.user.email), {
+            username: username,
+          email: self.user.email,
+          bio: "This is description",
+          followers: [],
+          following: [],
+          requests: [],
+          chatrooms:[],
+          });
           console.log(docNow);
         //   alert("Please Login or register before proceeding.")
         }
-      } catch (error) {
-        console.error("Error adding document:", error);
-      }
-    }
-    async function display(self){
-            let user = await getDoc(doc(db, "Users", self.userID))
+        else {
+          let user = await getDoc(doc(db, "Users", self.userID))
             self.username = user.data().username
             self.bio = user.data().bio
             self.following = user.data().following.length
             self.follower = user.data().follwer.length
             self.email=user.data().email
             console.log(self.profileiconURL)
+            const res = await getDoc(doc(db, "Users", this.email));
+            let value = res.data();
+            this.profileiconURL = value.profileiconURL;
+             console.log("getURL triggered")
+            // Get URL for the image inside the storage
+            const storage = getStorage();
+            const starsRef = ref(storage, 'icons/'+ this.profileiconURL);
+            getDownloadURL(starsRef).then((url) => {
+                this.url = url
+                this.showIcon=true
+                })
         }
-        display(this)
+      } catch (error) {
+        console.error("Error adding document:", error);
+      }
+    }
+    // async function display(self){
+    //         let user = await getDoc(doc(db, "Users", self.userID))
+    //         self.username = user.data().username
+    //         self.bio = user.data().bio
+    //         self.following = user.data().following.length
+    //         self.follower = user.data().follwer.length
+    //         self.email=user.data().email
+    //         console.log(self.profileiconURL)
+    //     }
+        //display(self)
   }
 }
-
-//     async function display(user){
-//     let z = await getDocs(collection(db, String(user)))    
-//     let ind = 1
-
-//     z.forEach((docs) => {
-//       let yy = docs.data()
-
-//       var photo = (yy.pic)
-//       var title = (yy.tit)
-//       var location = (yy.loc)
-//       var price = (yy.pri)
-//       var tag = (yy.t)
-      
-//       this.list.push({photoName: title, id: ind, img: photo, loc: location, price: price, tag: tag})
-//       ind++;
-//     })        
-//   }
-
-
 </script>
 
 <style lang="less" scoped>
@@ -492,21 +509,6 @@ export default {
       }
     }
   }
-}
-
-button{
-    text-align:center;
-    margin: 20px 0 10px 50px;
-    cursor: pointer;
-    font-family: Merienda;
-    padding: 8px 20px;
-    border-radius: 15px;
-}
-button:hover{
-    color: rgb(243, 236, 236);
-    background-color: rgb(251, 122, 171);
-    box-shadow:  3px 3px grey;
-    border-radius: 15px;
 }
 
 </style>

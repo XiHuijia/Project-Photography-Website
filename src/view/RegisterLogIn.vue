@@ -36,7 +36,7 @@
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,
             ]
         };
-        ui.start("#firebaseui-auth-container", uiConfig)
+        ui.start("#firebaseui-auth-container", uiConfig);
     }
 }
   </script>
