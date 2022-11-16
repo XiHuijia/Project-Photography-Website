@@ -2,7 +2,7 @@
   <HeadLine/>
     <div class="container">
         <div class="photocontainer">
-            <img :src = "getImgUrl(path)" alt = "getImgUrl(path)"/>
+            <img :src = this.path alt = this.path/>
             <p id="warn">The copyright and portrait rights have been authorized for personal use and corporate commercial use.</p>
         </div>
     <div class = "text">
@@ -19,7 +19,7 @@
         
         <!-- <div id="location1">{{pic.Location}}</div> -->
         
-        <button class="downloadPic" @click="download(getImgUrl(path), title)">Download</button> 
+        <button class="downloadPic" @click="download(this.path, title)">Download</button> 
         <br><br>
         <button class="purchasePic" @click="goPurchase(id, path, title, price)">Purchase</button> 
         <br><br>
@@ -72,9 +72,9 @@ export default {
     },
 
     methods: {
-        getImgUrl: function(img) {
-            return require('@/assets/' + img);
-        },
+        // getImgUrl: function(img) {
+        //     return require('@/assets/' + img);
+        // },
         
         download(link, filename) {
             let a = document.createElement('a')
@@ -125,7 +125,6 @@ img{
 #author{
     margin-left: 0px;
     text-align: left;
-    cursor: pointer;
 }
 
 
