@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-//import Vue from "vue";
 import App from './App.vue'
 import router from './router/index.js'
 // import Vuex from 'vuex';
@@ -16,3 +15,4 @@ import router from './router/index.js'
 //   }).$mount("#app");
 
 createApp(App).use(router).mount('#app')
+

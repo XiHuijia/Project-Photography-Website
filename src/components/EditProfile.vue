@@ -13,13 +13,13 @@
                 <label for="name">User Name </label> <br>
                 <input type="text" id="name" required=true placeholder="Enter a New User Name" style="font-family: 'Noto Nastaliq Urdu', serif; width:200px;height:30px"> <br> 
                 
-                <br>
+                <!-- <br>
                 <label for="gender">Your gender</label><br>
                 <select v-model="selected" style="width:200px;height:30px">
                 <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Female</option>
                 <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Male </option>
                 <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> I prefer not to say. </option>
-                </select>
+                </select> -->
 
                 <br><br> 
                 <label for="intro">Self-Introduction</label><br>
@@ -45,10 +45,12 @@
 <script>
 import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from './MyFooter.vue';
+
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore" 
 import { doc, setDoc } from "firebase/firestore"; 
 const db = getFirestore(firebaseApp);
+
 export default {
     components: {
         HeadLine,
@@ -62,9 +64,10 @@ export default {
         //var d = document.getElementById("quant1").value 
         alert ("Saving User: "+ a)
         try{
+            console.log("entering try")
             const docRef = await setDoc(doc(db,"Portfolio", a),{
                 name: a, intro : b, prize: c })
-                console. log (docRef)
+                console.log (docRef)
                 document.getElementById('myform').reset();
                 this.$emit("added")
             }

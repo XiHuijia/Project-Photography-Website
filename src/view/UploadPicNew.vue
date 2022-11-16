@@ -3,10 +3,10 @@
   <div class="page">
     <form id = "myform">
         <h1>Upload Your Work Here!</h1>
-        <!-- <div class="pic1">
+        <div class="pic1">
             <label>Your Photo</label>
             <input type="file" id="photo1" accept=".png, .jpg, .jpeg"> 
-        </div> -->
+        </div>
 
         <div class="picInfo">
             <div class="input">
@@ -37,16 +37,26 @@
 </template>
 
 <script>
-import firebaseApp from '../firebase.js';
+import firebaseApp from "../firebase.js";
+import { ref, getStorage} from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import firebaseApp from '../firebase.js';
 import HeadLine from '@/components/HeadLine.vue'
 import MyFooter from '@/components/MyFooter.vue'
+
+const db = getFirestore(firebaseApp);
+const auth = getAuth();
+// const [image, setImage] = useState(null);
+const storage = getStorage();
 //import firebase from '../uifire.js';
 //import {db} from '../firebase.js';
-import 'firebase/firestore';
-import {getFirestore} from "firebase/firestore";
-import {collection, addDoc} from "firebase/firestore";
+// import 'firebase/firestore';
+// import {getFirestore} from "firebase/firestore";
+// import {collection, addDoc} from "firebase/firestore";
 //import {getAuth, onAuthStateChanged} from "firebase/auth";
-const db = getFirestore(firebaseApp);
+// const db = getFirestore(firebaseApp);
 //db.settings({ experimentalForceLongPolling: true, merge:true });
 //const auth = getAuth();
 //this.fbuser: auth.currentUser.email,
@@ -64,38 +74,38 @@ export default {
 
     data(){
         return{
-            user:this.user, 
-            // Photo: false, 
-            // Title: false, 
-            // Location: false,
-            // Price: false,
-            // Tag: false
+            user: false, 
+            Photo: "", 
+            Title: "", 
+            Location: "",
+            Price: "",
+            Tag: "",
         }
     },
 
-    // mounted() {
-    //     const auth = getAuth();
-    //     onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             this.user = user;
-
-    //         }
-    //     })
-    // },
-
-    mounted(){},
+    mounted() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+        //this.userURL = user.profileiconURL;
+      }
+    });
+  },
 
     methods: {
         async upload(){
-            // var pic = document.getElementById("photo1").value
-            // var tit = document.getElementById("title1").value
-            // var loc = document.getElementById("location1").value
-            // var pri = document.getElementById("price1").value
-            // var t = document.getElementById("tag1").value
+            var pic = document.getElementById("photo1").value
+            //var url = document.getElementById("url").value
+            var tit = document.getElementById("title1").value
+            var loc = document.getElementById("location1").value
+            var pri = document.getElementById("price1").value
+            var t = document.getElementById("tag1").value
             //var name = this.user.displayName;
             //var url = URL.createObjectURL(this.pic);
-            //alert("Uploading photo: " + pic)
+            // alert("Uploading photo: " + pic)
             //console.log(this.user.uid);
+            var email = auth.user.email;
             try{
                 console.log("entering try");
                 // const docRef = 
@@ -106,14 +116,20 @@ export default {
                 // alert(docRef)
                 console.log(db)
                 console.log(this.user.uid)
-                const docRef = await addDoc(collection(db, String(this.$store.state.user.uid), "test"),{
-                    Photo: "pic",
-                    Title: "tit",
-                    Location: "loc",
-                    Price: "pri",
-                    Tag: "t"
+                var sysTime = new Date();
+                var timeStamp = sysTime.getTime();
+                var postID = email + timeStamp;
+                const path = "posts/"+postID;
+                const fileRef = ref(storage, path)
+                console.log(fileRef)
+                const docRef = setDoc(doc(db, "upload", postID),{
+                    Photo: pic,
+                    Title: tit,
+                    Location: loc,
+                    Price: pri,
+                    Tag: t
                 });
-                console.log(docRef.id);
+                console.log(docRef);
 
                 // const docRef = {
                 //     Photo: pic, 
