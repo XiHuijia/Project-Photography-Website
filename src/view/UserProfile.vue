@@ -57,26 +57,26 @@
         <div class="container2">
             <div class="card">
                 <img src="../assets/image19.jpg" alt="The Peak" class="card-img-top">
-                <div class="card-body" @click="goDetail(1, 'The Peak', 'image19.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
-                    <h5 class="card-title">The Peak</h5>
+                <div class="card-body" @click="jumpPage('MyPortfolio')">
+                    <h5 class="card-title">My Portfolio</h5>
                     <p class="card-text">The adventure starts.</p>
-                    <a href="#" class="cardbtn">More</a>
+                    <a href="#" class="cardbtn">Go Ahead</a>
                 </div>
             </div>
             <div class="card">
                 <img src="../assets/image20.jpg" alt="The Mountain" class="card-img-top">
-                    <div class="card-body" @click="goDetail(2, 'The Mountain', 'image20.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
-                        <h5 class="card-title">The Mountain</h5>
-                        <p class="card-text">California Streaming</p>
-                        <a href="#" class="cardbtn">More</a>
+                    <div class="card-body" @click="jumpPage('ViewHistory')">
+                        <h5 class="card-title">View History</h5>
+                        <p class="card-text">Trace back memories...</p>
+                        <a href="#" class="cardbtn">Go Ahead</a>
                     </div>
                 </div>
                 <div class="card">
                     <img src="../assets/image21.jpg" alt="Pink" class="card-img-top">
-                    <div class="card-body" @click="goDetail(3, 'Pink', 'image21.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')">
-                        <h5 class="card-title">The Pink Forest</h5>
-                        <p class="card-text">Aesthetic mountain wallpaper background image</p>
-                        <a href="#" class="cardbtn">More</a>
+                    <div class="card-body">
+                        <h5 class="card-title">Transaction history</h5>
+                        <p class="card-text">Check your transactions.</p>
+                        <a class="cardbtn">Coming Soon...</a>
                     </div>
                 </div>
         </div>
