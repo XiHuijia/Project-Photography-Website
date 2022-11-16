@@ -178,7 +178,6 @@ export default {
             var b =document.getElementById("intro").value
             var c = document.getElementById("prize").value 
             //var d = document.getElementById("quant1").value 
-            alert ("Saving User: "+ a)
             const path = "icons/"+ this.userID;
             const fileRef = ref(storage, path)
             console.log(fileRef)
@@ -188,10 +187,16 @@ export default {
                     console.log (docRef)
                     //document.getElementById('myform').reset();
                     this.$emit("added")
+                    console.alert("Profile changed successfully!")
+                
             }
             catch(error){
                 console.error("Error adding document:error", error);
             }
+            alert ("Saving User: "+ a)
+            this.$router.push('UserProfile') 
+
+
         }
     }
 }
