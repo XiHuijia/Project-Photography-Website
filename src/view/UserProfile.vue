@@ -173,7 +173,7 @@ export default {
           intro: "This is description",
           followers: [],
           following: [],
-          requests: [],
+          posts: 0,
           chatrooms:[],
           });
           console.log(docNow);
@@ -183,7 +183,7 @@ export default {
           let user = await getDoc(doc(db, "Users", self.userID))
             self.username = user.data().username
             self.intro = user.data().intro
-            self.post = user.data().requests.length
+            self.post = user.data().posts
             self.following = user.data().following.length
             self.follower = user.data().followers.length
             self.email=user.data().email

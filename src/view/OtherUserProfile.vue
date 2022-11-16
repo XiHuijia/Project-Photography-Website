@@ -23,9 +23,9 @@
                 <div class="profile-stats">
 
                     <ul>
-                        <!-- <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">164</span> posts</li> -->
-                        <li><span class="profile-stat-count">{{this.num_follower}}</span> followers</li>
-                        <li><span class="profile-stat-count">{{this.num_following}}</span> following</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">{{post}}</span> posts</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">{{this.num_follower}}</span> followers</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">{{this.num_following}}</span> following</li>
                     </ul>
                     <button v-if="email != this.user.email"  class="follow" @click="followUser(email)">Follow</button>
                 </div>
@@ -51,6 +51,7 @@
 <script>
 import HeadLine from '@/components/HeadLine.vue'
 import MyFooter from '@/components/MyFooter.vue'
+import { useRouter } from "vue-router";
 //import { db } from "../firebase.js";
 //import { ref } from "firebase/storage";
 import {doc, getDoc, updateDoc} from "firebase/firestore";
@@ -74,6 +75,7 @@ export default{
             user:false,
             email: false,
             username: false,
+            posts:false,
             num_follower: false,
             num_following: false,
             bio: false,
@@ -81,6 +83,15 @@ export default{
             url: false,
             showIcon: false
         }
+    },
+    setup() {
+    const router = useRouter();
+    const jumpPage = (name) => {
+      router.push({
+        name,
+      });
+    };
+      return {router,jumpPage}
     },
 
     created() {
@@ -92,6 +103,7 @@ export default{
             let value = res.data();
             console.log(value);
             this.username = value.username;
+            this.posts = value.posts;
             this.num_follower = value.followers.length;
             console.log(this.num_follower)
             this.num_following = value.following.length;
@@ -173,6 +185,7 @@ export default{
         let user = await getDoc(doc(db, "Users", self.userID))
         self.username = user.data().username
         self.bio = user.data().bio
+        self.post = user.data().posts
         self.following = user.data().following
         self.followers = user.data().followers
         self.email=user.data().email
