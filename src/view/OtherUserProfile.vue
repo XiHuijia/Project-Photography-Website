@@ -27,7 +27,7 @@
                         <li><span class="profile-stat-count">{{this.num_follower}}</span> followers</li>
                         <li><span class="profile-stat-count">{{this.num_following}}</span> following</li>
                     </ul>
-                    <button class="follow" @click="followUser(email)">Follow</button>
+                    <button v-if="email != this.user.email"  class="follow" @click="followUser(email)">Follow</button>
 
                 </div>
 
@@ -155,6 +155,7 @@ export default{
                     await updateDoc(doc(db, 'Users', email), {
                         followers: other_followers
                     });
+                    location.reload();
                 }
             } catch(error) {
                 alert("Fail to follow!" + error);
