@@ -125,6 +125,7 @@ img{
 #author{
     margin-left: 0px;
     text-align: left;
+    cursor: pointer;
 }
 
 
