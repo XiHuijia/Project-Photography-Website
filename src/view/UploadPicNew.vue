@@ -81,7 +81,7 @@ export default {
             var t = document.getElementById("tag1").value
             try{
                 console.log("entering try");
-                const path = await this.uploadImage(this.userID, tit);
+                const path = await this.uploadImage(this.userID, pic);
                 console.log("creating path", path)
                 await this.uploadImage(this.userID, tit);
                 const docRef = await setDoc(doc(db, String(this.user.uid), pic), {
@@ -100,8 +100,8 @@ export default {
                 alert("fail!");
             }
         },
-        async uploadImage(userID, tit) {
-            const path = "uploads/"+ String(userID) + "/" + tit;
+        async uploadImage(userID, pic) {
+            const path = "uploads/"+ String(userID) + "/" + pic;
             const fileRef = ref(storage, path)
             console.log(fileRef)
             await uploadBytes(fileRef, this.image)
