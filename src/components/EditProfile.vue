@@ -39,14 +39,6 @@
                 <br><br>
                 <label for="name">User Name </label> <br>
                 <input type="text" id="name" required=true placeholder="Enter a New User Name" style="font-family: 'Noto Nastaliq Urdu', serif; width:200px;height:30px"> <br> 
-                
-                <!-- <br>
-                <label for="gender">Your gender</label><br>
-                <select v-model="selected" style="width:200px;height:30px">
-                <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Female</option>
-                <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> Male </option>
-                <option style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> I prefer not to say. </option>
-                </select> -->
 
                 <br><br> 
                 <label for="intro">Self-Introduction</label><br>
@@ -56,12 +48,12 @@
                 <label for="prize">Prizes Won</label><br>
                 <input type="text" id="prize" required=true placeholder="Enter the Prizes You Won." style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
                 
-                <br><br>
-                <div>
-                    <button class="save" v-on:click="savetofs()"> Save </button>
-                </div>
+                <br>
                 <br><br>
             </form>
+            <div>
+                    <button class="save" v-on:click="savetofs()"> Save </button>
+            </div>
         </div>
     </div>
 
@@ -146,6 +138,7 @@ export default {
         this.previewicon = URL.createObjectURL(file);
         this.iconStatus = "changing";
         },
+
         confirmChangeIcon: async function() {
             const path = await this.uploadImage(this.userID);
             console.log("creating path", path)
@@ -158,6 +151,7 @@ export default {
             }, 500)
             console.alert("Profile image changed successfully!")
         },
+        
         async uploadImage(userID) {
         if (this.icon) {
         // var myPostID = this.post.postID
@@ -177,28 +171,26 @@ export default {
         cancelChangeIcon(){
             document.getElementById("changeIconImg").style.display="inline"
             document.getElementById("changeIconBtnContainer").style.display="none"
+        },
+
+        async savetofs(){
+            var a= document.gettlementById("name").value
+            var b =document.getElementById("intro").value
+            var c = document.getElementById("prize").value 
+            //var d = document.getElementById("quant1").value 
+            alert ("Saving User: "+ a)
+            try{
+                const docRef = await updateDoc(doc(db, "Users", this.userID),{
+                    username: a, intro : b, prize: c })
+                    console.log (docRef)
+                    //document.getElementById('myform').reset();
+                    this.$emit("added")
+            }
+            catch(error){
+                console.error("Error adding document:error", error);
+            }
         }
     }
-
-    // methods: {
-    //     async savetofs(){
-    //     var a= document.gettlementById("name").value
-    //     var b =document.getElementById("intro").value
-    //     var c = document.getElementById("prize").value 
-    //     //var d = document.getElementById("quant1").value 
-    //     alert ("Saving User: "+ a)
-    //     try{
-    //         const docRef = await setDoc(doc(db,"Portfolio", a),{
-    //             name: a, intro : b, prize: c })
-    //             console. log (docRef)
-    //             document.getElementById('myform').reset();
-    //             this.$emit("added")
-    //         }
-    //         catch(error){
-    //             console.error("Error adding document:error", error);
-    //         }
-    //     }
-    // }
 }
 </script>
 
