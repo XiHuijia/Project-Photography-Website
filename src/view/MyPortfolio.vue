@@ -50,7 +50,7 @@ export default {
           this.user = user;
           display(user)
         }
-    });
+      });
 
     async function display(user){
     let z = await getDocs(collection(db, user.uid))    
@@ -70,16 +70,17 @@ export default {
       var photo = (yy.Photo)
       const storage = getStorage();
       const starsRef = ref(storage, 'uploads/'+ email + '/' + photo);
-       getDownloadURL(starsRef).then((url) => {
+      getDownloadURL(starsRef).then((url) => {
                 console.log('get url' + url)
                 photo_list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
-                })
+      })
       
       ind++;
          
     }) 
     console.log(photo_list)
-    this.photo_lst = await photo_list
+    user.photo_lst = await photo_list
+    console.log(user.photp_lst)
   }
 
   },

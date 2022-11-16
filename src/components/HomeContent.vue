@@ -24,7 +24,7 @@
         <div class="container" >
             <div class="card">
                 <img src="../assets/image11.jpg" alt="Waves" class="card-img-top">
-                <div class="card-body" @click="goDetail(1, 'Waves', 'image11.jpg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')" >
+                <div class="card-body" @click="goDetail(1, 'Waves', 'image11.jpg',  'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')" >
                     <h5 class="card-title">Waves</h5>
                     <p class="card-text">The ocean is never still.</p>
                     <a class="cardbtn">More</a>
@@ -32,7 +32,7 @@
             </div>
             <div class="card">
                 <img src="../assets/image15.jpeg" alt="The Sea" class="card-img-top">
-                    <div class="card-body" @click="goDetail(2, 'The Town', 'image15.jpeg', 'Xi Huijia', 'hjwuxi@gmail.com', 'nature', '4', 'Singapore')">
+                    <div class="card-body" @click="goDetail(2, 'The Town', 'image15.jpeg', 'hjwuxi@gmail.com', 'nature', '4', 'Singapore')">
                         <h5 class="card-title">The Town</h5>
                         <p class="card-text">The whole island is remarkable for its beautiful scenery and its fertility.</p>
                         <a class="cardbtn">More</a>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="card">
                     <img src="../assets/image14.jpeg" alt="The Myth" class="card-img-top">
-                    <div class="card-body" @click="goDetail(3, 'The Myth', 'image14.jpeg', 'Xi Huijia', 'hjwuxi@gmail.com', 'history',  '5', 'Singapore')">
+                    <div class="card-body" @click="goDetail(3, 'The Myth', 'image14.jpeg', 'hjwuxi@gmail.com', 'history',  '5', 'Singapore')">
                         <h5 class="card-title">The Myth</h5>
                         <p class="card-text">A lasting impact on our perceived memory of a place.</p>
                         <a class="cardbtn">More</a>
@@ -87,11 +87,11 @@
 
 export default {
     methods: {
-        goDetail (id, name, image, author, email, tag, price, location) {
+        goDetail (id, name, image, email, tag, price, location) {
             console.log("go to detail page")
             console.log(id, name, image)
             this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name,
-            author: author, email: email, tag: tag, location: location, price: price }})
+            email: email, tag: tag, location: location, price: price }})
         }
     },
 }
