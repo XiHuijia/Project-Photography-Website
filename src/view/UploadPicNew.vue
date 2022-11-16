@@ -50,7 +50,7 @@ import MyFooter from '@/components/MyFooter.vue';
 import firebaseApp from '../firebase.js';
 import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
-import {doc, setDoc} from "firebase/firestore";
+import {doc, setDoc, updateDoc, getDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import { ref, getStorage, uploadBytes} from "firebase/storage"
 const db = getFirestore(firebaseApp);
@@ -66,6 +66,7 @@ export default {
         return{
             user:false,
             image: null,
+            post: 0,
         }
     },
 
@@ -105,6 +106,15 @@ export default {
                 await setDoc(doc(db,'photos', pic), {
                     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email, Author: name,
                 });
+
+                let user = await getDoc(doc(db, "Users", this.userID))
+                console.log(user)
+                this.post = user.data().posts +1
+                console.log(this.post)
+
+                await updateDoc(doc(db, 'Users', this.user.email), {
+                    posts: this.post
+                })
                 // console.log(db)
                 console.log(this.user.uid)
                 alert("Successfully Uploaded!");
