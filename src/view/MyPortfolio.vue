@@ -7,7 +7,7 @@
         </div>
         <div class="photo-list-main">
           
-          <div class="photo-list-item" v-for="info in list" :key="info.id"
+          <div class="photo-list-item" @click="goDetail(info.id, info.photoName, info.img, info.author, info.email, info.tag, info.price, info.loc)"  v-for="info in list" :key="info.id"
                  :style="{background: 'url(' + info.img + ')'}">
           <div class="photo-name">{{ info.photoName }}</div>
           <div class="read-more">Read More</div>
@@ -28,19 +28,25 @@ import { getFirestore } from "firebase/firestore"
 import { collection, getDocs} from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 import { ref, getStorage, getDownloadURL} from "firebase/storage"
-
 export default {
     name: 'MyPortfolio',
-
     components: {
       HeadLine,
       MyFooter,
     },
-
     data() {
         return {
             user:false,
             list:[]
+        }
+    },
+
+    methods: {
+        goDetail (id, name, image, author, email, tag, price, location) {
+            console.log("go to detail page")
+            console.log(id, name, image)
+            this.$router.push({name: 'IndivPicDynamic', params: { id:id, photo: image, title:name,
+            author: author, email: email, tag: tag, location: location, price: price }})
         }
     },
 
@@ -52,9 +58,7 @@ export default {
           display(this)
         }
       });
-
  
-
     async function display(user){
       let z = await getDocs(collection(db, user.user.uid))    
     let ind = 1
@@ -67,7 +71,8 @@ export default {
       var tag = (yy.Tag)
       var email = (yy.Email)
       // get display name
-      var author = user.displayName
+      var author = user.user.displayName
+      console.log(author)
       //get photo path from storage
       var photo = (yy.Photo)
       const storage = getStorage();
@@ -77,7 +82,6 @@ export default {
                 console.log(user.list)
                 user.list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
                 console.log(user.list)
-
       })
       
       ind++;
@@ -85,7 +89,6 @@ export default {
     }) 
     console.log(user.list)
   }
-
   },
 }
 </script>
@@ -95,7 +98,6 @@ export default {
             text-align: center;
             width: 1300px;
             padding-bottom: 90px;
-
                 .grouping-name {
                     margin: 55px 0 32px 32px;
                     font-size: 36px;
@@ -119,7 +121,7 @@ export default {
                         &:nth-child(3n) {
                             margin-right: 0;
                         }
-                        .photo-Name {
+                        .photo-name {
                             font-size: 50px;
                             font-weight: bold;
                             margin-bottom: 5px;
@@ -142,7 +144,6 @@ export default {
                 
             }
         }
-
 button{
     text-align:center;
     margin: auto;

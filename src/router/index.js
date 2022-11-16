@@ -9,10 +9,12 @@ import MyPortfolio from '@/view/MyPortfolio.vue'
 import UploadPicNew from '@/view/UploadPicNew.vue'
 import IndivPic from '@/view/IndivPicNew.vue'
 import PurchasePic from '@/view/PurchasePic.vue'
+import PurchasePicDynamic from '@/view/PurchasePicDynamic.vue'
 import FollowingPage from '@/view/FollowingPage.vue'
 import FollowerPage from '@/view/FollowerPage.vue'
 import OtherUserProfile from '@/view/OtherUserProfile.vue'
 import ViewHistory from '@/view/ViewHistory.vue'
+import IndivPicDynamic from '@/view/IndivPicDynamic.vue'
 
 const routes = [
   {
@@ -70,9 +72,22 @@ const routes = [
   }
   ,
   {
+    path: '/indivpicdynamic/:id/:photo/:title/:author/:email/:tag/:price/:location',
+    name: 'IndivPicDynamic',
+    props: true,
+    component: IndivPicDynamic
+  }
+  ,
+  {
     path:'/purchase/:id/:photo/:title/:price',
     name: 'PurchasePic',
     component: PurchasePic
+  }
+  ,
+  {
+    path:'/purchasedynamic/:id/:photo/:title/:price',
+    name: 'PurchasePicDynamic',
+    component: PurchasePicDynamic
   }
   ,
   {

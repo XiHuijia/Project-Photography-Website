@@ -84,7 +84,7 @@ export default {
         },
 
         goPurchase(id, image, name, price){
-            this.$router.push({name: 'PurchasePic', params: { id:id, photo: image, title:name, price: price }})
+            this.$router.push({name: 'PurchasePicDynamic', params: { id:id, photo: image, title:name, price: price }})
         },
 
         goAuthorProfile(email){
