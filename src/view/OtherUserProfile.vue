@@ -60,7 +60,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, getStorage, getDownloadURL} from "firebase/storage"
 
 
-
+const auth = getAuth();
 export default{
     name: "OtherUserProfile",
     components:{
@@ -112,30 +112,8 @@ export default{
 
     },
 
-    mounted(){
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if(user) {
-          this.user = user;
-        }
-    })
-    },
-    
-    //props: ["uid"],
-    
-    // setup(props) {
-    //     const otheruser = ref("");
-    //     const load = async () => {
-    //     try {
-    //         const res = await getDoc(doc(db, "Users", props.id));
-    //         otheruser.value = res.data();
-    //     } catch (err) {
-    //         alert(err.message);
-    //     }
-    //     };
-    //     load();
-    // },
     methods:{
+        
         async followUser(email) {
             try{
                 const my_res = await getDoc(doc(db, "Users", this.user.email));
@@ -148,6 +126,7 @@ export default{
                     await updateDoc(doc(db, 'Users', this.user.email), {
                         following: my_following
                     });
+
                     const other_res = await getDoc(doc(db, "Users", email));
                     let other_value = other_res.data();
                     let other_followers = other_value.followers;
@@ -162,7 +141,43 @@ export default{
             }
             
         }
+    },
+
+    mounted() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+        this.userID = this.$route.params.email;
+        display(this, this.userID)
+        getURL(this);
+        //display(user);
+      }
+    });
+
+    async function getURL(self){
+            setTimeout(() => {
+            console.log(self.email)
+            console.log("getURL triggered")
+            // Get URL for the image inside the storage
+            const storage = getStorage();
+            const starsRef = ref(storage, 'icons/'+ self.email);
+            getDownloadURL(starsRef)
+            .then((url) => {
+            self.url = url
+            self.showIcon=true
+            })
+            }, 500);
+        }
+    async function display(self){
+        let user = await getDoc(doc(db, "Users", self.userID))
+        self.username = user.data().username
+        self.bio = user.data().bio
+        self.following = user.data().following
+        self.followers = user.data().followers
+        self.email=user.data().email
+        console.log(self.profileiconURL)
     }
+}
 }
 
 </script>
