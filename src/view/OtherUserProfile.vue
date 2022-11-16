@@ -1,9 +1,9 @@
 <template>
     <HeadLine/>
     <div class="container">
-
+        <button onclick="javascript:history.back(-1);">Go Back</button>
             <div class="profile">
-
+                
 
                 <div class="profile-image" v-if="this.showIcon">
                     <img :src= "url" alt="Preview" id="IconImg"/>
@@ -330,56 +330,19 @@ export default{
             margin: 0;
         }
 
-.btn {
-  font-family: Merienda;
-  position: relative;
-  padding: 1rem 3rem;
-  margin: 10px 30px 50px 30px;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: black;
-  text-decoration: none;
-  background-color: white;
-  border: transparent;
-  outline: transparent;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  animation: glow 8s linear infinite;
-
-  &-gradient {
-    color: white;
-    background: linear-gradient(90deg, #f5b4a8, #f1549b, #f5b4a8);
-    background-size: 300%;
-    border-radius: 2em;
-
-    &::before {
-      position: absolute;
-      content: "";
-      top: -5px;
-      left: -5px;
-      bottom: -5px;
-      right: -5px;
-      z-index: -1;
-      background: inherit;
-      background-size: inherit;
-      border-radius: 4em;
-      opacity: 0;
-      transition: 0.5s;
-    }
-
-    &:hover::before {
-      opacity: 1;
-      filter: blur(20px);
-      animation: glow 8s linear infinite;
-    }
-  }
+button{
+    text-align:center;
+    margin: 20px 0 10px 50px;
+    cursor: pointer;
+    font-family: Merienda;
+    padding: 8px 20px;
+    border-radius: 15px;
 }
-
-@keyframes glow {
-  to {
-    background-position: 300%;
-  }
+button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
 }
 
 </style>

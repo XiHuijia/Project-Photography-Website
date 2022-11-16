@@ -24,7 +24,7 @@
         <div class="container" >
             <div class="card">
                 <img src="../assets/image11.jpg" alt="Waves" class="card-img-top">
-                <div class="card-body" @click="goDetail(1, 'Waves', 'image11.jpg',  'hjwuxi@gmail.com', 'nature',  '4', 'Singapore')" >
+                <div class="card-body" @click="goDetail(1, 'Waves', 'image11.jpg', 'Yang Fan', 'yangfan0014@gmail.com', 'nature',  '4', 'Singapore')" >
                     <h5 class="card-title">Waves</h5>
                     <p class="card-text">The ocean is never still.</p>
                     <a class="cardbtn">More</a>
@@ -32,7 +32,7 @@
             </div>
             <div class="card">
                 <img src="../assets/image15.jpeg" alt="The Sea" class="card-img-top">
-                    <div class="card-body" @click="goDetail(2, 'The Town', 'image15.jpeg', 'hjwuxi@gmail.com', 'nature', '4', 'Singapore')">
+                    <div class="card-body" @click="goDetail(2, 'The Town', 'image15.jpeg', 'He Ziyu', 'heziyu68@gmail.com', 'nature', '4', 'Singapore')">
                         <h5 class="card-title">The Town</h5>
                         <p class="card-text">The whole island is remarkable for its beautiful scenery and its fertility.</p>
                         <a class="cardbtn">More</a>
