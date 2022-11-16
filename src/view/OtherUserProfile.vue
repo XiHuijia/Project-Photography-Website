@@ -1,5 +1,5 @@
 <template>
-    <HeadLine/>
+<HeadLine/>
     <div class="container">
         <button onclick="javascript:history.back(-1);">Go Back</button>
             <div class="profile">
@@ -28,7 +28,6 @@
                         <li><span class="profile-stat-count">{{this.num_following}}</span> following</li>
                     </ul>
                     <button v-if="email != this.user.email"  class="follow" @click="followUser(email)">Follow</button>
-
                 </div>
 
                 <div class="profile-bio">
@@ -41,10 +40,12 @@
 
             </div>
             <!-- End of profile section -->
-
-        </div>
-        <!-- End of container -->
+    </div>
     <MyFooter/>
+
+        <!-- End of container -->
+
+
 </template>
 
 <script>

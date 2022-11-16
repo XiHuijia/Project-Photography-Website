@@ -40,7 +40,7 @@
                 </div>
                 <div class="card">
                     <img src="../assets/image14.jpeg" alt="The Myth" class="card-img-top">
-                    <div class="card-body" @click="goDetail(3, 'The Myth', 'image14.jpeg', 'hjwuxi@gmail.com', 'history',  '5', 'Singapore')">
+                    <div class="card-body" @click="goDetail(3, 'The Myth', 'image14.jpeg', 'Xi Huijia', 'hjwuxi@gmail.com', 'history',  '5', 'Singapore')">
                         <h5 class="card-title">The Myth</h5>
                         <p class="card-text">A lasting impact on our perceived memory of a place.</p>
                         <a class="cardbtn">More</a>
@@ -76,26 +76,22 @@
 // // import {db} from '../firebase.js';
 // // import {getDoc, doc} from 'firebase/firestore';
 // let input = ref("");
-
 // // const tags = await getDoc(doc(db, "Tag"));
 // const tags = ["waves", "sea", "myth"];
-
 // function filteredList(){
 //     return tags.filter((tag) =>
 //     tag.toLowerCase().includes(input.value.toLowerCase()))
 // }
-
 export default {
     methods: {
-        goDetail (id, name, image, email, tag, price, location) {
+        goDetail (id, name, image, author, email, tag, price, location) {
             console.log("go to detail page")
             console.log(id, name, image)
             this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name,
-            email: email, tag: tag, location: location, price: price }})
+            author: author, email: email, tag: tag, location: location, price: price }})
         }
     },
 }
-
 </script>
 
 <style lang="less" scoped>
@@ -168,7 +164,6 @@ export default {
                 font-size: 18px;
             }
 }
-
 .btn {
   margin-top: 30px;
   border-radius: 15px;
@@ -188,28 +183,22 @@ export default {
   user-select: none;
   white-space: nowrap;
   transition: 0.25s;
-
   &:hover {
     background: hsl(332, 100%, 60%);
   }
-
   &-primary {
     --hue: 187;
   }
-
   &-ghost {
     color: hsl(332, 100%, 60%);
     background-color: #f9e9eebe;
     border-color: hsl(332, 100%, 60%);
-
     &:hover {
       color: #e55a89;
     }
   }
-
   &-shine {
     color: #e55a89;
-
     &::before {
       position: absolute;
       content: "";
@@ -226,18 +215,15 @@ export default {
       transform: translateX(-100%);
       transition: 0.6s;
     }
-
     &:hover {
       background: transparent;
       box-shadow: 0 0 20px 10px hsla(332, 100%, 41%, 0.5);
     }
-
     &:hover::before {
       transform: translateX(100%);
     }
   }
 }
-
 .container {
   width: 1000px;
   display: flex;
@@ -247,7 +233,6 @@ export default {
   
   .card {
     margin: 1em;
-
     .card-img-top {
       position: relative;
       z-index: 2;
@@ -257,7 +242,6 @@ export default {
       transition: 0.5s;
       border-radius: 5px;
     }
-
     .card-body {
       z-index: 1;
       box-sizing: border-box;
@@ -272,7 +256,6 @@ export default {
       transform: translateY(-50%);
       transition: 0.5s;
       border-radius: 5px;
-
       .card-title {
         margin: 0 0 0.75em 0;
         font-size: 1.25em;
@@ -280,12 +263,10 @@ export default {
         line-height: 1.2;
         font-family: Merienda;
       }
-
       .card-text {
         margin: 0 0 1em 0;
         font-family: 'Noto Nastaliq Urdu', serif;
       }
-
       .cardbtn {
         padding: 0.375em 0.75em;
         color: rgb(223, 63, 137);
@@ -295,25 +276,21 @@ export default {
         border-radius: 0.25em;
         transition: 0.5s;
         cursor: pointer;
-
         &:hover {
           color: white;
           background: rgb(223, 63, 137);
         }
       }
     }
-
     &:hover {
       .card-img-top {
         transform: translateY(2%);
       }
-
       .card-body {
         transform: translateY(0);
       }
     }
   }
 }
-
-
 </style>
+Footer
