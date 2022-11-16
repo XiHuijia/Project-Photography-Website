@@ -39,10 +39,10 @@
 
                 </div>
 
-                <div class="profile-bio">
+                <div class="profile-intro">
 
                     <!-- <p>I am a full time photographer who has been in the business for many years now. Before ever shooting professionally I have always found light and people to be very interesting subjects that inspires me to no end. I am often fascinated with exploring the creative possibilities with my subjects and relish in the discovery of undiscovered possibility.  📷✈️🏕️</p> -->
-                    <p>{{bio}}</p>
+                    <p>{{intro}}</p>
                 </div>
 
             </div>
@@ -113,7 +113,7 @@ export default {
             post: 0,
             follower: 0,
             following: 0,
-            bio: '',
+            intro: '',
             url: false,
             showIcon: false
         }
@@ -152,7 +152,7 @@ export default {
         // let data = {
         //   username: username,
         //   email: self.user,
-        //   bio: "This is description",
+        //   intro: "This is description",
         //   followers: [],
         //   following: [],
         //   requests: [],
@@ -163,7 +163,7 @@ export default {
         //console.log(userInfo);
         userInfo.forEach((doc) => {
           // console.log(doc.id, " => ", doc.data());
-          if (doc == self.user.email) {
+          if (doc.id == self.user.email) {
             userExits = true;
           }
         });
@@ -174,7 +174,7 @@ export default {
           const docNow = await setDoc(doc(db, "Users", self.user.email), {
             username: username,
           email: self.user.email,
-          bio: "This is description",
+          intro: "This is description",
           followers: [],
           following: [],
           requests: [],
@@ -186,7 +186,7 @@ export default {
         else {
           let user = await getDoc(doc(db, "Users", self.userID))
             self.username = user.data().username
-            self.bio = user.data().bio
+            self.intro = user.data().intro
             self.following = user.data().following.length
             self.follower = user.data().follwer.length
             self.email=user.data().email
@@ -210,7 +210,7 @@ export default {
     // async function display(self){
     //         let user = await getDoc(doc(db, "Users", self.userID))
     //         self.username = user.data().username
-    //         self.bio = user.data().bio
+    //         self.intro = user.data().intro
     //         self.following = user.data().following.length
     //         self.follower = user.data().follwer.length
     //         self.email=user.data().email
@@ -253,7 +253,7 @@ export default {
 
 .profile-user-settings,
 .profile-stats,
-.profile-bio {
+.profile-intro {
     float: left;
     width: calc(66.666% - 2rem);
 }
@@ -284,7 +284,7 @@ export default {
     margin-right: 0;
 }
 
-.profile-bio {
+.profile-intro {
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.5;
@@ -304,13 +304,13 @@ export default {
         font-size: 2.2rem;
     }
 
-    .profile-bio {
+    .profile-intro {
         font-size: 1.4rem;
         margin-top: 1.5rem;
     }
 
     .profile-edit-btn,
-    .profile-bio,
+    .profile-intro,
     .profile-stats {
         flex-basis: 100%;
         float: none;
@@ -351,7 +351,7 @@ export default {
     .profile-image,
     .profile-user-settings,
     .profile-stats,
-    .profile-bio{
+    .profile-intro{
         width: auto;
         margin: 0;
     }
@@ -372,14 +372,14 @@ export default {
 
         .profile-edit-btn,
         .profile-stats,
-        .profile-bio {
+        .profile-intro {
             grid-column: 1 / -1;
         }
 
         .profile-user-settings,
         .profile-edit-btn,
         .profile-settings-btn,
-        .profile-bio,
+        .profile-intro,
         .profile-stats {
             margin: 0;
         }
