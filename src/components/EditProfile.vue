@@ -67,7 +67,7 @@ import MyFooter from './MyFooter.vue';
 
 import firebaseApp from '../firebase.js';
 import {getAuth, onAuthStateChanged} from "firebase/auth"
-import { getDoc, doc, getFirestore,updateDoc} from '@firebase/firestore'
+import { getDoc, doc, getFirestore, updateDoc} from '@firebase/firestore'
 import { ref, getStorage, uploadBytes, getDownloadURL} from "firebase/storage"
 
 const db = getFirestore(firebaseApp);
@@ -174,11 +174,14 @@ export default {
         },
 
         async savetofs(){
-            var a= document.gettlementById("name").value
+            var a = document.getElementById("name").value
             var b =document.getElementById("intro").value
             var c = document.getElementById("prize").value 
             //var d = document.getElementById("quant1").value 
             alert ("Saving User: "+ a)
+            const path = "icons/"+ this.userID;
+            const fileRef = ref(storage, path)
+            console.log(fileRef)
             try{
                 const docRef = await updateDoc(doc(db, "Users", this.userID),{
                     username: a, intro : b, prize: c })
