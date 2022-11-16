@@ -220,7 +220,7 @@ export default {
     async function display(self){
         let user = await getDoc(doc(db, "Users", self.userID))
         self.username = user.data().username
-        self.bio = user.data().bio
+        self.intro = user.data().intro
         self.following = user.data().following
         self.followers = user.data().followers
         self.email=user.data().email
