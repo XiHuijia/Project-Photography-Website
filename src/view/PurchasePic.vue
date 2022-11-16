@@ -2,12 +2,11 @@
     <HeadLine/>
     <!-- <div id = "contianer"> -->
     <div id = "left">
-    <h2 id = "select1"><strong>Select Payment Method </strong></h2>
-    <h3 id = "select2">Select your payment method</h3>
-    <button id = 'payment1' onclick="selectFunction1()"> Paypal</button>
-    <button id = 'payment2' onclick="selectFunction2()"> Debit Or Credit Card </button>
-    <br><br><br>
-    <h3 id = "enter">Enter your card details</h3>
+    <h2 id = "select1"><strong>Enter Payment Details </strong></h2>
+    <!-- <h3 id = "select2">Select your payment method</h3> -->
+    <!-- <button id = 'payment1' onclick="selectFunction1()"> Paypal</button> -->
+    <!-- <button id = 'payment2' onclick="selectFunction2()"> Debit Or Credit Card </button> -->
+    <!-- <br><br><br> -->
 
     <div id = "holder">
       <label for="holderName" id = "hn">Cardholder name</label><br>
@@ -35,30 +34,46 @@
     </div>
     </div>
     
-    <h2 id = "summary">Summary
-      <br> Price: {{this.price}}
-    </h2>
+    <h2 id = "summary">Summary </h2><br><br>
+    <h2 id = "price">Price: {{this.price}}</h2><br><br>
  
-    <h2 id = "quantity">Quantity: 1</h2><br><br><br><br><br><br>
+    <h2 id = "title">{{this.title}}</h2><br><br><br><br>
     <div id = "imagecontainer">
-      <h2>{{this.title}}</h2>
-      <img :src = "getImgUrl(path)" alt = "getImgUrl(path)"/>   
+      <img :src = "getImgUrl(path)" id = "image" alt = "getImgUrl(path)"/>   
     </div>
+
     <button id="checkout" type="button" @click="purchase()">Checkout</button>
 
 </template>
 
 <script>
 import HeadLine from '@/components/HeadLine.vue'
+import {getFirestore} from "firebase/firestore";
+import {doc, getDoc, updateDoc} from "firebase/firestore";
+import firebaseApp from '../firebase.js';
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import 'firebase/firestore';
+const db = getFirestore(firebaseApp);
 
 export default{
   data(){
     return{
+      user: false, //
       id: false,
       path: false,
       title: false,
       price: false
     }
+  },
+
+  mounted() {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user;
+
+            }
+        })
   },
   
   created() {
@@ -79,9 +94,33 @@ export default{
             return require('@/assets/' + img);
       },
       async purchase() {
-      alert("Successdully purchased!");
-      },
-    }
+        // var a = document.getElementById("holderName").value
+        // var b = document.getElementById("cardNumber").value
+        // var c = document.getElementById("expirationDate").value
+        // var d = document.getElementById("securityCode").value
+        // var e = document.getelementById("billingAddress").value
+        try{
+          console.log("entering try");
+          var photo = {Path: this.path, Title: this.title, Price: this.price}
+          const my_res = await getDoc(doc(db, "Transaction", this.user.uid));
+          let my_value = my_res.data();
+          let my_following = my_value.list;
+          if (my_following.includes(photo)) {
+                    alert("You already have this transaction!");
+          } else {
+            my_following.push(photo);
+            await updateDoc(doc(db, 'Transaction', this.user.uid), {
+              list: my_following
+            }),
+            alert("Successfully Purchased!")
+          }
+        }
+        catch(error) {
+            console.error("Error purchasing this photo: ", error);
+            alert("Cannot purchase this photo!");
+        }
+      }
+  }
 }
 
 </script>
@@ -220,6 +259,14 @@ export default{
 #summary {
   float: left;
 }
+#price {
+  float: left;
+  margin-left: -100px;
+}
+#title{
+  float: left;
+  margin-left: 0px;
+}
 #quantity {
   float: left;
   margin-right: 400px;
@@ -227,13 +274,13 @@ export default{
 }
 #imagecontainer{
   text-align: left;
-  margin-left: -100px;
   margin-top: -30px;
 }
 img{
   width: 400px;
   height: 280px;
   float: left;
+  margin-left: -100px;
 }
 
 #checkout{
