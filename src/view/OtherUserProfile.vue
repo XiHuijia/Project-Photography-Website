@@ -27,7 +27,7 @@
                         <li><span class="profile-stat-count">{{this.num_follower}}</span> followers</li>
                         <li><span class="profile-stat-count">{{this.num_following}}</span> following</li>
                     </ul>
-                    <button class="follow" @click="follow(username)">Follow</button>
+                    <button class="follow" @click="followUser(email)">Follow</button>
 
                 </div>
 
@@ -52,7 +52,7 @@ import HeadLine from '@/components/HeadLine.vue'
 import MyFooter from '@/components/MyFooter.vue'
 //import { db } from "../firebase.js";
 //import { ref } from "firebase/storage";
-import {doc, getDoc, addDoc} from "firebase/firestore";
+import {doc, getDoc, updateDoc} from "firebase/firestore";
 import firebaseApp from '../firebase.js';
 import {getFirestore} from "firebase/firestore";
 const db = getFirestore(firebaseApp);
@@ -70,6 +70,7 @@ export default{
 
     data(){
         return{
+            user:false,
             email: false,
             username: false,
             num_follower: false,
@@ -134,14 +135,29 @@ export default{
     //     };
     //     load();
     // },
-    method:{
-        async follow(otheruser) {
+    methods:{
+        async followUser(email) {
             try{
-                await addDoc(doc(db, String(this.user.uid)), {
-                    Following: otheruser
-                });
+                const my_res = await getDoc(doc(db, "Users", this.user.email));
+                let my_value = my_res.data();
+                let my_following = my_value.following;
+                if (my_following.includes(email)) {
+                    alert("You have already followed this artist!");
+                } else {
+                    my_following.push(email);
+                    await updateDoc(doc(db, 'Users', this.user.email), {
+                        following: my_following
+                    });
+                    const other_res = await getDoc(doc(db, "Users", email));
+                    let other_value = other_res.data();
+                    let other_followers = other_value.followers;
+                    other_followers.push(this.user.email);
+                    await updateDoc(doc(db, 'Users', email), {
+                        followers: other_followers
+                    });
+                }
             } catch(error) {
-                alert("Fail to follow!");
+                alert("Fail to follow!" + error);
             }
             
         }
