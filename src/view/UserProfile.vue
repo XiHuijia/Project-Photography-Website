@@ -163,6 +163,7 @@ export default {
         //console.log(userInfo);
         userInfo.forEach((doc) => {
           // console.log(doc.id, " => ", doc.data());
+          console.log(doc.id);
           if (doc == self.user.email) {
             userExits = true;
           }
