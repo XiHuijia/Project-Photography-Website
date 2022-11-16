@@ -5,24 +5,29 @@
         <h1>Upload Your Work Here!</h1>
         <div class="pic1">
             <label>Your Photo</label>
+            <br>
             <input type="file" id="photo1" accept=".png, .jpg, .jpeg" @change="onIconChange"> 
         </div>
 
         <div class="picInfo">
             <div class="input">
                 <label>TITLE</label>
+                <br>
                 <input type="text" id="title1" required = "" placeholder="Add title for this work">
             </div>
             <div class="input">
                 <label>LOCATION</label>
+                <br>
                 <input type="text" id="location1" required = "" placeholder="Add location for this work">
             </div>
             <div class="input">
                 <label>PRICE</label>
+                <br>
                 <input type="number" id="price1" required = "" placeholder="Add your desired price for this work">
             </div>
             <div class="input">
                 <label>TAG</label>
+                <br>
                 <input type="text" id="tag1" required = "" placeholder="Add tag for this work">
             </div>
         </div>
@@ -79,17 +84,21 @@ export default {
             var loc = document.getElementById("location1").value
             var pri = document.getElementById("price1").value
             var t = document.getElementById("tag1").value
+            var name = this.user.displayName
             try{
                 console.log("entering try");
                 const path = await this.uploadImage(this.userID, pic);
                 console.log("creating path", path)
                 await this.uploadImage(this.userID, tit);
                 const docRef = await setDoc(doc(db, String(this.user.uid), pic), {
-                                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email,//Author: name, picURL: url, 
-                                });
-                                console.log(db)
-                                console.log(this.user.uid)
-                                alert("Successfully Uploaded!");
+                                Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email, Author: name, 
+                            });
+                await setDoc(doc(db,'photos', pic), {
+                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email, Author: name,
+                });
+                console.log(db)
+                console.log(this.user.uid)
+                alert("Successfully Uploaded!");
                 setTimeout(() => {
                     console.log(docRef)
                     location.reload()
@@ -159,7 +168,7 @@ h1{
     padding-right: 50px;
     padding-left: 10px;
     font-family: Merienda;
-    
+    margin: 10px 0 10px 0;
 }
 
 /* .btn{
