@@ -119,7 +119,7 @@ export default {
                         &:nth-child(3n) {
                             margin-right: 0;
                         }
-                        .photo-Name {
+                        .photo-name {
                             font-size: 50px;
                             font-weight: bold;
                             margin-bottom: 5px;

@@ -99,10 +99,13 @@ export default {
                 const docRef = await setDoc(doc(db, String(this.user.uid), pic), {
                                 Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email, Author: name, 
                             });
+                await setDoc(doc(db,String(t), pic), {
+                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email, Author: name,
+                });
                 await setDoc(doc(db,'photos', pic), {
                     Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email, Author: name,
                 });
-                console.log(db)
+                // console.log(db)
                 console.log(this.user.uid)
                 alert("Successfully Uploaded!");
                 setTimeout(() => {
