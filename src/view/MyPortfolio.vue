@@ -6,8 +6,9 @@
         {{ this.user.displayName }}'s Works
         </div>
         <div class="photo-list-main">
-          <div class="photo-list-item" v-for="info in list" :key="info.id"
-                 :style="{background: 'url(' + info.img + ')'}">
+          {{photo_lst}}
+          <div class="photo-list-item" v-for="info in photo_lst" :key="info.id"
+                 :style="{background: info.img}">
           <div class="photo-name">{{ info.photoName }}</div>
           <div class="read-more">Read More</div>
           </div>
@@ -25,6 +26,7 @@ import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore"
 import { collection, getDocs} from "firebase/firestore";
 const db = getFirestore(firebaseApp);
+import { ref, getStorage, getDownloadURL} from "firebase/storage"
 
 export default {
     name: 'MyPortfolio',
@@ -37,8 +39,7 @@ export default {
     data() {
         return {
             user:false,
-            list: [],
-
+            photo_lst: [],
         }
     },
 
@@ -54,26 +55,31 @@ export default {
     async function display(user){
     let z = await getDocs(collection(db, user.uid))    
     let ind = 1
-
+    const photo_list = []
     z.forEach((docs) => {
       let yy = docs.data()
       console.log(yy)
-      var photo = (yy.Photo)
-      console.log(photo)
       var title = (yy.Title)
-      console.log(title)
       var location = (yy.Location)
-      console.log(location)
       var price = (yy.Price)
-      console.log(price)
       var tag = (yy.Tag)
-      console.log(tag)
-      console.log(this.list)
-      this.list.push({photoName: title, id: ind, img: photo, loc: location, price: price, tag: tag})
-      ind++;
+      var email = (yy.Email)
+      // get display name
+      var author = user.displayName
+      //get photo path from storage
+      var photo = (yy.Photo)
+      const storage = getStorage();
+      const starsRef = ref(storage, 'uploads/'+ email + '/' + photo);
+       getDownloadURL(starsRef).then((url) => {
+                console.log('get url' + url)
+                photo_list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
+                })
       
-    
-    })        
+      ind++;
+         
+    }) 
+    console.log(photo_list)
+    this.photo_lst = await photo_list
   }
 
   },
