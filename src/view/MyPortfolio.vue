@@ -6,14 +6,15 @@
         {{ this.user.displayName }}'s Works
         </div>
         <div class="photo-list-main">
-          {{list}}
+          
           <div class="photo-list-item" v-for="info in list" :key="info.id"
-                 :style="{background: info.img}">
+                 :style="{background: 'url(' + info.img + ')'}">
           <div class="photo-name">{{ info.photoName }}</div>
           <div class="read-more">Read More</div>
           </div>
         </div>
     </div>
+
     <button onclick="javascript:history.back(-1);">Go Back</button>
   <MyFooter/>
 </template>
@@ -28,7 +29,6 @@ import { collection, getDocs} from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 import { ref, getStorage, getDownloadURL} from "firebase/storage"
 
-const list = []
 export default {
     name: 'MyPortfolio',
 
@@ -39,7 +39,8 @@ export default {
 
     data() {
         return {
-            user:false
+            user:false,
+            list:[]
         }
     },
 
@@ -48,12 +49,14 @@ export default {
       onAuthStateChanged(auth, (user) => {
         if(user) {
           this.user = user;
-          display(user)
+          display(this)
         }
       });
 
+ 
+
     async function display(user){
-    let z = await getDocs(collection(db, user.uid))    
+      let z = await getDocs(collection(db, user.user.uid))    
     let ind = 1
     z.forEach((docs) => {
       let yy = docs.data()
@@ -71,13 +74,16 @@ export default {
       const starsRef = ref(storage, 'uploads/'+ email + '/' + photo);
       getDownloadURL(starsRef).then((url) => {
                 console.log('get url' + url)
-                list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
-                })
+                console.log(user.list)
+                user.list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
+                console.log(user.list)
+
+      })
       
       ind++;
          
     }) 
-    console.log(list)
+    console.log(user.list)
   }
 
   },
