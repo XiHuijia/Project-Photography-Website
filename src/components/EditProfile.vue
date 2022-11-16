@@ -39,20 +39,19 @@
                 <br><br>
                 <label for="name">User Name </label> <br>
                 <input type="text" id="name" required=true placeholder="Enter a New User Name" style="font-family: 'Noto Nastaliq Urdu', serif; width:200px;height:30px"> <br> 
-
+                <button class="button" v-on:click="saveusername()"> Save </button>
                 <br><br> 
                 <label for="intro">Self-Introduction</label><br>
                 <input type="text" id="intro" required=true placeholder="Introduce Yourself to the Community!" style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
-                
+                <button class="button" v-on:click="saveintro()"> Save </button>
                 <br><br>
                 <label for="prize">Prizes Won</label><br>
                 <input type="text" id="prize" required=true placeholder="Enter the Prizes You Won." style="font-family: 'Noto Nastaliq Urdu', serif;width:600px;height:150px"> <br> 
-                
+                <button class="button" v-on:click="saveprize()"> Save </button>
                 <br>
                 <br><br>
             </form>
             <div>
-                    <button class="save" v-on:click="savetofs()"> Save </button>
             </div>
         </div>
     </div>
@@ -173,30 +172,50 @@ export default {
             document.getElementById("changeIconBtnContainer").style.display="none"
         },
 
-        async savetofs(){
+        async saveusername(){
             var a = document.getElementById("name").value
-            var b =document.getElementById("intro").value
-            var c = document.getElementById("prize").value 
-            //var d = document.getElementById("quant1").value 
-            const path = "icons/"+ this.userID;
-            const fileRef = ref(storage, path)
-            console.log(fileRef)
             try{
                 const docRef = await updateDoc(doc(db, "Users", this.userID),{
-                    username: a, intro : b, prize: c })
+                    username: a})
                     console.log (docRef)
-                    //document.getElementById('myform').reset();
                     this.$emit("added")
-                    console.alert("Profile changed successfully!")
-                
+                    console.alert("Profile changed successfully!")     
             }
             catch(error){
                 console.error("Error adding document:error", error);
             }
             alert ("Saving User: "+ a)
             this.$router.push('UserProfile') 
-
-
+        },
+        async saveintro(){
+            var b =document.getElementById("intro").value
+            try{
+                const docRef = await updateDoc(doc(db, "Users", this.userID),{
+                    intro : b})
+                    console.log (docRef)
+                    this.$emit("added")
+                    console.alert("Profile changed successfully!")     
+            }
+            catch(error){
+                console.error("Error adding document:error", error);
+            }
+            alert ("Saving User: "+ b)
+            this.$router.push('UserProfile') 
+        },
+        async saveprize(){
+            var c = document.getElementById("prize").value 
+            try{
+                const docRef = await updateDoc(doc(db, "Users", this.userID),{
+                    prize: c })
+                    console.log (docRef)
+                    this.$emit("added")
+                    console.alert("Profile changed successfully!")               
+            }
+            catch(error){
+                console.error("Error adding document:error", error);
+            }
+            alert ("Saving User: "+ c)
+            this.$router.push('UserProfile') 
         }
     }
 }
@@ -214,6 +233,7 @@ export default {
 }
 .profile_image img {
         width: 20rem;
+        height: width;
         border-radius: 50%;
     }
 input:hover {
@@ -225,20 +245,6 @@ input:hover {
     font-family: Merienda;
     color: rgb(255, 238, 246);
     text-align: center;
-}
-.save{
-    color: rgb(244, 147, 163);
-    font-size: 30px;
-    padding: 10px 24px;
-    font-family: Merienda;
-    background: #fff;
-    border-radius: 5px;
-    border: 1px solid rgb(249, 251, 253);
-    cursor: pointer;
-}
-.save:hover{        
-    background: #ff5d93b3;
-    color: #fff;
 }
 
 .save2{
@@ -258,11 +264,12 @@ input:hover {
 }
 
 button{
+    font-size: 8px;
     text-align:center;
-    margin: 20px 0 10px 50px;
+    margin: 10px 0 10px 15px;
     cursor: pointer;
     font-family: Merienda;
-    padding: 8px 20px;
+    padding: 8px 15px;
     border-radius: 15px;
 }
 button:hover{
