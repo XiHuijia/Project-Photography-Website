@@ -12,7 +12,7 @@
 
                 </div> -->
                 <div class="profile-image" v-if="this.showIcon">
-                    <img :src= "url" alt="Preview" id="IconImg"/>
+                    <img :src= "profileurl" alt="Preview" id="IconImg"/>
                 </div>
                 <div v-else class="profile-image">
                     <img src="@/assets/1st_profile.png" id="IconImg"/>
@@ -109,14 +109,14 @@ export default {
     data() {
         return {
             user:false,
-            username: false,
+            username: '',
             email: false,
             list: [],
             post: 0,
             follower: 0,
             following: 0,
             intro: '',
-            url: false,
+            profileurl: '',
             showIcon: false
         }
     },
@@ -191,20 +191,20 @@ export default {
           let user = await getDoc(doc(db, "Users", self.userID))
             self.username = user.data().username
             self.intro = user.data().intro
+            self.post = user.data().requests.length
             self.following = user.data().following.length
-            self.follower = user.data().follwer.length
+            self.follower = user.data().followers.length
             self.email=user.data().email
-            console.log(self.profileiconURL)
-            const res = await getDoc(doc(db, "Users", this.email));
-            let value = res.data();
-            this.profileiconURL = value.profileiconURL;
+            //const res = await getDoc(doc(db, "Users", self.email));
+            //let value = res.data();
+            self.profileiconURL = user.data().email;
              console.log("getURL triggered")
             // Get URL for the image inside the storage
             const storage = getStorage();
-            const starsRef = ref(storage, 'icons/'+ this.profileiconURL);
+            const starsRef = ref(storage, 'icons/'+ self.profileiconURL);
             getDownloadURL(starsRef).then((url) => {
-                this.url = url
-                this.showIcon=true
+                self.profileurl = url
+                self.showIcon=true
                 })
         }
       } catch (error) {
