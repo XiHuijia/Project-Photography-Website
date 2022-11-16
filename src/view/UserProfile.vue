@@ -163,10 +163,12 @@ export default {
         //console.log(userInfo);
         userInfo.forEach((doc) => {
           // console.log(doc.id, " => ", doc.data());
-          if (doc == self.user.email) {
+          console.log(doc.id)
+          if (doc.id == self.user.email) {
             userExits = true;
           }
         });
+        console.log(userExits)
         if (!userExits) {
           // Create user only if this is a new user
           console.log(self.user);
