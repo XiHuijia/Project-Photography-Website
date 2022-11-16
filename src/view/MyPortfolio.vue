@@ -14,7 +14,7 @@
           </div>
         </div>
     </div>
-
+    <button @click="jumpPage('UploadPicNew')">Upload</button>
     <button onclick="javascript:history.back(-1);">Go Back</button>
   <MyFooter/>
 </template>
@@ -28,13 +28,22 @@ import { getFirestore } from "firebase/firestore"
 import { collection, getDocs} from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 import { ref, getStorage, getDownloadURL} from "firebase/storage"
-
+import { useRouter } from "vue-router";
 export default {
     name: 'MyPortfolio',
 
     components: {
       HeadLine,
       MyFooter,
+    },
+    setup() {
+    const router = useRouter();
+    const jumpPage = (name) => {
+      router.push({
+        name,
+      });
+    };
+      return {router,jumpPage}
     },
 
     data() {
@@ -145,7 +154,7 @@ export default {
 
 button{
     text-align:center;
-    margin: auto;
+    margin: 10px 10px 10px 10px ;
     cursor: pointer;
     font-family: Merienda;
     padding: 8px 20px;
