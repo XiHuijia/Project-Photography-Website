@@ -11,7 +11,8 @@ import IndivPic from '@/view/IndivPicNew.vue'
 import PurchasePic from '@/view/PurchasePic.vue'
 import FollowingPage from '@/view/FollowingPage.vue'
 import FollowerPage from '@/view/FollowerPage.vue'
-import OtherUserProfile from '@/view/OtherUserProfile'
+import OtherUserProfile from '@/view/OtherUserProfile.vue'
+import ViewHistory from '@/view/ViewHistory.vue'
 
 const routes = [
   {
@@ -90,6 +91,12 @@ const routes = [
     path: "/otheruser/:email",
     name: "OtherUserProfile",
     component: OtherUserProfile
+  }
+  ,
+  {
+    path: "/viewhistory",
+    name: "ViewHistory",
+    component: ViewHistory,
   }
   ,
 ]
