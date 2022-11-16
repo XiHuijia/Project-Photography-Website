@@ -5,14 +5,10 @@
         <h1>Upload Your Work Here!</h1>
         <div class="pic1">
             <label>Your Photo</label>
-            <input type="file" id="photo1" accept=".png, .jpg, .jpeg"> 
+            <input type="file" id="photo1" accept=".png, .jpg, .jpeg" @change="onIconChange"> 
         </div>
 
         <div class="picInfo">
-            <div class="input">
-                <label>URL</label>
-                <input type="text" id="url" required = "" placeholder="Add url for this work">
-            </div>
             <div class="input">
                 <label>TITLE</label>
                 <input type="text" id="title1" required = "" placeholder="Add title for this work">
@@ -44,8 +40,9 @@ import 'firebase/firestore';
 import {getFirestore} from "firebase/firestore";
 import {doc, setDoc} from "firebase/firestore";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
+import { ref, getStorage, uploadBytes} from "firebase/storage"
 const db = getFirestore(firebaseApp);
-
+const storage = getStorage();
 export default {
     name: "UploadPicNew",
     components: {
@@ -56,6 +53,7 @@ export default {
     data(){
         return{
             user:false,
+            image: null,
         }
     },
 
@@ -64,13 +62,17 @@ export default {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 this.user = user;
-
+                this.userID = this.user.email;
             }
         })
     },
 
 
     methods: {
+        onIconChange(i) {
+        let file = i.target.files[0]; // get the supplied file
+        this.image = file;
+        },
         async upload(){
             var pic = document.getElementById("photo1").value
             var tit = document.getElementById("title1").value
@@ -79,18 +81,32 @@ export default {
             var t = document.getElementById("tag1").value
             try{
                 console.log("entering try");
-                await setDoc(doc(db, String(this.user.uid), pic), {
-                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email,//Author: name, picURL: url, 
-                });
-                console.log(db)
-                console.log(this.user.uid)
-                alert("Successfully Uploaded!");
+                const path = await this.uploadImage(this.userID, tit);
+                console.log("creating path", path)
+                await this.uploadImage(this.userID, tit);
+                const docRef = await setDoc(doc(db, String(this.user.uid), pic), {
+                                    Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email,//Author: name, picURL: url, 
+                                });
+                                console.log(db)
+                                console.log(this.user.uid)
+                                alert("Successfully Uploaded!");
+                setTimeout(() => {
+                    console.log(docRef)
+                    location.reload()
+                }, 500)
             }
             catch(error) {
                 console.error("Error uploading photo: ", error);
                 alert("fail!");
             }
-        }
+        },
+        async uploadImage(userID, tit) {
+            const path = "uploads/"+ String(userID) + "/" + tit;
+            const fileRef = ref(storage, path)
+            console.log(fileRef)
+            await uploadBytes(fileRef, this.image)
+            .then(() => {console.log("Photo uploaded successfully to Firebase. Path" + path)})
+        },
     }
 }
 </script>
@@ -171,6 +187,11 @@ h1{
   user-select: none;
   white-space: nowrap;
   transition: 0.25s;
+}
+
+input:hover {
+    box-shadow: 5px 5px pink;
+    border-radius: 5px;
 }
 
 </style>
