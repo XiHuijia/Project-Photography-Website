@@ -2,7 +2,7 @@
     <HeadLine/>
     <div class="container">
         <div class="title">User Following</div>
-            <div id="followinglist" v-for="fol in myfollowing" :key="fol" @click="goAuthorProfile(fol)">
+            <div class="text" id="followinglist" v-for="fol in myfollowing" :key="fol" @click="goAuthorProfile(fol)">
                 <p>{{fol}}</p>
             </div>
         <button onclick="javascript:history.back(-1);">Go Back</button>
@@ -151,5 +151,13 @@ button:hover{
     background-color: rgb(251, 122, 171);
     box-shadow:  3px 3px grey;
     border-radius: 15px;
+}
+
+.text{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.612);
+    width:250px;
+    border-radius: 15px;
+    margin-left: 500px;
 }
 </style>
