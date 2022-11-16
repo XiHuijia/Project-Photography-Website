@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-
+    <button onclick="javascript:history.back(-1);">Go Back</button>
     <MyFooter/>
 
 </template>
@@ -251,7 +251,7 @@ input:hover {
 
 button{
     text-align:center;
-    margin: auto;
+    margin: 20px 0 10px 50px;
     cursor: pointer;
     font-family: Merienda;
     padding: 8px 20px;

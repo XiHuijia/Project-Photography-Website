@@ -1,5 +1,6 @@
 <template >
     <HeadLine/>
+    <button onclick="javascript:history.back(-1);">Go Back</button>
     <header v-if="user">
 
         <div class="container">
@@ -15,7 +16,7 @@
 
                 <div class="profile-user-settings">
 
-                    <h1 class="profile-user-name">{{username}}'s Profile</h1>
+                    <h1 class="profile-user-name">{{user.displayName}}'s Profile</h1>
 
                     <br>
 
@@ -26,17 +27,17 @@
                 <div class="profile-stats">
 
                     <ul>
-                        <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">164</span> posts</li>
-                        <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">188</span> followers</li>
-                        <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">206</span> following</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">{{post}}</span> posts</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">{{follower}}</span> followers</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">{{following}}</span> following</li>
                     </ul>
 
                 </div>
 
                 <div class="profile-bio">
 
-                    <p>I am a full time photographer who has been in the business for many years now. Before ever shooting professionally I have always found light and people to be very interesting subjects that inspires me to no end. I am often fascinated with exploring the creative possibilities with my subjects and relish in the discovery of undiscovered possibility.  📷✈️🏕️</p>
-
+                    <!-- <p>I am a full time photographer who has been in the business for many years now. Before ever shooting professionally I have always found light and people to be very interesting subjects that inspires me to no end. I am often fascinated with exploring the creative possibilities with my subjects and relish in the discovery of undiscovered possibility.  📷✈️🏕️</p> -->
+                    <p>{{bio}}</p>
                 </div>
 
             </div>
@@ -73,6 +74,7 @@
                     </div>
                 </div>
         </div>
+    <button onclick="javascript:history.back(-1);">Go Back</button>
     <MyFooter/>
 </template>
 
@@ -92,6 +94,7 @@ import {
     } from "firebase/firestore";
     const db = getFirestore(firebaseApp);
     const auth = getAuth();
+
 export default {
     components:{
         HeadLine,
@@ -101,6 +104,10 @@ export default {
         return {
             user:false,
             list: [],
+            post: 0,
+            follower: 0,
+            following: 0,
+            bio: ''
         }
     },
     setup() {
@@ -125,7 +132,7 @@ export default {
     mounted() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.user = user.email;
+        this.user = user;
         this.userID = this.user.email;
         display(this, this.userID)
         createUser(this,user.displayName);
@@ -155,7 +162,7 @@ export default {
           // Create user only if this is a new user
           console.log(self.user);
           console.log(data);
-          const docNow = await setDoc(doc(db, "Users", self.user), data);
+          const docNow = await setDoc(doc(db, "Users", self.user.email), data);
           console.log(docNow);
         //   alert("Please Login or register before proceeding.")
         }
@@ -167,8 +174,8 @@ export default {
             let user = await getDoc(doc(db, "Users", self.userID))
             self.username = user.data().username
             self.bio = user.data().bio
-            self.following = user.data().following
-            self.follower = user.data().follwer
+            self.following = user.data().following.length
+            self.follower = user.data().follwer.length
             self.email=user.data().email
             console.log(self.profileiconURL)
         }
@@ -485,6 +492,21 @@ export default {
       }
     }
   }
+}
+
+button{
+    text-align:center;
+    margin: 20px 0 10px 50px;
+    cursor: pointer;
+    font-family: Merienda;
+    padding: 8px 20px;
+    border-radius: 15px;
+}
+button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
 }
 
 </style>
