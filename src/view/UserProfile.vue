@@ -21,7 +21,8 @@
 
                 <div class="profile-user-settings">
 
-                    <h1 class="profile-user-name">{{user.displayName}}'s Profile</h1>
+                    <h1 class="profile-user-name">{{username}}'s Profile</h1>
+                    
 
                     <br>
 
@@ -42,7 +43,7 @@
                 <div class="profile-bio">
 
                     <!-- <p>I am a full time photographer who has been in the business for many years now. Before ever shooting professionally I have always found light and people to be very interesting subjects that inspires me to no end. I am often fascinated with exploring the creative possibilities with my subjects and relish in the discovery of undiscovered possibility.  📷✈️🏕️</p> -->
-                    <p>{{bio}}</p>
+                    <p>{{intro}}</p>
                 </div>
 
             </div>
@@ -108,12 +109,13 @@ export default {
     data() {
         return {
             user:false,
+            username: false,
             email: false,
             list: [],
             post: 0,
             follower: 0,
             following: 0,
-            bio: '',
+            intro: '',
             url: false,
             showIcon: false
         }
@@ -176,7 +178,7 @@ export default {
           const docNow = await setDoc(doc(db, "Users", self.user.email), {
             username: username,
           email: self.user.email,
-          bio: "This is description",
+          intro: "This is description",
           followers: [],
           following: [],
           requests: [],
@@ -188,7 +190,7 @@ export default {
         else {
           let user = await getDoc(doc(db, "Users", self.userID))
             self.username = user.data().username
-            self.bio = user.data().bio
+            self.intro = user.data().intro
             self.following = user.data().following.length
             self.follower = user.data().follwer.length
             self.email=user.data().email
