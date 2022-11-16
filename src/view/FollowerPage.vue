@@ -2,6 +2,10 @@
     <HeadLine/>
     <div class="container">
         <div class="title">My Followers</div>
+        <div class="title">User Following</div>
+            <div id="followerlist" v-for="fol in myfollower" :key="fol" @click="goAuthorProfile(fol)">
+                <p>{{fol}}</p>
+            </div>
         <button onclick="javascript:history.back(-1);">Go Back</button>
     </div>
     <!-- <div class="container">
@@ -29,12 +33,14 @@
 <script>
 import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from '@/components/MyFooter.vue';
-// import {db} from '../firebase.js';
-// import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 // import { ref } from "vue";
 // import { collection, getDocs, query, where } from "@firebase/firestore";
 // import { useStore } from "vuex";
 // import { computed} from "vue";
+import firebaseApp from "../firebase.js";
+import {getFirestore, doc, getDoc} from "firebase/firestore";
+const db = getFirestore(firebaseApp);
 
 
 export default {
@@ -47,38 +53,37 @@ export default {
 
     data(){
         return{
-            len: 3,
             user: false,
+            myfollower: [],
         }
     },
 
-//     mounted() {
-//         const auth = getAuth();
-//         onAuthStateChanged(auth, (user) => {
-//             if (user) {
-//                 this.user = user;
+    mounted() {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user;
+                display(this);
 
-//             }
-//         })
-//     },
+            }
+        });
 
-//   setup() {
-//     const myfollowing = ref([]);
-//     const load = async () => {
-//       const store = useStore();
-//       const followings = computed(() => store.state.user.following);
-//       const dbRef = collection(db, this.user.uid);
-//       const q = query(dbRef, where("following", "==", followings.value));
-//       const res = await getDocs(q);
-//       myfollowing.value = res.docs.map((doc) => {
-//         // console.log(doc.data())
-//         return { ...doc.data(), id: doc.id };
-//       });
-//     };
-//     load();
-//     return { myfollowing };
-//   }
+        async function display(foli) {
+            let user = await getDoc(doc(db, "Users", foli.user.email));
+            foli.myfollower = user.data().followers;
+            console.log(foli.myfollower)
+        }
 
+    },
+
+    methods: {
+        goAuthorProfile(email){
+            console.log("go user profile")
+            this.$router.push({name: 'OtherUserProfile', params: { email: email }})
+        },
+    }
+
+    
 
 
 }

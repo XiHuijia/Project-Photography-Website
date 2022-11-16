@@ -28,10 +28,17 @@
             <div class="input">
                 <label>TAG</label>
                 <br>
-                <input type="text" id="tag1" required = "" placeholder="Add tag for this work">
+                <select required v-model="tag1" id="tag1">
+                    <option>Animal</option>
+                    <option>Architecture</option>
+                    <option>Landscape</option>
+                    <option>People</option>
+                    <option>Cartoon</option>
+                    <option>Other</option>
+                </select>
             </div>
         </div>
-        <button class="btn" type="button" @click="upload()">Upload</button>
+        <button class="button" type="button" @click="upload()">Upload</button>
     </form>
   </div>
   <MyFooter />
@@ -89,7 +96,6 @@ export default {
                 console.log("entering try");
                 const path = await this.uploadImage(this.userID, pic);
                 console.log("creating path", path)
-                await this.uploadImage(this.userID, tit);
                 const docRef = await setDoc(doc(db, String(this.user.uid), pic), {
                                 Photo: pic, Title: tit, Location: loc, Price: pri, Tag: t, Email: this.user.email, Author: name, 
                             });
@@ -122,12 +128,14 @@ export default {
 
 <style scoped>
 h1{
+    
     text-align: center;
     color: #e55a89;
     font-family: Merienda;
 }
 .page{
-    background-image: url("../assets/background1.png");
+    padding: 20px 0 40px 0;
+    background-image: url("../assets/background3.jpg");
     font-size: 20px;
     background-size: 100%; 
     height: 100%;
@@ -137,11 +145,9 @@ h1{
 .pic1{
     font-size: 40px;
     display: inline-block;
-    /*text-align: center;
-    width: 100%;
-    height: 100%; */
-    width: 100%;
+    width: 600px;
     height: 60px;
+    margin: 10px 0 0 10px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     display: center;
@@ -155,10 +161,7 @@ h1{
 .input{
     font-size: 40px;
     display: inline-block;
-    /*text-align: center;
-    width: 100%;
-    height: 100%; */
-    width: 100%;
+    width: 250px;
     height: 60px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
@@ -168,39 +171,31 @@ h1{
     padding-right: 50px;
     padding-left: 10px;
     font-family: Merienda;
-    margin: 10px 0 10px 0;
+    margin: 40px 0 10px 0;
 }
 
-/* .btn{
-    font-size: 40px;
-    text-align: center;
-    background-color: lightpink;
-} */
-
-.btn {
-  margin-top: 30px;
-  border-radius: 15px;
-  font-family: Merienda;
-  position: relative;
-  padding: 1rem 3rem;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #e55a89;
-  text-decoration: none;
-  text-transform: uppercase;
-  background-color: lightpink;
-  border: 1px solid lightpink;
-  outline: transparent;
-  overflow: hidden;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  transition: 0.25s;
+button{
+    text-align:center;
+    margin: 50px 0 40px 10px;
+    cursor: pointer;
+    font-family: Merienda;
+    padding: 8px 20px;
+    border-radius: 15px;
+}
+button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
 }
 
 input:hover {
     box-shadow: 5px 5px pink;
     border-radius: 5px;
+}
+
+option {
+    font-family: Merienda;
 }
 
 </style>

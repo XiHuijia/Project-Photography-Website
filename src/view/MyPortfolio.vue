@@ -6,8 +6,8 @@
         {{ this.user.displayName }}'s Works
         </div>
         <div class="photo-list-main">
-          {{photo_lst}}
-          <div class="photo-list-item" v-for="info in photo_lst" :key="info.id"
+          {{list}}
+          <div class="photo-list-item" v-for="info in list" :key="info.id"
                  :style="{background: info.img}">
           <div class="photo-name">{{ info.photoName }}</div>
           <div class="read-more">Read More</div>
@@ -28,6 +28,7 @@ import { collection, getDocs} from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 import { ref, getStorage, getDownloadURL} from "firebase/storage"
 
+const list = []
 export default {
     name: 'MyPortfolio',
 
@@ -38,8 +39,7 @@ export default {
 
     data() {
         return {
-            user:false,
-            photo_lst: [],
+            user:false
         }
     },
 
@@ -55,7 +55,6 @@ export default {
     async function display(user){
     let z = await getDocs(collection(db, user.uid))    
     let ind = 1
-    const photo_list = []
     z.forEach((docs) => {
       let yy = docs.data()
       console.log(yy)
@@ -72,14 +71,13 @@ export default {
       const starsRef = ref(storage, 'uploads/'+ email + '/' + photo);
        getDownloadURL(starsRef).then((url) => {
                 console.log('get url' + url)
-                photo_list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
+                list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
                 })
       
       ind++;
          
     }) 
-    console.log(photo_list)
-    this.photo_lst = await photo_list
+    console.log(list)
   }
 
   },

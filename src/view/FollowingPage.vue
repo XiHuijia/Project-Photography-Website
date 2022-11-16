@@ -2,6 +2,9 @@
     <HeadLine/>
     <div class="container">
         <div class="title">User Following</div>
+            <div id="followinglist" v-for="fol in myfollowing" :key="fol" @click="goAuthorProfile(fol)">
+                <p>{{fol}}</p>
+            </div>
         <button onclick="javascript:history.back(-1);">Go Back</button>
     </div>
     <!-- <div class="container">
@@ -30,11 +33,14 @@
 import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from '@/components/MyFooter.vue';
 // import {db} from '../firebase.js';
-// import {getAuth, onAuthStateChanged} from "firebase/auth";
+ import {getAuth, onAuthStateChanged} from "firebase/auth";
 // import { ref } from "vue";
 // import { collection, getDocs, query, where } from "@firebase/firestore";
 // import { useStore } from "vuex";
 // import { computed} from "vue";
+import firebaseApp from "../firebase.js";
+import {getFirestore, doc, getDoc} from "firebase/firestore";
+const db = getFirestore(firebaseApp);
 
 
 export default {
@@ -47,38 +53,71 @@ export default {
 
     data(){
         return{
-            len: 3,
             user: false,
+            myfollowing: [],
         }
     },
 
-//     mounted() {
-//         const auth = getAuth();
-//         onAuthStateChanged(auth, (user) => {
-//             if (user) {
-//                 this.user = user;
+    mounted() {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user;
+                display(this);
 
-//             }
-//         })
-//     },
+            }
+        });
+
+        async function display(foli) {
+            let user = await getDoc(doc(db, "Users", foli.user.email));
+            foli.myfollowing = user.data().following;
+            console.log(foli.myfollowing)
+        }
+
+    },
+
+    methods: {
+        goAuthorProfile(email){
+            console.log("go user profile")
+            this.$router.push({name: 'OtherUserProfile', params: { email: email }})
+        },
+    }
+    // created() {
+    //     this.fetchFollowing();
+    // },
+
+    // method: {
+    //     async fetchFollowing() {
+    //         let user = await getDoc(doc(db, "Users", this.user.email));
+    //         this.myfollowing = user.data().following;
+    //         console.log(this.myfollowing)
+    //     }
+    // }
 
 //   setup() {
-//     const myfollowing = ref([]);
+//     //const myfollowing = ref([]);
+//     const myfollowing = [];
 //     const load = async () => {
-//       const store = useStore();
-//       const followings = computed(() => store.state.user.following);
-//       const dbRef = collection(db, this.user.uid);
-//       const q = query(dbRef, where("following", "==", followings.value));
-//       const res = await getDocs(q);
-//       myfollowing.value = res.docs.map((doc) => {
+//       //const store = useStore();
+//     //   const followings = computed(() => store.state.user.following);
+//     //   const dbRef = collection(db, this.user.uid);
+//     //   const q = query(dbRef, where("following", "==", followings.value));
+//     //   const res = await getDocs(q);
+//     //   myfollowing.value = res.docs.map((doc) => {
+//     //     // console.log(doc.data())
+//     //     return { ...doc.data(), id: doc.id };
+//     //   });
+//     const res =  await getDoc(collection(db, "Users", this.user.email))
+//     myfollowing.value = res.docs.map((doc) => {
 //         // console.log(doc.data())
-//         return { ...doc.data(), id: doc.id };
+//         return { ...doc.data(), id: doc.following };
 //       });
 //     };
 //     load();
 //     return { myfollowing };
-//   }
+//   },
 
+    
 
 
 }
