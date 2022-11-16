@@ -105,12 +105,16 @@ export default {
 </script>
 
  <style lang="less" scoped>
-  .photo-list {
+ .photo-list {
             text-align: center;
             width: 1300px;
             padding-bottom: 90px;
+            font-family: Merienda;
+            background-color: rgba(244, 205, 205, 0.098);
+            margin: auto;
+
                 .grouping-name {
-                    margin: 55px 0 32px 32px;
+                    margin: 10px 0 40px 0;
                     font-size: 36px;
                     letter-spacing: 0 !important;
                 }
@@ -133,31 +137,37 @@ export default {
                             margin-right: 0;
                         }
                         .photo-name {
-                            font-size: 50px;
+                            font-size: 30px;
                             font-weight: bold;
+                            width:200px;
                             margin-bottom: 5px;
+                            background-color: rgba(157, 118, 118, 0.311);
+                            border-radius: 5px;
                         }
                         .read-more {
-                            font-size: 20px;
+                            font-size: 15px;
                             width: 105px;
                             height: 33px;
                             border: 1px solid #fff;
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            border-radius: 5px;
                             &:hover {
                                 background: #fff;
                                 color: #000;
                                 font-weight: bold;
+                                cursor: pointer;
                             }
                         }
                     }
                 
             }
         }
+
 button{
     text-align:center;
-    margin: 10px 10px 10px 10px ;
+    margin: 10px 10px 10px 10px;
     cursor: pointer;
     font-family: Merienda;
     padding: 8px 20px;

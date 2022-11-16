@@ -109,9 +109,12 @@ export default {
             text-align: center;
             width: 1300px;
             padding-bottom: 90px;
+            font-family: Merienda;
+            background-color: rgba(244, 205, 205, 0.098);
+            margin: auto;
 
                 .grouping-name {
-                    margin: 55px 0 32px 32px;
+                    margin: 10px 0 40px 0;
                     font-size: 36px;
                     letter-spacing: 0 !important;
                 }
@@ -133,23 +136,29 @@ export default {
                         &:nth-child(3n) {
                             margin-right: 0;
                         }
-                        .photo-Name {
-                            font-size: 50px;
+                        .photo-name {
+                            font-size: 25px;
                             font-weight: bold;
+                            width:200px;
                             margin-bottom: 5px;
+                            color: #fff;
+                            background-color: rgba(143, 140, 140, 0.386);
+                            border-radius: 5px;
                         }
                         .read-more {
-                            font-size: 20px;
+                            font-size: 15px;
                             width: 105px;
                             height: 33px;
                             border: 1px solid #fff;
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            border-radius: 5px;
                             &:hover {
                                 background: #fff;
                                 color: #000;
                                 font-weight: bold;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -159,7 +168,7 @@ export default {
 
 button{
     text-align:center;
-    margin: auto;
+    margin: 10px 0 10px 0;
     cursor: pointer;
     font-family: Merienda;
     padding: 8px 20px;
