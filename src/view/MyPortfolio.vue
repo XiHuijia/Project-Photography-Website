@@ -1,5 +1,6 @@
 <template>
   <HeadLine/>
+  <button onclick="javascript:history.back(-1);">Go Back</button>
   <div class="photo-list">
     <div class="grouping-name">
         {{ this.user.displayName }}'s Works

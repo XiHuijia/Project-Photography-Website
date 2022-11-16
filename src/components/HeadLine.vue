@@ -14,6 +14,7 @@
                 <li><a href="/userprofile">My Profile</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
                 <li><a href="/upload">New Post</a></li>
+                <li><a href="/viewhistory">View History</a></li>
                 <li><SignOut/></li>
               </ul>
             </div>
