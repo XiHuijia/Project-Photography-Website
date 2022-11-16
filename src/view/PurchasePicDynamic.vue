@@ -129,10 +129,12 @@ export default{
 
 <style scoped>
 #left {
+  font-family: Merienda;
   float: right;
 }
 
 #PurchasePic {
+  font-family: Merienda;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -141,17 +143,20 @@ export default{
   margin-left: 50px;
 }
 #select1{
+  font-family: Merienda;
   text-align: left;
   margin-bottom: 5px;
 }
 
 #select2{
+  font-family: Merienda;
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
 }
 
 #payment1{
+  font-family: Merienda;
   background-color: white;
   border: 1px black solid;
   color:black;
@@ -172,6 +177,7 @@ export default{
   float: left;
 }
 #payment2{
+  font-family: Merienda;
   background-color: white;
   border: 1px black solid;
   font-size: 20px;
@@ -189,92 +195,114 @@ export default{
   float: left;
 }
 #enter{
+  font-family: Merienda;
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
 }
 
 #holder {
+  font-family: Merienda;
   float:left;
   margin-right: 20px;
 }
 
 #hn{
+  font-family: Merienda;
   font-size: 20px;
 }
 
 #holderName{
+  font-family: Merienda;
   width: 200px;
   font-size: 20px;
 }
 #card1{
+  font-family: Merienda;
   float:left;
   margin-right: 20px;
 }
 #cn{
   font-size: 20px;
+  font-family: Merienda;
 }
 #cardNumber{
+  font-family: Merienda;
   width: 200px;
   font-size: 20px;
 }
 
 #card2{
+  font-family: Merienda;
   float: left;
 }
 #ed{
+  font-family: Merienda;
   font-size: 20px;
 }
 #expirationDate{
+  font-family: Merienda;
   width: 200px;
   font-size: 20px;
 }
 
 #card3{
+  font-family: Merienda;
   float: left;
 }
 #sc{
+  font-family: Merienda;
   font-size: 20px;
 }
 #securityCode{
+  font-family: Merienda;
   width: 200px;
   font-size: 20px;
 }
 
 #card4{
+  font-family: Merienda;
   float: left;
 }
 #ba{
+  font-family: Merienda;
   font-size: 20px;
 }
 #billingAddress{
+  font-family: Merienda;
   width: 430px;
   font-size: 20px;
 
 }
 
 #left{
+  font-family: Merienda;
   float: left;
   margin-right: 200px;
 }
 
 #summary {
+  font-family: Merienda;
   float: left;
 }
 #price {
+  font-family: Merienda;
   float: left;
   margin-left: -100px;
 }
 #title{
+  font-family: Merienda;
   float: left;
   margin-left: 0px;
 }
 #quantity {
+  font-family: Merienda;
   float: left;
   margin-right: 400px;
   margin-top: -10px;
 }
 #imagecontainer{
+  font-family: Merienda;
   text-align: right;
   margin-top: -30px;
   width: 400px;
@@ -286,6 +314,7 @@ export default{
 
 
 #checkout{
+  font-family: Merienda;
   background-color: black;
   color:white;
   font-size: 20px;
@@ -295,8 +324,10 @@ export default{
   margin-top: 20px;
   margin-right: 400px;
   float: left;
+  cursor: pointer;
 }
 #checkout:hover{
+  font-family: Merienda;
   background-color: rgb(34, 33, 33);
   color:white;
   font-size: 20px;
