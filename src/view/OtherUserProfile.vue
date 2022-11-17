@@ -24,8 +24,8 @@
 
                     <ul>
                         <li><span class="profile-stat-count" @click="goOtherPortfolio(this.email)">{{post}}</span> posts</li>
-                        <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">{{this.num_follower}}</span> followers</li>
-                        <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">{{this.num_following}}</span> following</li>
+                        <li><span class="profile-stat-count" @click="goOtherFollower(email)">{{this.num_follower}}</span> followers</li>
+                        <li><span class="profile-stat-count" @click="goOtherFollowing(email)">{{this.num_following}}</span> following</li>
                     </ul>
                     <button v-if="email != this.user.email"  class="follow" @click="followUser(email)">Follow</button>
                 </div>
@@ -160,7 +160,18 @@ export default{
             console.log("go user portfolio")
             this.$router.push({name: 'OtherPortfolio', params: { email: email }})
         },
+
+        goOtherFollower(email){
+            console.log("go user follower")
+            this.$router.push({name: 'OtherFollower', params: { email: email }})
+        },
+
+        goOtherFollowing(email){
+            console.log("go user following")
+            this.$router.push({name: 'OtherFollowing', params: { email: email }})
+        },
     },
+
 
     mounted() {
     onAuthStateChanged(auth, (user) => {
