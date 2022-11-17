@@ -23,7 +23,7 @@
                 <div class="profile-stats">
 
                     <ul>
-                        <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">{{post}}</span> posts</li>
+                        <li><span class="profile-stat-count" @click="goOtherPortfolio(this.email)">{{post}}</span> posts</li>
                         <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">{{this.num_follower}}</span> followers</li>
                         <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">{{this.num_following}}</span> following</li>
                     </ul>
@@ -147,13 +147,19 @@ export default{
                     await updateDoc(doc(db, 'Users', email), {
                         followers: other_followers
                     });
+                    alert("Successfully followed!")
                     location.reload();
                 }
             } catch(error) {
                 alert("Fail to follow!" + error);
             }
             
-        }
+        },
+
+        goOtherPortfolio(email){
+            console.log("go user portfolio")
+            this.$router.push({name: 'OtherPortfolio', params: { email: email }})
+        },
     },
 
     mounted() {

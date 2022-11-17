@@ -85,22 +85,15 @@ export default {
         },
 
         // download(imgsrc, name) { 
-        //     let image = new Image()
-        //     image.setAttribute("crossOrigin", "anonymous")
-        //     image.onload = function() {
-        //         let canvas = document.createElement("canvas")
-        //         canvas.width = image.width
-        //         canvas.height = image.height
-        //         let context = canvas.getContext("2d")
-        //         context.drawImage(image, 0, 0, image.width, image.height)
-        //         let url = canvas.toDataURL("image/png")
-        //         let a = document.createElement("a")
-        //         let event = new MouseEvent("click") 
-        //         a.download = name || "photo"
-        //         a.href = url
-        //         a.dispatchEvent(event) 
-        //     }
-        //     image.src = imgsrc
+        //     fetch(imgsrc).then(async res => await res.blob()).then((blob) => {
+        //         const a = document.createElement('a');
+        //         a.style.display = 'none';
+        //         a.href = URL.createObjectURL(blob);
+        //         a.download = name;
+        //         document.body.appendChild(a);
+        //         a.click();
+        //         document.body.removeChild(a);
+        //         })  
         // },
 
 

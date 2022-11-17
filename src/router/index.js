@@ -15,6 +15,7 @@ import FollowerPage from '@/view/FollowerPage.vue'
 import OtherUserProfile from '@/view/OtherUserProfile.vue'
 import ViewHistory from '@/view/ViewHistory.vue'
 import IndivPicDynamic from '@/view/IndivPicDynamic.vue'
+import OtherPortfolio from '@/view/OtherPortfolio.vue'
 
 const routes = [
   {
@@ -106,6 +107,12 @@ const routes = [
     path: "/otheruser/:email",
     name: "OtherUserProfile",
     component: OtherUserProfile
+  }
+  ,
+  {
+    path: "/otherportfolio/:email",
+    name: "OtherPortfolio",
+    component: OtherPortfolio
   }
   ,
   {
