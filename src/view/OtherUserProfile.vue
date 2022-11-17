@@ -23,17 +23,17 @@
                 <div class="profile-stats">
 
                     <ul>
-                        <!-- <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">164</span> posts</li> -->
-                        <li><span class="profile-stat-count">{{this.num_follower}}</span> followers</li>
-                        <li><span class="profile-stat-count">{{this.num_following}}</span> following</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('MyPortfolio')">{{post}}</span> posts</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowerPage')">{{this.num_follower}}</span> followers</li>
+                        <li><span class="profile-stat-count" @click="jumpPage('FollowingPage')">{{this.num_following}}</span> following</li>
                     </ul>
                     <button v-if="email != this.user.email"  class="follow" @click="followUser(email)">Follow</button>
                 </div>
 
-                <div class="profile-bio">
+                <div class="profile-intro">
 
                     <p>
-                        {{this.bio}}
+                        {{this.intro}}
                     </p>
 
                 </div>
@@ -51,6 +51,7 @@
 <script>
 import HeadLine from '@/components/HeadLine.vue'
 import MyFooter from '@/components/MyFooter.vue'
+import { useRouter } from "vue-router";
 //import { db } from "../firebase.js";
 //import { ref } from "firebase/storage";
 import {doc, getDoc, updateDoc} from "firebase/firestore";
@@ -61,7 +62,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, getStorage, getDownloadURL} from "firebase/storage"
 
 
-
+const auth = getAuth();
 export default{
     name: "OtherUserProfile",
     components:{
@@ -74,13 +75,23 @@ export default{
             user:false,
             email: false,
             username: false,
+            posts:false,
             num_follower: false,
             num_following: false,
-            bio: false,
+            intro: false,
             profileiconURL:false,
             url: false,
             showIcon: false
         }
+    },
+    setup() {
+    const router = useRouter();
+    const jumpPage = (name) => {
+      router.push({
+        name,
+      });
+    };
+      return {router,jumpPage}
     },
 
     created() {
@@ -92,10 +103,11 @@ export default{
             let value = res.data();
             console.log(value);
             this.username = value.username;
+            this.posts = value.posts;
             this.num_follower = value.followers.length;
             console.log(this.num_follower)
             this.num_following = value.following.length;
-            this.bio = value.bio;
+            this.intro = value.intro;
             this.profileiconURL = value.profileiconURL;
              console.log("getURL triggered")
             // Get URL for the image inside the storage
@@ -113,30 +125,8 @@ export default{
 
     },
 
-    mounted(){
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if(user) {
-          this.user = user;
-        }
-    })
-    },
-    
-    //props: ["uid"],
-    
-    // setup(props) {
-    //     const otheruser = ref("");
-    //     const load = async () => {
-    //     try {
-    //         const res = await getDoc(doc(db, "Users", props.id));
-    //         otheruser.value = res.data();
-    //     } catch (err) {
-    //         alert(err.message);
-    //     }
-    //     };
-    //     load();
-    // },
     methods:{
+        
         async followUser(email) {
             try{
                 const my_res = await getDoc(doc(db, "Users", this.user.email));
@@ -149,6 +139,7 @@ export default{
                     await updateDoc(doc(db, 'Users', this.user.email), {
                         following: my_following
                     });
+
                     const other_res = await getDoc(doc(db, "Users", email));
                     let other_value = other_res.data();
                     let other_followers = other_value.followers;
@@ -163,7 +154,44 @@ export default{
             }
             
         }
+    },
+
+    mounted() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+        this.userID = this.$route.params.email;
+        display(this, this.userID)
+        getURL(this);
+        //display(user);
+      }
+    });
+
+    async function getURL(self){
+            setTimeout(() => {
+            console.log(self.email)
+            console.log("getURL triggered")
+            // Get URL for the image inside the storage
+            const storage = getStorage();
+            const starsRef = ref(storage, 'icons/'+ self.email);
+            getDownloadURL(starsRef)
+            .then((url) => {
+            self.url = url
+            self.showIcon=true
+            })
+            }, 500);
+        }
+    async function display(self){
+        let user = await getDoc(doc(db, "Users", self.userID))
+        self.username = user.data().username
+        self.intro = user.data().intro
+        self.post = user.data().posts
+        self.following = user.data().following
+        self.followers = user.data().followers
+        self.email=user.data().email
+        console.log(self.profileiconURL)
     }
+}
 }
 
 </script>
@@ -200,7 +228,7 @@ export default{
 
 .profile-user-settings,
 .profile-stats,
-.profile-bio {
+.profile-intro {
     float: left;
     width: calc(66.666% - 2rem);
 }
@@ -231,7 +259,7 @@ export default{
     margin-right: 0;
 }
 
-.profile-bio {
+.profile-intro {
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.5;
@@ -251,13 +279,13 @@ export default{
         font-size: 2.2rem;
     }
 
-    .profile-bio {
+    .profile-intro {
         font-size: 1.4rem;
         margin-top: 1.5rem;
     }
 
     .profile-edit-btn,
-    .profile-bio,
+    .profile-intro,
     .profile-stats {
         flex-basis: 100%;
         float: none;
@@ -298,7 +326,7 @@ export default{
     .profile-image,
     .profile-user-settings,
     .profile-stats,
-    .profile-bio{
+    .profile-intro{
         width: auto;
         margin: 0;
     }
@@ -319,14 +347,14 @@ export default{
 
         .profile-edit-btn,
         .profile-stats,
-        .profile-bio {
+        .profile-intro {
             grid-column: 1 / -1;
         }
 
         .profile-user-settings,
         .profile-edit-btn,
         .profile-settings-btn,
-        .profile-bio,
+        .profile-intro,
         .profile-stats {
             margin: 0;
         }
@@ -340,6 +368,22 @@ button{
     border-radius: 15px;
 }
 button:hover{
+    color: rgb(243, 236, 236);
+    background-color: rgb(251, 122, 171);
+    box-shadow:  3px 3px grey;
+    border-radius: 15px;
+}
+
+.follow{
+    text-align:center;
+    margin: 20px 0 10px 10px;
+    cursor: pointer;
+    font-family: Merienda;
+    font-size:15px;
+    padding:15px 30px;
+    border-radius: 15px;
+}
+follow:hover{
     color: rgb(243, 236, 236);
     background-color: rgb(251, 122, 171);
     box-shadow:  3px 3px grey;

@@ -31,9 +31,14 @@
 </template>
 
 <script>
-import HeadLine from '@/components/HeadLine.vue'
-import MyFooter from '@/components/MyFooter.vue'
-import CommentPage from '@/components/CommentPage.vue'
+import HeadLine from '@/components/HeadLine.vue';
+import MyFooter from '@/components/MyFooter.vue';
+import CommentPage from '@/components/CommentPage.vue';
+import {doc, getDoc} from "firebase/firestore";
+import firebaseApp from '../firebase.js';
+import {getFirestore} from "firebase/firestore";
+const db = getFirestore(firebaseApp);
+
 // import axios from 'Axios';
 // import {saveAs} from 'file-saver';
 
@@ -56,8 +61,8 @@ export default {
         this.id = this.$route.params.id,
         this.path = this.$route.params.photo,
         this.title = this.$route.params.title,
-        this.author = this.$route.params.author,
         this.email = this.$route.params.email,
+        this.author = this.$route.params.author, 
         this.tag = this.$route.params.tag,
         this.location = this.$route.params.location,
         this.price = this.$route.params.price,
@@ -91,6 +96,12 @@ export default {
             console.log("go user profile")
             this.$router.push({name: 'OtherUserProfile', params: { email: email }})
         },
+
+        getAuthor(email) {
+            const res = getDoc(doc(db, "Users", email));
+            let value = res.data();
+            this.author = value.username
+        }   
     }
 }
 </script>

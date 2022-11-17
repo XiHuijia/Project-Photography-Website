@@ -6,14 +6,15 @@
         {{ this.user.displayName }}'s Works
         </div>
         <div class="photo-list-main">
-          {{list}}
-          <div class="photo-list-item" v-for="info in list" :key="info.id"
-                 :style="{background: info.img}">
+          
+          <div class="photo-list-item" @click="goDetail(info.id, info.photoName, info.img, info.author, info.email, info.tag, info.price, info.loc)"  v-for="info in list" :key="info.id"
+                 :style="{background: 'url(' + info.img + ')'}">
           <div class="photo-name">{{ info.photoName }}</div>
           <div class="read-more">Read More</div>
           </div>
         </div>
     </div>
+    <button @click="jumpPage('UploadPicNew')">Upload</button>
     <button onclick="javascript:history.back(-1);">Go Back</button>
   <MyFooter/>
 </template>
@@ -27,19 +28,36 @@ import { getFirestore } from "firebase/firestore"
 import { collection, getDocs} from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 import { ref, getStorage, getDownloadURL} from "firebase/storage"
-
-const list = []
+import { useRouter } from "vue-router";
 export default {
     name: 'MyPortfolio',
-
     components: {
       HeadLine,
       MyFooter,
     },
+    setup() {
+    const router = useRouter();
+    const jumpPage = (name) => {
+      router.push({
+        name,
+      });
+    };
+      return {router,jumpPage}
+    },
 
     data() {
         return {
-            user:false
+            user:false,
+            list:[]
+        }
+    },
+
+    methods: {
+        goDetail (id, name, image, author, email, tag, price, location) {
+            console.log("go to detail page")
+            console.log(id, name, image)
+            this.$router.push({name: 'IndivPicDynamic', params: { id:id, photo: image, title:name,
+            author: author, email: email, tag: tag, location: location, price: price }})
         }
     },
 
@@ -48,12 +66,12 @@ export default {
       onAuthStateChanged(auth, (user) => {
         if(user) {
           this.user = user;
-          display(user)
+          display(this)
         }
-    });
-
+      });
+ 
     async function display(user){
-    let z = await getDocs(collection(db, user.uid))    
+      let z = await getDocs(collection(db, user.user.uid))    
     let ind = 1
     z.forEach((docs) => {
       let yy = docs.data()
@@ -64,34 +82,39 @@ export default {
       var tag = (yy.Tag)
       var email = (yy.Email)
       // get display name
-      var author = user.displayName
+      var author = user.user.displayName
+      console.log(author)
       //get photo path from storage
       var photo = (yy.Photo)
       const storage = getStorage();
       const starsRef = ref(storage, 'uploads/'+ email + '/' + photo);
-       getDownloadURL(starsRef).then((url) => {
+      getDownloadURL(starsRef).then((url) => {
                 console.log('get url' + url)
-                list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
-                })
+                console.log(user.list)
+                user.list.push({photoName: title, id: ind, img: url, loc: location, price: price, tag: tag, email: email,  author: author})
+                console.log(user.list)
+      })
       
       ind++;
          
     }) 
-    console.log(list)
+    console.log(user.list)
   }
-
   },
 }
 </script>
 
  <style lang="less" scoped>
-  .photo-list {
+ .photo-list {
             text-align: center;
             width: 1300px;
             padding-bottom: 90px;
+            font-family: Merienda;
+            background-color: rgba(244, 205, 205, 0.098);
+            margin: auto;
 
                 .grouping-name {
-                    margin: 55px 0 32px 32px;
+                    margin: 10px 0 40px 0;
                     font-size: 36px;
                     letter-spacing: 0 !important;
                 }
@@ -113,23 +136,28 @@ export default {
                         &:nth-child(3n) {
                             margin-right: 0;
                         }
-                        .photo-Name {
-                            font-size: 50px;
+                        .photo-name {
+                            font-size: 30px;
                             font-weight: bold;
+                            width:200px;
                             margin-bottom: 5px;
+                            background-color: rgba(157, 118, 118, 0.311);
+                            border-radius: 5px;
                         }
                         .read-more {
-                            font-size: 20px;
+                            font-size: 15px;
                             width: 105px;
                             height: 33px;
                             border: 1px solid #fff;
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            border-radius: 5px;
                             &:hover {
                                 background: #fff;
                                 color: #000;
                                 font-weight: bold;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -139,7 +167,7 @@ export default {
 
 button{
     text-align:center;
-    margin: auto;
+    margin: 10px 10px 10px 10px;
     cursor: pointer;
     font-family: Merienda;
     padding: 8px 20px;
