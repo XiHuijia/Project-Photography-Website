@@ -5,7 +5,7 @@
                 <div class="top-text"></div>
 
                 <div class="input-block">
-                    <input type="text" placeholder="Search for photographs" />
+                    <input id = "SearchInput" type="text" placeholder="Search for photograph Tags" />
                     <!-- <input type="text" v-model="input" placeholder="Search for photographs" />
                     <div class="tag_search" v-for="tag in filteredList()" :key="tag">
                         <p>{{tag}}</p>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-primary btn-ghost btn-shine"> Search </button>
+                    <button class="btn btn-primary btn-ghost btn-shine" @click="search()"> Search </button>
                 </div>
 
             </div>
@@ -89,7 +89,13 @@ export default {
             console.log(id, name, image)
             this.$router.push({name: 'IndivPic', params: { id:id, photo: image, title:name,
             author: author, email: email, tag: tag, location: location, price: price }})
-        }
+        },
+
+        search(){
+          var tag = document.getElementById("SearchInput").value
+          console.log(tag)
+          this.$router.push({name: 'SearchPage', params: { tag: tag }})
+        },
     },
 }
 </script>
