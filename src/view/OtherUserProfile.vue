@@ -30,10 +30,10 @@
                     <button v-if="email != this.user.email"  class="follow" @click="followUser(email)">Follow</button>
                 </div>
 
-                <div class="profile-bio">
+                <div class="profile-intro">
 
                     <p>
-                        {{this.bio}}
+                        {{this.intro}}
                     </p>
 
                 </div>
@@ -78,7 +78,7 @@ export default{
             posts:false,
             num_follower: false,
             num_following: false,
-            bio: false,
+            intro: false,
             profileiconURL:false,
             url: false,
             showIcon: false
@@ -107,7 +107,7 @@ export default{
             this.num_follower = value.followers.length;
             console.log(this.num_follower)
             this.num_following = value.following.length;
-            this.bio = value.bio;
+            this.intro = value.intro;
             this.profileiconURL = value.profileiconURL;
              console.log("getURL triggered")
             // Get URL for the image inside the storage
@@ -184,7 +184,7 @@ export default{
     async function display(self){
         let user = await getDoc(doc(db, "Users", self.userID))
         self.username = user.data().username
-        self.bio = user.data().bio
+        self.intro = user.data().intro
         self.post = user.data().posts
         self.following = user.data().following
         self.followers = user.data().followers
@@ -228,7 +228,7 @@ export default{
 
 .profile-user-settings,
 .profile-stats,
-.profile-bio {
+.profile-intro {
     float: left;
     width: calc(66.666% - 2rem);
 }
@@ -259,7 +259,7 @@ export default{
     margin-right: 0;
 }
 
-.profile-bio {
+.profile-intro {
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.5;
@@ -279,13 +279,13 @@ export default{
         font-size: 2.2rem;
     }
 
-    .profile-bio {
+    .profile-intro {
         font-size: 1.4rem;
         margin-top: 1.5rem;
     }
 
     .profile-edit-btn,
-    .profile-bio,
+    .profile-intro,
     .profile-stats {
         flex-basis: 100%;
         float: none;
@@ -326,7 +326,7 @@ export default{
     .profile-image,
     .profile-user-settings,
     .profile-stats,
-    .profile-bio{
+    .profile-intro{
         width: auto;
         margin: 0;
     }
@@ -347,14 +347,14 @@ export default{
 
         .profile-edit-btn,
         .profile-stats,
-        .profile-bio {
+        .profile-intro {
             grid-column: 1 / -1;
         }
 
         .profile-user-settings,
         .profile-edit-btn,
         .profile-settings-btn,
-        .profile-bio,
+        .profile-intro,
         .profile-stats {
             margin: 0;
         }
