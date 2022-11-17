@@ -4,7 +4,7 @@
             <div>
                 <div class="top-text"></div>
 
-                <div class="input-block">
+                <div class="input-block" title="Tags: Animal, Architecture, Landscape, People, Cartoon, Other">
                     <input id = "SearchInput" type="text" placeholder="Search for photograph Tags" />
                     <!-- <input type="text" v-model="input" placeholder="Search for photographs" />
                     <div class="tag_search" v-for="tag in filteredList()" :key="tag">
@@ -170,6 +170,7 @@ export default {
                 font-size: 18px;
             }
 }
+
 .btn {
   margin-top: 30px;
   border-radius: 15px;
