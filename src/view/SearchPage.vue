@@ -48,7 +48,7 @@ export default {
         }
     },
     created(){
-      this.tag = this.$route.params.tag
+      this.tag = this.$route.params.tag.toLowerCase();
     },
 
     methods: {
@@ -76,7 +76,7 @@ export default {
     z.forEach((docs) => {
       let yy = docs.data()
       console.log(yy)
-      var tag = (yy.Tag)
+      var tag = (yy.Tag).toLowerCase();
       if(tag == self.tag){
       var title = (yy.Title)
       var location = (yy.Location)
