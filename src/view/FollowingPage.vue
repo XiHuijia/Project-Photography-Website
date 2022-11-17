@@ -33,7 +33,7 @@
 import HeadLine from '@/components/HeadLine.vue';
 import MyFooter from '@/components/MyFooter.vue';
 // import {db} from '../firebase.js';
- import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 // import { ref } from "vue";
 // import { collection, getDocs, query, where } from "@firebase/firestore";
 // import { useStore } from "vuex";
