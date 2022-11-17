@@ -72,16 +72,39 @@ export default {
     },
 
     methods: {
-        // getImgUrl: function(img) {
-        //     return require('@/assets/' + img);
-        // },
-        
+
         download(link, filename) {
+            link = link + '?response-content-type=application/octet-stream'
             let a = document.createElement('a')
-            a.href = link
-            a.download = filename 
-            a.dispatchEvent(new MouseEvent('click'))
+            a.setAttribute("href", link);
+            a.setAttribute("download", filename);
+            a.setAttribute("target", "_blank");
+            var evObj = document.createEvent('MouseEvents');
+            evObj.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, true, false, 0, null);
+            a.dispatchEvent(evObj);
         },
+
+        // download(imgsrc, name) { 
+        //     let image = new Image()
+        //     image.setAttribute("crossOrigin", "anonymous")
+        //     image.onload = function() {
+        //         let canvas = document.createElement("canvas")
+        //         canvas.width = image.width
+        //         canvas.height = image.height
+        //         let context = canvas.getContext("2d")
+        //         context.drawImage(image, 0, 0, image.width, image.height)
+        //         let url = canvas.toDataURL("image/png")
+        //         let a = document.createElement("a")
+        //         let event = new MouseEvent("click") 
+        //         a.download = name || "photo"
+        //         a.href = url
+        //         a.dispatchEvent(event) 
+        //     }
+        //     image.src = imgsrc
+        // },
+
+
+
 
         goPurchase(id, image, name, price){
             this.$router.push({name: 'PurchasePicDynamic', params: { id:id, photo: image, title:name, price: price }})
