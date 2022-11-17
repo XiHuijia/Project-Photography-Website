@@ -16,8 +16,9 @@ import OtherUserProfile from '@/view/OtherUserProfile.vue'
 import ViewHistory from '@/view/ViewHistory.vue'
 import IndivPicDynamic from '@/view/IndivPicDynamic.vue'
 import OtherPortfolio from '@/view/OtherPortfolio.vue'
-import OtherFollower from '@/view/OtherFollowerPage'
-import OtherFollowing from '@/view/OtherFollowerPage'
+import OtherFollower from '@/view/OtherFollowerPage.vue'
+import OtherFollowing from '@/view/OtherFollowingPage.vue'
+import SearchPage from '@/view/SearchPage.vue'
 
 const routes = [
   {
@@ -133,6 +134,12 @@ const routes = [
     path: "/viewhistory",
     name: "ViewHistory",
     component: ViewHistory,
+  }
+  ,
+  {
+    path: "/search",
+    name: "SearchPage",
+    component: SearchPage,
   }
   ,
 ]

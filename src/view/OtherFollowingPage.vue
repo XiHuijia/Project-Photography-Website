@@ -85,7 +85,7 @@ export default {
         });
 
         async function display(foli) {
-            let user = await getDoc(doc(db, "Users", foli.user.email));
+            let user = await getDoc(doc(db, "Users", foli.email));
             foli.myfollowing = user.data().following;
             console.log(foli.myfollowing)
         }
